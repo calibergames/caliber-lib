@@ -1,0 +1,238 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,layers=1": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=2": {
+    "model": "@m_2",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=3": {
+    "model": "@m_3",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=4": {
+    "model": "@m_4",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=5": {
+    "model": "@m_5",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=6": {
+    "model": "@m_6",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=7": {
+    "model": "@m_7",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=8": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,layers=1": {
+    "model": "@m_1"
+   },
+   "facing=north,layers=2": {
+    "model": "@m_2"
+   },
+   "facing=north,layers=3": {
+    "model": "@m_3"
+   },
+   "facing=north,layers=4": {
+    "model": "@m_4"
+   },
+   "facing=north,layers=5": {
+    "model": "@m_5"
+   },
+   "facing=north,layers=6": {
+    "model": "@m_6"
+   },
+   "facing=north,layers=7": {
+    "model": "@m_7"
+   },
+   "facing=north,layers=8": {
+    "model": "@base"
+   },
+   "facing=south,layers=1": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=2": {
+    "model": "@m_2",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=3": {
+    "model": "@m_3",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=4": {
+    "model": "@m_4",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=5": {
+    "model": "@m_5",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=6": {
+    "model": "@m_6",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=7": {
+    "model": "@m_7",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=8": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=1": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=2": {
+    "model": "@m_2",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=3": {
+    "model": "@m_3",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=4": {
+    "model": "@m_4",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=5": {
+    "model": "@m_5",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=6": {
+    "model": "@m_6",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=7": {
+    "model": "@m_7",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=8": {
+    "model": "@base"
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_1"
+ },
+ "loot": "layers",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_3": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_4": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_4",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_5": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_5",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_6": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_6",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_7": {
+   "parent": "caliberlib:block/templates/slab_vertical_layer_7",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Vertical Layer",
+ "recipes": [
+  {
+   "count": 8,
+   "type": "cut"
+  },
+  {
+   "count": 1,
+   "sibling": "layer",
+   "type": "cut_sibling"
+  }
+ ],
+ "reference": "caliber:andesite_layer_vertical",
+ "tags": {
+  "block": [
+   "caliber:shapes/vertical_layers"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/vertical_layers"
+   ],
+   "wood": [
+    "caliber:shapes/vertical_layers"
+   ]
+  }
+ },
+ "uses_base": true,
+ "variant": "layer_vertical"
+}

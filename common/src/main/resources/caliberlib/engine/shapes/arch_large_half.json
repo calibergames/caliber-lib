@@ -1,0 +1,87 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,type=left": {
+    "model": "@m_left",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,type=right": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,type=left": {
+    "model": "@m_left"
+   },
+   "facing=north,type=right": {
+    "model": "@m"
+   },
+   "facing=south,type=left": {
+    "model": "@m_left",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,type=right": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,type=left": {
+    "model": "@m_left",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,type=right": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/arch_large_half",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_left": {
+   "parent": "caliberlib:block/templates/arch_large_half_left",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Large Arch Half",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_arch_large_half",
+ "tags": {
+  "block": [
+   "caliber:shapes/half_large_arches"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/half_large_arches"
+   ],
+   "wood": [
+    "caliber:shapes/half_large_arches"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "arch_large_half"
+}

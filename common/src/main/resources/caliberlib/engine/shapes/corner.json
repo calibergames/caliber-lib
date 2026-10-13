@@ -1,0 +1,247 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,layers=1,type=left": {
+    "model": "@m_layer_1"
+   },
+   "facing=east,layers=1,type=right": {
+    "model": "@m_layer_1",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=2,type=left": {
+    "model": "@m_layer_2"
+   },
+   "facing=east,layers=2,type=right": {
+    "model": "@m_layer_2",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=3,type=left": {
+    "model": "@m_layer_3"
+   },
+   "facing=east,layers=3,type=right": {
+    "model": "@m_layer_3",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=4,type=left": {
+    "model": "@m_layer_4"
+   },
+   "facing=east,layers=4,type=right": {
+    "model": "@m_layer_4",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,layers=5,type=left": {
+    "model": "@base"
+   },
+   "facing=east,layers=5,type=right": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,layers=1,type=left": {
+    "model": "@m_layer_1",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,layers=1,type=right": {
+    "model": "@m_layer_1"
+   },
+   "facing=north,layers=2,type=left": {
+    "model": "@m_layer_2",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,layers=2,type=right": {
+    "model": "@m_layer_2"
+   },
+   "facing=north,layers=3,type=left": {
+    "model": "@m_layer_3",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,layers=3,type=right": {
+    "model": "@m_layer_3"
+   },
+   "facing=north,layers=4,type=left": {
+    "model": "@m_layer_4",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,layers=4,type=right": {
+    "model": "@m_layer_4"
+   },
+   "facing=north,layers=5,type=left": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,layers=5,type=right": {
+    "model": "@base"
+   },
+   "facing=south,layers=1,type=left": {
+    "model": "@m_layer_1",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,layers=1,type=right": {
+    "model": "@m_layer_1",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=2,type=left": {
+    "model": "@m_layer_2",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,layers=2,type=right": {
+    "model": "@m_layer_2",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=3,type=left": {
+    "model": "@m_layer_3",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,layers=3,type=right": {
+    "model": "@m_layer_3",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=4,type=left": {
+    "model": "@m_layer_4",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,layers=4,type=right": {
+    "model": "@m_layer_4",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,layers=5,type=left": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,layers=5,type=right": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=1,type=left": {
+    "model": "@m_layer_1",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=1,type=right": {
+    "model": "@m_layer_1",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=2,type=left": {
+    "model": "@m_layer_2",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=2,type=right": {
+    "model": "@m_layer_2",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=3,type=left": {
+    "model": "@m_layer_3",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=3,type=right": {
+    "model": "@m_layer_3",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=4,type=left": {
+    "model": "@m_layer_4",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=4,type=right": {
+    "model": "@m_layer_4",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,layers=5,type=left": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,layers=5,type=right": {
+    "model": "@base",
+    "uvlock": true,
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_layer_3"
+ },
+ "loot": "layers",
+ "models": {
+  "_layer_1": {
+   "parent": "caliberlib:block/templates/corner_layer_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_layer_2": {
+   "parent": "caliberlib:block/templates/corner_layer_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_layer_3": {
+   "parent": "caliberlib:block/templates/corner_layer_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_layer_4": {
+   "parent": "caliberlib:block/templates/corner_layer_4",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Corner",
+ "recipes": [
+  {
+   "count": 5,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_corner",
+ "tags": {
+  "block": [
+   "caliber:shapes/corners"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/corners"
+   ],
+   "wood": [
+    "caliber:shapes/corners"
+   ]
+  }
+ },
+ "uses_base": true,
+ "variant": "corner"
+}

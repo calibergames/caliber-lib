@@ -33,6 +33,7 @@ legacyForge {
 mixin {
 	add sourceSets.main, 'caliberlib.refmap.json'
 	config 'caliberlib.mixins.json'
+	config 'caliberlib.engine.mixins.json'
 }
 
 dependencies {
@@ -41,7 +42,7 @@ dependencies {
 
 jar {
 	manifest.attributes([
-		'MixinConfigs': 'caliberlib.mixins.json'
+		'MixinConfigs': 'caliberlib.mixins.json,caliberlib.engine.mixins.json'
 	])
 }
 
@@ -52,5 +53,10 @@ processResources {
 	inputs.properties props
 	filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
 		expand props
+	}
+	// Forge 1.20.1 runs on SRG names: the shared mixin config points at the refmap
+	// built here (the Fabric jar needs none, so common's own copy names none).
+	filesMatching('caliberlib.engine.mixins.json') {
+		filter { line -> line.contains('"package"') ? line + '\n\t"refmap": "caliberlib.refmap.json",' : line }
 	}
 }

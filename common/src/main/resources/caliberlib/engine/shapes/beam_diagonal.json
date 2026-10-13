@@ -1,0 +1,1209 @@
+{
+ "blockstate": {
+  "variants": {
+   "beam=1,connect=ah,facing=east": {
+    "model": "@m_1_ah",
+    "y": 90
+   },
+   "beam=1,connect=ah,facing=north": {
+    "model": "@m_1_ah"
+   },
+   "beam=1,connect=ah,facing=south": {
+    "model": "@m_1_ah",
+    "y": 180
+   },
+   "beam=1,connect=ah,facing=west": {
+    "model": "@m_1_ah",
+    "y": 270
+   },
+   "beam=1,connect=ah_av,facing=east": {
+    "model": "@m_1_ahav",
+    "y": 90
+   },
+   "beam=1,connect=ah_av,facing=north": {
+    "model": "@m_1_ahav"
+   },
+   "beam=1,connect=ah_av,facing=south": {
+    "model": "@m_1_ahav",
+    "y": 180
+   },
+   "beam=1,connect=ah_av,facing=west": {
+    "model": "@m_1_ahav",
+    "y": 270
+   },
+   "beam=1,connect=ah_av_ch,facing=east": {
+    "model": "@m_1_ahavch",
+    "y": 90
+   },
+   "beam=1,connect=ah_av_ch,facing=north": {
+    "model": "@m_1_ahavch"
+   },
+   "beam=1,connect=ah_av_ch,facing=south": {
+    "model": "@m_1_ahavch",
+    "y": 180
+   },
+   "beam=1,connect=ah_av_ch,facing=west": {
+    "model": "@m_1_ahavch",
+    "y": 270
+   },
+   "beam=1,connect=ah_av_ch_cv,facing=east": {
+    "model": "@m_1_ahavchcv",
+    "y": 90
+   },
+   "beam=1,connect=ah_av_ch_cv,facing=north": {
+    "model": "@m_1_ahavchcv"
+   },
+   "beam=1,connect=ah_av_ch_cv,facing=south": {
+    "model": "@m_1_ahavchcv",
+    "y": 180
+   },
+   "beam=1,connect=ah_av_ch_cv,facing=west": {
+    "model": "@m_1_ahavchcv",
+    "y": 270
+   },
+   "beam=1,connect=ah_av_cv,facing=east": {
+    "model": "@m_1_ahavcv",
+    "y": 90
+   },
+   "beam=1,connect=ah_av_cv,facing=north": {
+    "model": "@m_1_ahavcv"
+   },
+   "beam=1,connect=ah_av_cv,facing=south": {
+    "model": "@m_1_ahavcv",
+    "y": 180
+   },
+   "beam=1,connect=ah_av_cv,facing=west": {
+    "model": "@m_1_ahavcv",
+    "y": 270
+   },
+   "beam=1,connect=ah_av_n,facing=east": {
+    "model": "@m_1_ahavn",
+    "y": 90
+   },
+   "beam=1,connect=ah_av_n,facing=north": {
+    "model": "@m_1_ahavn"
+   },
+   "beam=1,connect=ah_av_n,facing=south": {
+    "model": "@m_1_ahavn",
+    "y": 180
+   },
+   "beam=1,connect=ah_av_n,facing=west": {
+    "model": "@m_1_ahavn",
+    "y": 270
+   },
+   "beam=1,connect=ah_ch,facing=east": {
+    "model": "@m_1_ahch",
+    "y": 90
+   },
+   "beam=1,connect=ah_ch,facing=north": {
+    "model": "@m_1_ahch"
+   },
+   "beam=1,connect=ah_ch,facing=south": {
+    "model": "@m_1_ahch",
+    "y": 180
+   },
+   "beam=1,connect=ah_ch,facing=west": {
+    "model": "@m_1_ahch",
+    "y": 270
+   },
+   "beam=1,connect=ah_ch_cv,facing=east": {
+    "model": "@m_1_ahchcv",
+    "y": 90
+   },
+   "beam=1,connect=ah_ch_cv,facing=north": {
+    "model": "@m_1_ahchcv"
+   },
+   "beam=1,connect=ah_ch_cv,facing=south": {
+    "model": "@m_1_ahchcv",
+    "y": 180
+   },
+   "beam=1,connect=ah_ch_cv,facing=west": {
+    "model": "@m_1_ahchcv",
+    "y": 270
+   },
+   "beam=1,connect=ah_cv,facing=east": {
+    "model": "@m_1_ahcv",
+    "y": 90
+   },
+   "beam=1,connect=ah_cv,facing=north": {
+    "model": "@m_1_ahcv"
+   },
+   "beam=1,connect=ah_cv,facing=south": {
+    "model": "@m_1_ahcv",
+    "y": 180
+   },
+   "beam=1,connect=ah_cv,facing=west": {
+    "model": "@m_1_ahcv",
+    "y": 270
+   },
+   "beam=1,connect=ah_dh,facing=east": {
+    "model": "@m_1_ah",
+    "y": 90
+   },
+   "beam=1,connect=ah_dh,facing=north": {
+    "model": "@m_1_ah"
+   },
+   "beam=1,connect=ah_dh,facing=south": {
+    "model": "@m_1_ah",
+    "y": 180
+   },
+   "beam=1,connect=ah_dh,facing=west": {
+    "model": "@m_1_ah",
+    "y": 270
+   },
+   "beam=1,connect=ah_dv,facing=east": {
+    "model": "@m_1_ah",
+    "y": 90
+   },
+   "beam=1,connect=ah_dv,facing=north": {
+    "model": "@m_1_ah"
+   },
+   "beam=1,connect=ah_dv,facing=south": {
+    "model": "@m_1_ah",
+    "y": 180
+   },
+   "beam=1,connect=ah_dv,facing=west": {
+    "model": "@m_1_ah",
+    "y": 270
+   },
+   "beam=1,connect=ah_n,facing=east": {
+    "model": "@m_1_ahn",
+    "y": 90
+   },
+   "beam=1,connect=ah_n,facing=north": {
+    "model": "@m_1_ahn"
+   },
+   "beam=1,connect=ah_n,facing=south": {
+    "model": "@m_1_ahn",
+    "y": 180
+   },
+   "beam=1,connect=ah_n,facing=west": {
+    "model": "@m_1_ahn",
+    "y": 270
+   },
+   "beam=1,connect=av,facing=east": {
+    "model": "@m_1_av",
+    "y": 90
+   },
+   "beam=1,connect=av,facing=north": {
+    "model": "@m_1_av"
+   },
+   "beam=1,connect=av,facing=south": {
+    "model": "@m_1_av",
+    "y": 180
+   },
+   "beam=1,connect=av,facing=west": {
+    "model": "@m_1_av",
+    "y": 270
+   },
+   "beam=1,connect=av_ch,facing=east": {
+    "model": "@m_1_avch",
+    "y": 90
+   },
+   "beam=1,connect=av_ch,facing=north": {
+    "model": "@m_1_avch"
+   },
+   "beam=1,connect=av_ch,facing=south": {
+    "model": "@m_1_avch",
+    "y": 180
+   },
+   "beam=1,connect=av_ch,facing=west": {
+    "model": "@m_1_avch",
+    "y": 270
+   },
+   "beam=1,connect=av_ch_cv,facing=east": {
+    "model": "@m_1_avchcv",
+    "y": 90
+   },
+   "beam=1,connect=av_ch_cv,facing=north": {
+    "model": "@m_1_avchcv"
+   },
+   "beam=1,connect=av_ch_cv,facing=south": {
+    "model": "@m_1_avchcv",
+    "y": 180
+   },
+   "beam=1,connect=av_ch_cv,facing=west": {
+    "model": "@m_1_avchcv",
+    "y": 270
+   },
+   "beam=1,connect=av_cv,facing=east": {
+    "model": "@m_1_avcv",
+    "y": 90
+   },
+   "beam=1,connect=av_cv,facing=north": {
+    "model": "@m_1_avcv"
+   },
+   "beam=1,connect=av_cv,facing=south": {
+    "model": "@m_1_avcv",
+    "y": 180
+   },
+   "beam=1,connect=av_cv,facing=west": {
+    "model": "@m_1_avcv",
+    "y": 270
+   },
+   "beam=1,connect=av_dh,facing=east": {
+    "model": "@m_1_av",
+    "y": 90
+   },
+   "beam=1,connect=av_dh,facing=north": {
+    "model": "@m_1_av"
+   },
+   "beam=1,connect=av_dh,facing=south": {
+    "model": "@m_1_av",
+    "y": 180
+   },
+   "beam=1,connect=av_dh,facing=west": {
+    "model": "@m_1_av",
+    "y": 270
+   },
+   "beam=1,connect=av_n,facing=east": {
+    "model": "@m_1_avn",
+    "y": 90
+   },
+   "beam=1,connect=av_n,facing=north": {
+    "model": "@m_1_avn"
+   },
+   "beam=1,connect=av_n,facing=south": {
+    "model": "@m_1_avn",
+    "y": 180
+   },
+   "beam=1,connect=av_n,facing=west": {
+    "model": "@m_1_avn",
+    "y": 270
+   },
+   "beam=1,connect=ch,facing=east": {
+    "model": "@m_1_ch",
+    "y": 90
+   },
+   "beam=1,connect=ch,facing=north": {
+    "model": "@m_1_ch"
+   },
+   "beam=1,connect=ch,facing=south": {
+    "model": "@m_1_ch",
+    "y": 180
+   },
+   "beam=1,connect=ch,facing=west": {
+    "model": "@m_1_ch",
+    "y": 270
+   },
+   "beam=1,connect=ch_cv,facing=east": {
+    "model": "@m_1_chcv",
+    "y": 90
+   },
+   "beam=1,connect=ch_cv,facing=north": {
+    "model": "@m_1_chcv"
+   },
+   "beam=1,connect=ch_cv,facing=south": {
+    "model": "@m_1_chcv",
+    "y": 180
+   },
+   "beam=1,connect=ch_cv,facing=west": {
+    "model": "@m_1_chcv",
+    "y": 270
+   },
+   "beam=1,connect=cv,facing=east": {
+    "model": "@m_1_cv",
+    "y": 90
+   },
+   "beam=1,connect=cv,facing=north": {
+    "model": "@m_1_cv"
+   },
+   "beam=1,connect=cv,facing=south": {
+    "model": "@m_1_cv",
+    "y": 180
+   },
+   "beam=1,connect=cv,facing=west": {
+    "model": "@m_1_cv",
+    "y": 270
+   },
+   "beam=1,connect=dh,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,connect=dh,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,connect=dh,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,connect=dh,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=1,connect=dh_dv_m,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,connect=dh_dv_m,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,connect=dh_dv_m,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,connect=dh_dv_m,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=1,connect=dh_m,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,connect=dh_m,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,connect=dh_m,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,connect=dh_m,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=1,connect=dv,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,connect=dv,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,connect=dv,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,connect=dv,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=1,connect=dv_m,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,connect=dv_m,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,connect=dv_m,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,connect=dv_m,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=1,connect=m,facing=east": {
+    "model": "@m_1_m",
+    "y": 90
+   },
+   "beam=1,connect=m,facing=north": {
+    "model": "@m_1_m"
+   },
+   "beam=1,connect=m,facing=south": {
+    "model": "@m_1_m",
+    "y": 180
+   },
+   "beam=1,connect=m,facing=west": {
+    "model": "@m_1_m",
+    "y": 270
+   },
+   "beam=1,connect=n,facing=east": {
+    "model": "@m_1_n",
+    "y": 90
+   },
+   "beam=1,connect=n,facing=north": {
+    "model": "@m_1_n"
+   },
+   "beam=1,connect=n,facing=south": {
+    "model": "@m_1_n",
+    "y": 180
+   },
+   "beam=1,connect=n,facing=west": {
+    "model": "@m_1_n",
+    "y": 270
+   },
+   "beam=1,connect=none,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,connect=none,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,connect=none,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,connect=none,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=2,connect=ah,facing=east": {
+    "model": "@m_2_ah",
+    "y": 90
+   },
+   "beam=2,connect=ah,facing=north": {
+    "model": "@m_2_ah"
+   },
+   "beam=2,connect=ah,facing=south": {
+    "model": "@m_2_ah",
+    "y": 180
+   },
+   "beam=2,connect=ah,facing=west": {
+    "model": "@m_2_ah",
+    "y": 270
+   },
+   "beam=2,connect=ah_av,facing=east": {
+    "model": "@m_2_ahav",
+    "y": 90
+   },
+   "beam=2,connect=ah_av,facing=north": {
+    "model": "@m_2_ahav"
+   },
+   "beam=2,connect=ah_av,facing=south": {
+    "model": "@m_2_ahav",
+    "y": 180
+   },
+   "beam=2,connect=ah_av,facing=west": {
+    "model": "@m_2_ahav",
+    "y": 270
+   },
+   "beam=2,connect=ah_av_ch,facing=east": {
+    "model": "@m_2_ahav",
+    "y": 90
+   },
+   "beam=2,connect=ah_av_ch,facing=north": {
+    "model": "@m_2_ahav"
+   },
+   "beam=2,connect=ah_av_ch,facing=south": {
+    "model": "@m_2_ahav",
+    "y": 180
+   },
+   "beam=2,connect=ah_av_ch,facing=west": {
+    "model": "@m_2_ahav",
+    "y": 270
+   },
+   "beam=2,connect=ah_av_ch_cv,facing=east": {
+    "model": "@m_2_ahav",
+    "y": 90
+   },
+   "beam=2,connect=ah_av_ch_cv,facing=north": {
+    "model": "@m_2_ahav"
+   },
+   "beam=2,connect=ah_av_ch_cv,facing=south": {
+    "model": "@m_2_ahav",
+    "y": 180
+   },
+   "beam=2,connect=ah_av_ch_cv,facing=west": {
+    "model": "@m_2_ahav",
+    "y": 270
+   },
+   "beam=2,connect=ah_av_cv,facing=east": {
+    "model": "@m_2_ahav",
+    "y": 90
+   },
+   "beam=2,connect=ah_av_cv,facing=north": {
+    "model": "@m_2_ahav"
+   },
+   "beam=2,connect=ah_av_cv,facing=south": {
+    "model": "@m_2_ahav",
+    "y": 180
+   },
+   "beam=2,connect=ah_av_cv,facing=west": {
+    "model": "@m_2_ahav",
+    "y": 270
+   },
+   "beam=2,connect=ah_av_n,facing=east": {
+    "model": "@m_2_ahavn",
+    "y": 90
+   },
+   "beam=2,connect=ah_av_n,facing=north": {
+    "model": "@m_2_ahavn"
+   },
+   "beam=2,connect=ah_av_n,facing=south": {
+    "model": "@m_2_ahavn",
+    "y": 180
+   },
+   "beam=2,connect=ah_av_n,facing=west": {
+    "model": "@m_2_ahavn",
+    "y": 270
+   },
+   "beam=2,connect=ah_ch,facing=east": {
+    "model": "@m_2_ah",
+    "y": 90
+   },
+   "beam=2,connect=ah_ch,facing=north": {
+    "model": "@m_2_ah"
+   },
+   "beam=2,connect=ah_ch,facing=south": {
+    "model": "@m_2_ah",
+    "y": 180
+   },
+   "beam=2,connect=ah_ch,facing=west": {
+    "model": "@m_2_ah",
+    "y": 270
+   },
+   "beam=2,connect=ah_ch_cv,facing=east": {
+    "model": "@m_2_ah",
+    "y": 90
+   },
+   "beam=2,connect=ah_ch_cv,facing=north": {
+    "model": "@m_2_ah"
+   },
+   "beam=2,connect=ah_ch_cv,facing=south": {
+    "model": "@m_2_ah",
+    "y": 180
+   },
+   "beam=2,connect=ah_ch_cv,facing=west": {
+    "model": "@m_2_ah",
+    "y": 270
+   },
+   "beam=2,connect=ah_cv,facing=east": {
+    "model": "@m_2_ah",
+    "y": 90
+   },
+   "beam=2,connect=ah_cv,facing=north": {
+    "model": "@m_2_ah"
+   },
+   "beam=2,connect=ah_cv,facing=south": {
+    "model": "@m_2_ah",
+    "y": 180
+   },
+   "beam=2,connect=ah_cv,facing=west": {
+    "model": "@m_2_ah",
+    "y": 270
+   },
+   "beam=2,connect=ah_dh,facing=east": {
+    "model": "@m_2_ahdh",
+    "y": 90
+   },
+   "beam=2,connect=ah_dh,facing=north": {
+    "model": "@m_2_ahdh"
+   },
+   "beam=2,connect=ah_dh,facing=south": {
+    "model": "@m_2_ahdh",
+    "y": 180
+   },
+   "beam=2,connect=ah_dh,facing=west": {
+    "model": "@m_2_ahdh",
+    "y": 270
+   },
+   "beam=2,connect=ah_dv,facing=east": {
+    "model": "@m_2_ahdv",
+    "y": 90
+   },
+   "beam=2,connect=ah_dv,facing=north": {
+    "model": "@m_2_ahdv"
+   },
+   "beam=2,connect=ah_dv,facing=south": {
+    "model": "@m_2_ahdv",
+    "y": 180
+   },
+   "beam=2,connect=ah_dv,facing=west": {
+    "model": "@m_2_ahdv",
+    "y": 270
+   },
+   "beam=2,connect=ah_n,facing=east": {
+    "model": "@m_2_ahn",
+    "y": 90
+   },
+   "beam=2,connect=ah_n,facing=north": {
+    "model": "@m_2_ahn"
+   },
+   "beam=2,connect=ah_n,facing=south": {
+    "model": "@m_2_ahn",
+    "y": 180
+   },
+   "beam=2,connect=ah_n,facing=west": {
+    "model": "@m_2_ahn",
+    "y": 270
+   },
+   "beam=2,connect=av,facing=east": {
+    "model": "@m_2_av",
+    "y": 90
+   },
+   "beam=2,connect=av,facing=north": {
+    "model": "@m_2_av"
+   },
+   "beam=2,connect=av,facing=south": {
+    "model": "@m_2_av",
+    "y": 180
+   },
+   "beam=2,connect=av,facing=west": {
+    "model": "@m_2_av",
+    "y": 270
+   },
+   "beam=2,connect=av_ch,facing=east": {
+    "model": "@m_2_av",
+    "y": 90
+   },
+   "beam=2,connect=av_ch,facing=north": {
+    "model": "@m_2_av"
+   },
+   "beam=2,connect=av_ch,facing=south": {
+    "model": "@m_2_av",
+    "y": 180
+   },
+   "beam=2,connect=av_ch,facing=west": {
+    "model": "@m_2_av",
+    "y": 270
+   },
+   "beam=2,connect=av_ch_cv,facing=east": {
+    "model": "@m_2_av",
+    "y": 90
+   },
+   "beam=2,connect=av_ch_cv,facing=north": {
+    "model": "@m_2_av"
+   },
+   "beam=2,connect=av_ch_cv,facing=south": {
+    "model": "@m_2_av",
+    "y": 180
+   },
+   "beam=2,connect=av_ch_cv,facing=west": {
+    "model": "@m_2_av",
+    "y": 270
+   },
+   "beam=2,connect=av_cv,facing=east": {
+    "model": "@m_2_av",
+    "y": 90
+   },
+   "beam=2,connect=av_cv,facing=north": {
+    "model": "@m_2_av"
+   },
+   "beam=2,connect=av_cv,facing=south": {
+    "model": "@m_2_av",
+    "y": 180
+   },
+   "beam=2,connect=av_cv,facing=west": {
+    "model": "@m_2_av",
+    "y": 270
+   },
+   "beam=2,connect=av_dh,facing=east": {
+    "model": "@m_2_avdh",
+    "y": 90
+   },
+   "beam=2,connect=av_dh,facing=north": {
+    "model": "@m_2_avdh"
+   },
+   "beam=2,connect=av_dh,facing=south": {
+    "model": "@m_2_avdh",
+    "y": 180
+   },
+   "beam=2,connect=av_dh,facing=west": {
+    "model": "@m_2_avdh",
+    "y": 270
+   },
+   "beam=2,connect=av_n,facing=east": {
+    "model": "@m_2_avn",
+    "y": 90
+   },
+   "beam=2,connect=av_n,facing=north": {
+    "model": "@m_2_avn"
+   },
+   "beam=2,connect=av_n,facing=south": {
+    "model": "@m_2_avn",
+    "y": 180
+   },
+   "beam=2,connect=av_n,facing=west": {
+    "model": "@m_2_avn",
+    "y": 270
+   },
+   "beam=2,connect=ch,facing=east": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,connect=ch,facing=north": {
+    "model": "@m_2"
+   },
+   "beam=2,connect=ch,facing=south": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,connect=ch,facing=west": {
+    "model": "@m_2",
+    "y": 270
+   },
+   "beam=2,connect=ch_cv,facing=east": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,connect=ch_cv,facing=north": {
+    "model": "@m_2"
+   },
+   "beam=2,connect=ch_cv,facing=south": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,connect=ch_cv,facing=west": {
+    "model": "@m_2",
+    "y": 270
+   },
+   "beam=2,connect=cv,facing=east": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,connect=cv,facing=north": {
+    "model": "@m_2"
+   },
+   "beam=2,connect=cv,facing=south": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,connect=cv,facing=west": {
+    "model": "@m_2",
+    "y": 270
+   },
+   "beam=2,connect=dh,facing=east": {
+    "model": "@m_2_dh",
+    "y": 90
+   },
+   "beam=2,connect=dh,facing=north": {
+    "model": "@m_2_dh"
+   },
+   "beam=2,connect=dh,facing=south": {
+    "model": "@m_2_dh",
+    "y": 180
+   },
+   "beam=2,connect=dh,facing=west": {
+    "model": "@m_2_dh",
+    "y": 270
+   },
+   "beam=2,connect=dh_dv_m,facing=east": {
+    "model": "@m_2_dhdvm",
+    "y": 90
+   },
+   "beam=2,connect=dh_dv_m,facing=north": {
+    "model": "@m_2_dhdvm"
+   },
+   "beam=2,connect=dh_dv_m,facing=south": {
+    "model": "@m_2_dhdvm",
+    "y": 180
+   },
+   "beam=2,connect=dh_dv_m,facing=west": {
+    "model": "@m_2_dhdvm",
+    "y": 270
+   },
+   "beam=2,connect=dh_m,facing=east": {
+    "model": "@m_2_dhm",
+    "y": 90
+   },
+   "beam=2,connect=dh_m,facing=north": {
+    "model": "@m_2_dhm"
+   },
+   "beam=2,connect=dh_m,facing=south": {
+    "model": "@m_2_dhm",
+    "y": 180
+   },
+   "beam=2,connect=dh_m,facing=west": {
+    "model": "@m_2_dhm",
+    "y": 270
+   },
+   "beam=2,connect=dv,facing=east": {
+    "model": "@m_2_dv",
+    "y": 90
+   },
+   "beam=2,connect=dv,facing=north": {
+    "model": "@m_2_dv"
+   },
+   "beam=2,connect=dv,facing=south": {
+    "model": "@m_2_dv",
+    "y": 180
+   },
+   "beam=2,connect=dv,facing=west": {
+    "model": "@m_2_dv",
+    "y": 270
+   },
+   "beam=2,connect=dv_m,facing=east": {
+    "model": "@m_2_dvm",
+    "y": 90
+   },
+   "beam=2,connect=dv_m,facing=north": {
+    "model": "@m_2_dvm"
+   },
+   "beam=2,connect=dv_m,facing=south": {
+    "model": "@m_2_dvm",
+    "y": 180
+   },
+   "beam=2,connect=dv_m,facing=west": {
+    "model": "@m_2_dvm",
+    "y": 270
+   },
+   "beam=2,connect=m,facing=east": {
+    "model": "@m_2_m",
+    "y": 90
+   },
+   "beam=2,connect=m,facing=north": {
+    "model": "@m_2_m"
+   },
+   "beam=2,connect=m,facing=south": {
+    "model": "@m_2_m",
+    "y": 180
+   },
+   "beam=2,connect=m,facing=west": {
+    "model": "@m_2_m",
+    "y": 270
+   },
+   "beam=2,connect=n,facing=east": {
+    "model": "@m_2_n",
+    "y": 90
+   },
+   "beam=2,connect=n,facing=north": {
+    "model": "@m_2_n"
+   },
+   "beam=2,connect=n,facing=south": {
+    "model": "@m_2_n",
+    "y": 180
+   },
+   "beam=2,connect=n,facing=west": {
+    "model": "@m_2_n",
+    "y": 270
+   },
+   "beam=2,connect=none,facing=east": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,connect=none,facing=north": {
+    "model": "@m_2"
+   },
+   "beam=2,connect=none,facing=south": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,connect=none,facing=west": {
+    "model": "@m_2",
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_1"
+ },
+ "loot": "self",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ah": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ah",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahav": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahav",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahavch": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahavch",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahavchcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahavchcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahavcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahavcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahavn": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahavn",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahch": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahch",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahchcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahchcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ahn": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ahn",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_av": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_av",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_avch": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_avch",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_avchcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_avchcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_avcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_avcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_avn": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_avn",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_ch": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_ch",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_chcv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_chcv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_cv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_cv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_m": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_m",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_1_n": {
+   "parent": "caliberlib:block/templates/beam_diagonal_1_n",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_ah": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_ah",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_ahav": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_ahav",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_ahavn": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_ahavn",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_ahdh": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_ahdh",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_ahdv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_ahdv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_ahn": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_ahn",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_av": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_av",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_avdh": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_avdh",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_avn": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_avn",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_dh": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_dh",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_dhdvm": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_dhdvm",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_dhm": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_dhm",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_dv": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_dv",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_dvm": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_dvm",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_m": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_m",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2_n": {
+   "parent": "caliberlib:block/templates/beam_diagonal_2_n",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Diagonal Beam",
+ "recipes": [
+  {
+   "count": 9,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:stripped_oak_beam_diagonal",
+ "tags": {
+  "block": [
+   "caliber:shapes/diagonal_beams"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/diagonal_beams"
+   ],
+   "wood": [
+    "caliber:shapes/diagonal_beams"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "beam_diagonal"
+}

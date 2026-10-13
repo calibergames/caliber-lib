@@ -1,0 +1,136 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,type=inner_left": {
+    "model": "@m_inner",
+    "y": 270
+   },
+   "facing=east,type=inner_right": {
+    "model": "@m_inner"
+   },
+   "facing=east,type=outer_left": {
+    "model": "@m_outer",
+    "y": 270
+   },
+   "facing=east,type=outer_right": {
+    "model": "@m_outer"
+   },
+   "facing=east,type=straight": {
+    "model": "@m"
+   },
+   "facing=north,type=inner_left": {
+    "model": "@m_inner",
+    "y": 180
+   },
+   "facing=north,type=inner_right": {
+    "model": "@m_inner",
+    "y": 270
+   },
+   "facing=north,type=outer_left": {
+    "model": "@m_outer",
+    "y": 180
+   },
+   "facing=north,type=outer_right": {
+    "model": "@m_outer",
+    "y": 270
+   },
+   "facing=north,type=straight": {
+    "model": "@m",
+    "y": 270
+   },
+   "facing=south,type=inner_left": {
+    "model": "@m_inner"
+   },
+   "facing=south,type=inner_right": {
+    "model": "@m_inner",
+    "y": 90
+   },
+   "facing=south,type=outer_left": {
+    "model": "@m_outer"
+   },
+   "facing=south,type=outer_right": {
+    "model": "@m_outer",
+    "y": 90
+   },
+   "facing=south,type=straight": {
+    "model": "@m",
+    "y": 90
+   },
+   "facing=west,type=inner_left": {
+    "model": "@m_inner",
+    "y": 90
+   },
+   "facing=west,type=inner_right": {
+    "model": "@m_inner",
+    "y": 180
+   },
+   "facing=west,type=outer_left": {
+    "model": "@m_outer",
+    "y": 90
+   },
+   "facing=west,type=outer_right": {
+    "model": "@m_outer",
+    "y": 180
+   },
+   "facing=west,type=straight": {
+    "model": "@m",
+    "y": 180
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/roof_45",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_inner": {
+   "parent": "caliberlib:block/templates/roof_45_inner",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_outer": {
+   "parent": "caliberlib:block/templates/roof_45_outer",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Roof 45",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:oak_shingle_roof_45",
+ "tags": {
+  "block": [
+   "caliber:shapes/roof_45s"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/roof_45s",
+    "buildify:creative_tabs/roofing_tab"
+   ],
+   "wood": [
+    "caliber:shapes/roof_45s",
+    "buildify:creative_tabs/roofing_tab"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "roof_45"
+}

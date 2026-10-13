@@ -1,0 +1,61 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north": {
+    "model": "@m"
+   },
+   "facing=south": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/arch_half",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Half Arch",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_arch_half",
+ "tags": {
+  "block": [
+   "caliber:shapes/half_arches"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/half_arches"
+   ],
+   "wood": [
+    "caliber:shapes/half_arches"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "arch_half"
+}

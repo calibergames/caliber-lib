@@ -1,0 +1,72 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,type=connected": {
+    "model": "@m_connected",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,type=connected": {
+    "model": "@m_connected"
+   },
+   "facing=south,type=connected": {
+    "model": "@m_connected",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,type=connected": {
+    "model": "@m_connected",
+    "uvlock": true,
+    "y": 270
+   },
+   "type=single": {
+    "model": "@m"
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/balustrade",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_connected": {
+   "parent": "caliberlib:block/templates/balustrade_connected",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Balustrade",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_balustrade",
+ "tags": {
+  "block": [
+   "caliber:shapes/balustrades"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/balustrades"
+   ],
+   "wood": [
+    "caliber:shapes/balustrades"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "balustrade"
+}

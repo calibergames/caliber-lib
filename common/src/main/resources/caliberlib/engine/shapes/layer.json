@@ -1,0 +1,158 @@
+{
+ "blockstate": {
+  "variants": {
+   "layers=1,type=bottom": {
+    "model": "@m_1"
+   },
+   "layers=1,type=top": {
+    "model": "@m_1",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=2,type=bottom": {
+    "model": "@m_2"
+   },
+   "layers=2,type=top": {
+    "model": "@m_2",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=3,type=bottom": {
+    "model": "@m_3"
+   },
+   "layers=3,type=top": {
+    "model": "@m_3",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=4,type=bottom": {
+    "model": "@m_4"
+   },
+   "layers=4,type=top": {
+    "model": "@m_4",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=5,type=bottom": {
+    "model": "@m_5"
+   },
+   "layers=5,type=top": {
+    "model": "@m_5",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=6,type=bottom": {
+    "model": "@m_6"
+   },
+   "layers=6,type=top": {
+    "model": "@m_6",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=7,type=bottom": {
+    "model": "@m_7"
+   },
+   "layers=7,type=top": {
+    "model": "@m_7",
+    "uvlock": true,
+    "x": 180
+   },
+   "layers=8,type=bottom": {
+    "model": "@base"
+   },
+   "layers=8,type=top": {
+    "model": "@base"
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_1"
+ },
+ "loot": "layers",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/slab_layer_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2": {
+   "parent": "caliberlib:block/templates/slab_layer_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_3": {
+   "parent": "caliberlib:block/templates/slab_layer_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_4": {
+   "parent": "caliberlib:block/templates/slab_layer_4",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_5": {
+   "parent": "caliberlib:block/templates/slab_layer_5",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_6": {
+   "parent": "caliberlib:block/templates/slab_layer_6",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_7": {
+   "parent": "caliberlib:block/templates/slab_layer_7",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Layer",
+ "recipes": [
+  {
+   "count": 8,
+   "type": "cut"
+  },
+  {
+   "count": 1,
+   "sibling": "layer_vertical",
+   "type": "cut_sibling"
+  }
+ ],
+ "reference": "caliber:andesite_layer",
+ "tags": {
+  "block": [
+   "caliber:shapes/layers"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/layers"
+   ],
+   "wood": [
+    "caliber:shapes/layers"
+   ]
+  }
+ },
+ "uses_base": true,
+ "variant": "layer"
+}

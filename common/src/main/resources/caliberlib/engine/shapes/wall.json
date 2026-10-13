@@ -1,0 +1,150 @@
+{
+ "blockstate": {
+  "multipart": [
+   {
+    "apply": {
+     "model": "@m_post"
+    },
+    "when": {
+     "up": "true"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side",
+     "uvlock": true,
+     "y": 90
+    },
+    "when": {
+     "east": "low"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side_tall",
+     "uvlock": true,
+     "y": 90
+    },
+    "when": {
+     "east": "tall"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side",
+     "uvlock": true
+    },
+    "when": {
+     "north": "low"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side_tall",
+     "uvlock": true
+    },
+    "when": {
+     "north": "tall"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side",
+     "uvlock": true,
+     "y": 180
+    },
+    "when": {
+     "south": "low"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side_tall",
+     "uvlock": true,
+     "y": 180
+    },
+    "when": {
+     "south": "tall"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side",
+     "uvlock": true,
+     "y": 270
+    },
+    "when": {
+     "west": "low"
+    }
+   },
+   {
+    "apply": {
+     "model": "@m_side_tall",
+     "uvlock": true,
+     "y": 270
+    },
+    "when": {
+     "west": "tall"
+    }
+   }
+  ]
+ },
+ "item": {
+  "parent": "@m_inventory"
+ },
+ "loot": "self",
+ "models": {
+  "_inventory": {
+   "parent": "minecraft:block/wall_inventory",
+   "textures": {
+    "wall": "@side"
+   }
+  },
+  "_post": {
+   "parent": "minecraft:block/template_wall_post",
+   "textures": {
+    "wall": "@side"
+   }
+  },
+  "_side": {
+   "parent": "minecraft:block/template_wall_side",
+   "textures": {
+    "wall": "@side"
+   }
+  },
+  "_side_tall": {
+   "parent": "minecraft:block/template_wall_side_tall",
+   "textures": {
+    "wall": "@side"
+   }
+  }
+ },
+ "name": "{m} Wall",
+ "recipes": [
+  {
+   "count": 6,
+   "kind": "stone",
+   "pattern": [
+    "###",
+    "###"
+   ],
+   "type": "shaped"
+  },
+  {
+   "count": 1,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:oak_wall",
+ "tags": {
+  "block": [
+   "minecraft:walls"
+  ],
+  "item": {
+   "stone": [],
+   "wood": []
+  }
+ },
+ "uses_base": false,
+ "variant": "wall"
+}

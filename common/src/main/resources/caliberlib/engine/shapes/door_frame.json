@@ -1,0 +1,104 @@
+{
+ "blockstate": {
+  "variants": {
+   "beam=1,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=2,facing=east": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,facing=north": {
+    "model": "@m_2"
+   },
+   "beam=2,facing=south": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,facing=west": {
+    "model": "@m_2",
+    "y": 270
+   },
+   "beam=3,facing=east": {
+    "model": "@m_3",
+    "y": 90
+   },
+   "beam=3,facing=north": {
+    "model": "@m_3"
+   },
+   "beam=3,facing=south": {
+    "model": "@m_3",
+    "y": 180
+   },
+   "beam=3,facing=west": {
+    "model": "@m_3",
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_1"
+ },
+ "loot": "self",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/door_frame_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2": {
+   "parent": "caliberlib:block/templates/door_frame_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_3": {
+   "parent": "caliberlib:block/templates/door_frame_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Door Frame",
+ "recipes": [
+  {
+   "count": 16,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:stripped_oak_door_frame",
+ "tags": {
+  "block": [
+   "caliber:shapes/door_frames"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/door_frames"
+   ],
+   "wood": [
+    "caliber:shapes/door_frames"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "door_frame"
+}

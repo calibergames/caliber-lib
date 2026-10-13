@@ -1,0 +1,246 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,trim=both,type=straight": {
+    "model": "@m_trim_2",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,trim=front,type=straight": {
+    "model": "@m_trim",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,trim=none,type=straight": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,type=corner_left": {
+    "model": "@m_corner"
+   },
+   "facing=east,type=corner_right": {
+    "model": "@m_corner",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,type=cross": {
+    "model": "@m_cross",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,type=left_t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=east,type=right_t": {
+    "model": "@m_t"
+   },
+   "facing=east,type=t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,trim=both,type=straight": {
+    "model": "@m_trim_2"
+   },
+   "facing=north,trim=front,type=straight": {
+    "model": "@m_trim"
+   },
+   "facing=north,trim=none,type=straight": {
+    "model": "@m"
+   },
+   "facing=north,type=corner_left": {
+    "model": "@m_corner",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,type=corner_right": {
+    "model": "@m_corner",
+    "uvlock": true
+   },
+   "facing=north,type=cross": {
+    "model": "@m_cross"
+   },
+   "facing=north,type=left_t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,type=right_t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=north,type=t": {
+    "model": "@m_t"
+   },
+   "facing=south,trim=both,type=straight": {
+    "model": "@m_trim_2",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,trim=front,type=straight": {
+    "model": "@m_trim",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,trim=none,type=straight": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,type=corner_left": {
+    "model": "@m_corner",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,type=corner_right": {
+    "model": "@m_corner",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,type=cross": {
+    "model": "@m_cross",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,type=left_t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=south,type=right_t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=south,type=t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,trim=both,type=straight": {
+    "model": "@m_trim_2",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,trim=front,type=straight": {
+    "model": "@m_trim",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,trim=none,type=straight": {
+    "model": "@m",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,type=corner_left": {
+    "model": "@m_corner",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,type=corner_right": {
+    "model": "@m_corner",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,type=cross": {
+    "model": "@m_cross",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,type=left_t": {
+    "model": "@m_t"
+   },
+   "facing=west,type=right_t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,type=t": {
+    "model": "@m_t",
+    "uvlock": true,
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_trim_2"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/arch",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_corner": {
+   "parent": "caliberlib:block/templates/arch_corner",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_cross": {
+   "parent": "caliberlib:block/templates/arch_cross",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_t": {
+   "parent": "caliberlib:block/templates/arch_t",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_trim": {
+   "parent": "caliberlib:block/templates/arch_trim",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_trim_2": {
+   "parent": "caliberlib:block/templates/arch_trim_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Arch",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_arch",
+ "tags": {
+  "block": [
+   "caliber:shapes/arches"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/arches"
+   ],
+   "wood": [
+    "caliber:shapes/arches"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "arch"
+}

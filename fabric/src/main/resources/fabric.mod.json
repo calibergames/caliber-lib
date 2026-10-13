@@ -15,6 +15,10 @@
 	"license": "${mod_license}",
 	"environment": "*",
 	"accessWidener": "caliberlib.accesswidener",
+	"mixins": [
+		"caliberlib.engine.mixins.json",
+		"caliberlib.fabric.mixins.json"
+	],
 	"entrypoints": {
 		"main": [
 			"com.calibermc.caliberlib.fabric.CaliberLibFabric"

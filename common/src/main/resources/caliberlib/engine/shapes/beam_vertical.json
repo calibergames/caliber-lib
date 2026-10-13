@@ -1,0 +1,196 @@
+{
+ "blockstate": {
+  "variants": {
+   "beam=1,facing=east": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,facing=north": {
+    "model": "@m_1"
+   },
+   "beam=1,facing=south": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,facing=west": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=2,facing=east": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,facing=north": {
+    "model": "@m_2"
+   },
+   "beam=2,facing=south": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,facing=west": {
+    "model": "@m_2",
+    "y": 270
+   },
+   "beam=3,facing=east": {
+    "model": "@m_3",
+    "y": 90
+   },
+   "beam=3,facing=north": {
+    "model": "@m_3"
+   },
+   "beam=3,facing=south": {
+    "model": "@m_3",
+    "y": 180
+   },
+   "beam=3,facing=west": {
+    "model": "@m_3",
+    "y": 270
+   },
+   "beam=4,facing=east": {
+    "model": "@m_4",
+    "y": 90
+   },
+   "beam=4,facing=north": {
+    "model": "@m_4"
+   },
+   "beam=4,facing=south": {
+    "model": "@m_4",
+    "y": 180
+   },
+   "beam=4,facing=west": {
+    "model": "@m_4",
+    "y": 270
+   },
+   "beam=5,facing=east": {
+    "model": "@m_5",
+    "y": 90
+   },
+   "beam=5,facing=north": {
+    "model": "@m_5"
+   },
+   "beam=5,facing=south": {
+    "model": "@m_5",
+    "y": 180
+   },
+   "beam=5,facing=west": {
+    "model": "@m_5",
+    "y": 270
+   },
+   "beam=6,facing=east": {
+    "model": "@m_6",
+    "y": 90
+   },
+   "beam=6,facing=north": {
+    "model": "@m_6"
+   },
+   "beam=6,facing=south": {
+    "model": "@m_6",
+    "y": 180
+   },
+   "beam=6,facing=west": {
+    "model": "@m_6",
+    "y": 270
+   },
+   "beam=7,facing=east": {
+    "model": "@m_7",
+    "y": 90
+   },
+   "beam=7,facing=north": {
+    "model": "@m_7"
+   },
+   "beam=7,facing=south": {
+    "model": "@m_7",
+    "y": 180
+   },
+   "beam=7,facing=west": {
+    "model": "@m_7",
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_3"
+ },
+ "loot": "self",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/beam_vertical_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2": {
+   "parent": "caliberlib:block/templates/beam_vertical_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_3": {
+   "parent": "caliberlib:block/templates/beam_vertical_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_4": {
+   "parent": "caliberlib:block/templates/beam_vertical_4",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_5": {
+   "parent": "caliberlib:block/templates/beam_vertical_5",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_6": {
+   "parent": "caliberlib:block/templates/beam_vertical_6",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_7": {
+   "parent": "caliberlib:block/templates/beam_vertical_7",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Vertical Beam",
+ "recipes": [
+  {
+   "count": 9,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:stripped_oak_beam_vertical",
+ "tags": {
+  "block": [
+   "caliber:shapes/vertical_beams"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/vertical_beams"
+   ],
+   "wood": [
+    "caliber:shapes/vertical_beams"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "beam_vertical"
+}

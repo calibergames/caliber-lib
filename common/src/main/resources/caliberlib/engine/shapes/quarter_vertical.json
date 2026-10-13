@@ -1,0 +1,213 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,layers=1,type=left": {
+    "model": "@m_layer_1"
+   },
+   "facing=east,layers=1,type=right": {
+    "model": "@m_layer_1",
+    "y": 90
+   },
+   "facing=east,layers=2,type=left": {
+    "model": "@m_layer_2"
+   },
+   "facing=east,layers=2,type=right": {
+    "model": "@m_layer_2",
+    "y": 90
+   },
+   "facing=east,layers=3,type=left": {
+    "model": "@m_layer_3"
+   },
+   "facing=east,layers=3,type=right": {
+    "model": "@m_layer_3",
+    "y": 90
+   },
+   "facing=east,layers=4,type=left": {
+    "model": "@m_layer_4"
+   },
+   "facing=east,layers=4,type=right": {
+    "model": "@m_layer_4",
+    "y": 90
+   },
+   "facing=east,layers=5,type=left": {
+    "model": "@base"
+   },
+   "facing=east,layers=5,type=right": {
+    "model": "@base",
+    "y": 90
+   },
+   "facing=north,layers=1,type=left": {
+    "model": "@m_layer_1",
+    "y": 270
+   },
+   "facing=north,layers=1,type=right": {
+    "model": "@m_layer_1"
+   },
+   "facing=north,layers=2,type=left": {
+    "model": "@m_layer_2",
+    "y": 270
+   },
+   "facing=north,layers=2,type=right": {
+    "model": "@m_layer_2"
+   },
+   "facing=north,layers=3,type=left": {
+    "model": "@m_layer_3",
+    "y": 270
+   },
+   "facing=north,layers=3,type=right": {
+    "model": "@m_layer_3"
+   },
+   "facing=north,layers=4,type=left": {
+    "model": "@m_layer_4",
+    "y": 270
+   },
+   "facing=north,layers=4,type=right": {
+    "model": "@m_layer_4"
+   },
+   "facing=north,layers=5,type=left": {
+    "model": "@base",
+    "y": 270
+   },
+   "facing=north,layers=5,type=right": {
+    "model": "@base"
+   },
+   "facing=south,layers=1,type=left": {
+    "model": "@m_layer_1",
+    "y": 90
+   },
+   "facing=south,layers=1,type=right": {
+    "model": "@m_layer_1",
+    "y": 180
+   },
+   "facing=south,layers=2,type=left": {
+    "model": "@m_layer_2",
+    "y": 90
+   },
+   "facing=south,layers=2,type=right": {
+    "model": "@m_layer_2",
+    "y": 180
+   },
+   "facing=south,layers=3,type=left": {
+    "model": "@m_layer_3",
+    "y": 90
+   },
+   "facing=south,layers=3,type=right": {
+    "model": "@m_layer_3",
+    "y": 180
+   },
+   "facing=south,layers=4,type=left": {
+    "model": "@m_layer_4",
+    "y": 90
+   },
+   "facing=south,layers=4,type=right": {
+    "model": "@m_layer_4",
+    "y": 180
+   },
+   "facing=south,layers=5,type=left": {
+    "model": "@base"
+   },
+   "facing=south,layers=5,type=right": {
+    "model": "@base"
+   },
+   "facing=west,layers=1,type=left": {
+    "model": "@m_layer_1",
+    "y": 180
+   },
+   "facing=west,layers=1,type=right": {
+    "model": "@m_layer_1",
+    "y": 270
+   },
+   "facing=west,layers=2,type=left": {
+    "model": "@m_layer_2",
+    "y": 180
+   },
+   "facing=west,layers=2,type=right": {
+    "model": "@m_layer_2",
+    "y": 270
+   },
+   "facing=west,layers=3,type=left": {
+    "model": "@m_layer_3",
+    "y": 180
+   },
+   "facing=west,layers=3,type=right": {
+    "model": "@m_layer_3",
+    "y": 270
+   },
+   "facing=west,layers=4,type=left": {
+    "model": "@m_layer_4",
+    "y": 180
+   },
+   "facing=west,layers=4,type=right": {
+    "model": "@m_layer_4",
+    "y": 270
+   },
+   "facing=west,layers=5,type=left": {
+    "model": "@base"
+   },
+   "facing=west,layers=5,type=right": {
+    "model": "@base"
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_layer_3"
+ },
+ "loot": "layers",
+ "models": {
+  "_layer_1": {
+   "parent": "caliberlib:block/templates/quarter_vertical_layer_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_layer_2": {
+   "parent": "caliberlib:block/templates/quarter_vertical_layer_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_layer_3": {
+   "parent": "caliberlib:block/templates/quarter_vertical_layer_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_layer_4": {
+   "parent": "caliberlib:block/templates/quarter_vertical_layer_4",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Vertical Quarter",
+ "recipes": [
+  {
+   "count": 5,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_quarter_vertical",
+ "tags": {
+  "block": [
+   "caliber:shapes/vertical_quarters"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/vertical_quarters"
+   ],
+   "wood": [
+    "caliber:shapes/vertical_quarters"
+   ]
+  }
+ },
+ "uses_base": true,
+ "variant": "quarter_vertical"
+}

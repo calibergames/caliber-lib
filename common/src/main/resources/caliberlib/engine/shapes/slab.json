@@ -1,0 +1,67 @@
+{
+ "blockstate": {
+  "variants": {
+   "type=bottom": {
+    "model": "@m"
+   },
+   "type=double": {
+    "model": "@base"
+   },
+   "type=top": {
+    "model": "@m_top"
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "slab",
+ "models": {
+  "": {
+   "parent": "minecraft:block/slab",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_top": {
+   "parent": "minecraft:block/slab_top",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Slab",
+ "recipes": [
+  {
+   "count": 6,
+   "pattern": [
+    "###"
+   ],
+   "type": "shaped"
+  },
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:stripped_oak_slab",
+ "tags": {
+  "block": [
+   "minecraft:slabs"
+  ],
+  "item": {
+   "stone": [
+    "minecraft:slabs"
+   ],
+   "wood": [
+    "minecraft:wooden_slabs"
+   ]
+  }
+ },
+ "uses_base": true,
+ "variant": "slab"
+}

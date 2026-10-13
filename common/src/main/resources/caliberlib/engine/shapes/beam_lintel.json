@@ -1,0 +1,203 @@
+{
+ "blockstate": {
+  "variants": {
+   "beam=1,facing=east,type=bottom": {
+    "model": "@m_1",
+    "x": 180,
+    "y": 270
+   },
+   "beam=1,facing=east,type=top": {
+    "model": "@m_1",
+    "y": 90
+   },
+   "beam=1,facing=north,type=bottom": {
+    "model": "@m_1",
+    "x": 180,
+    "y": 180
+   },
+   "beam=1,facing=north,type=top": {
+    "model": "@m_1"
+   },
+   "beam=1,facing=south,type=bottom": {
+    "model": "@m_1",
+    "x": 180
+   },
+   "beam=1,facing=south,type=top": {
+    "model": "@m_1",
+    "y": 180
+   },
+   "beam=1,facing=west,type=bottom": {
+    "model": "@m_1",
+    "x": 180,
+    "y": 90
+   },
+   "beam=1,facing=west,type=top": {
+    "model": "@m_1",
+    "y": 270
+   },
+   "beam=2,facing=east,type=bottom": {
+    "model": "@m_2",
+    "x": 180,
+    "y": 270
+   },
+   "beam=2,facing=east,type=top": {
+    "model": "@m_2",
+    "y": 90
+   },
+   "beam=2,facing=north,type=bottom": {
+    "model": "@m_2",
+    "x": 180,
+    "y": 180
+   },
+   "beam=2,facing=north,type=top": {
+    "model": "@m_2"
+   },
+   "beam=2,facing=south,type=bottom": {
+    "model": "@m_2",
+    "x": 180
+   },
+   "beam=2,facing=south,type=top": {
+    "model": "@m_2",
+    "y": 180
+   },
+   "beam=2,facing=west,type=bottom": {
+    "model": "@m_2",
+    "x": 180,
+    "y": 90
+   },
+   "beam=2,facing=west,type=top": {
+    "model": "@m_2",
+    "y": 270
+   },
+   "beam=3,facing=east,type=bottom": {
+    "model": "@m_3",
+    "x": 180,
+    "y": 270
+   },
+   "beam=3,facing=east,type=top": {
+    "model": "@m_3",
+    "y": 90
+   },
+   "beam=3,facing=north,type=bottom": {
+    "model": "@m_3",
+    "x": 180,
+    "y": 180
+   },
+   "beam=3,facing=north,type=top": {
+    "model": "@m_3"
+   },
+   "beam=3,facing=south,type=bottom": {
+    "model": "@m_3",
+    "x": 180
+   },
+   "beam=3,facing=south,type=top": {
+    "model": "@m_3",
+    "y": 180
+   },
+   "beam=3,facing=west,type=bottom": {
+    "model": "@m_3",
+    "x": 180,
+    "y": 90
+   },
+   "beam=3,facing=west,type=top": {
+    "model": "@m_3",
+    "y": 270
+   },
+   "beam=4,facing=east,type=bottom": {
+    "model": "@m_4",
+    "x": 180,
+    "y": 270
+   },
+   "beam=4,facing=east,type=top": {
+    "model": "@m_4",
+    "y": 90
+   },
+   "beam=4,facing=north,type=bottom": {
+    "model": "@m_4",
+    "x": 180,
+    "y": 180
+   },
+   "beam=4,facing=north,type=top": {
+    "model": "@m_4"
+   },
+   "beam=4,facing=south,type=bottom": {
+    "model": "@m_4",
+    "x": 180
+   },
+   "beam=4,facing=south,type=top": {
+    "model": "@m_4",
+    "y": 180
+   },
+   "beam=4,facing=west,type=bottom": {
+    "model": "@m_4",
+    "x": 180,
+    "y": 90
+   },
+   "beam=4,facing=west,type=top": {
+    "model": "@m_4",
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_1"
+ },
+ "loot": "self",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/beam_lintel_1",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_2": {
+   "parent": "caliberlib:block/templates/beam_lintel_2",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_3": {
+   "parent": "caliberlib:block/templates/beam_lintel_3",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_4": {
+   "parent": "caliberlib:block/templates/beam_lintel_4",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Beam Lintel",
+ "recipes": [
+  {
+   "count": 16,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:stripped_oak_beam_lintel",
+ "tags": {
+  "block": [
+   "caliber:shapes/beam_lintels"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/beam_lintels"
+   ],
+   "wood": [
+    "caliber:shapes/beam_lintels"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "beam_lintel"
+}

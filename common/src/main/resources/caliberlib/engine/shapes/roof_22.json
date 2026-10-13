@@ -1,0 +1,233 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,half=bottom,type=inner_left": {
+    "model": "@m_inner",
+    "y": 270
+   },
+   "facing=east,half=bottom,type=inner_right": {
+    "model": "@m_inner"
+   },
+   "facing=east,half=bottom,type=outer_left": {
+    "model": "@m_outer",
+    "y": 270
+   },
+   "facing=east,half=bottom,type=outer_right": {
+    "model": "@m_outer"
+   },
+   "facing=east,half=bottom,type=straight": {
+    "model": "@m"
+   },
+   "facing=east,half=top,type=inner_left": {
+    "model": "@m_top_inner",
+    "y": 270
+   },
+   "facing=east,half=top,type=inner_right": {
+    "model": "@m_top_inner"
+   },
+   "facing=east,half=top,type=outer_left": {
+    "model": "@m_top_outer",
+    "y": 270
+   },
+   "facing=east,half=top,type=outer_right": {
+    "model": "@m_top_outer"
+   },
+   "facing=east,half=top,type=straight": {
+    "model": "@m_top"
+   },
+   "facing=north,half=bottom,type=inner_left": {
+    "model": "@m_inner",
+    "y": 180
+   },
+   "facing=north,half=bottom,type=inner_right": {
+    "model": "@m_inner",
+    "y": 270
+   },
+   "facing=north,half=bottom,type=outer_left": {
+    "model": "@m_outer",
+    "y": 180
+   },
+   "facing=north,half=bottom,type=outer_right": {
+    "model": "@m_outer",
+    "y": 270
+   },
+   "facing=north,half=bottom,type=straight": {
+    "model": "@m",
+    "y": 270
+   },
+   "facing=north,half=top,type=inner_left": {
+    "model": "@m_top_inner",
+    "y": 180
+   },
+   "facing=north,half=top,type=inner_right": {
+    "model": "@m_top_inner",
+    "y": 270
+   },
+   "facing=north,half=top,type=outer_left": {
+    "model": "@m_top_outer",
+    "y": 180
+   },
+   "facing=north,half=top,type=outer_right": {
+    "model": "@m_top_outer",
+    "y": 270
+   },
+   "facing=north,half=top,type=straight": {
+    "model": "@m_top",
+    "y": 270
+   },
+   "facing=south,half=bottom,type=inner_left": {
+    "model": "@m_inner"
+   },
+   "facing=south,half=bottom,type=inner_right": {
+    "model": "@m_inner",
+    "y": 90
+   },
+   "facing=south,half=bottom,type=outer_left": {
+    "model": "@m_outer"
+   },
+   "facing=south,half=bottom,type=outer_right": {
+    "model": "@m_outer",
+    "y": 90
+   },
+   "facing=south,half=bottom,type=straight": {
+    "model": "@m",
+    "y": 90
+   },
+   "facing=south,half=top,type=inner_left": {
+    "model": "@m_top_inner"
+   },
+   "facing=south,half=top,type=inner_right": {
+    "model": "@m_top_inner",
+    "y": 90
+   },
+   "facing=south,half=top,type=outer_left": {
+    "model": "@m_top_outer"
+   },
+   "facing=south,half=top,type=outer_right": {
+    "model": "@m_top_outer",
+    "y": 90
+   },
+   "facing=south,half=top,type=straight": {
+    "model": "@m_top",
+    "y": 90
+   },
+   "facing=west,half=bottom,type=inner_left": {
+    "model": "@m_inner",
+    "y": 90
+   },
+   "facing=west,half=bottom,type=inner_right": {
+    "model": "@m_inner",
+    "y": 180
+   },
+   "facing=west,half=bottom,type=outer_left": {
+    "model": "@m_outer",
+    "y": 90
+   },
+   "facing=west,half=bottom,type=outer_right": {
+    "model": "@m_outer",
+    "y": 180
+   },
+   "facing=west,half=bottom,type=straight": {
+    "model": "@m",
+    "y": 180
+   },
+   "facing=west,half=top,type=inner_left": {
+    "model": "@m_top_inner",
+    "y": 90
+   },
+   "facing=west,half=top,type=inner_right": {
+    "model": "@m_top_inner",
+    "y": 180
+   },
+   "facing=west,half=top,type=outer_left": {
+    "model": "@m_top_outer",
+    "y": 90
+   },
+   "facing=west,half=top,type=outer_right": {
+    "model": "@m_top_outer",
+    "y": 180
+   },
+   "facing=west,half=top,type=straight": {
+    "model": "@m_top",
+    "y": 180
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/roof_22",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_inner": {
+   "parent": "caliberlib:block/templates/roof_22_inner",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_outer": {
+   "parent": "caliberlib:block/templates/roof_22_outer",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_top": {
+   "parent": "caliberlib:block/templates/roof_22_top",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_top_inner": {
+   "parent": "caliberlib:block/templates/roof_22_top_inner",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_top_outer": {
+   "parent": "caliberlib:block/templates/roof_22_top_outer",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Roof 22",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:oak_shingle_roof_22",
+ "tags": {
+  "block": [
+   "caliber:shapes/roof_22s"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/roof_22s"
+   ],
+   "wood": [
+    "caliber:shapes/roof_22s"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "roof_22"
+}

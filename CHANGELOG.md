@@ -8,9 +8,12 @@
 - `ModBlockFamily.Variant.getRegistryName(ModBlockStateProvider)` is removed.
 - Loader checks go through `platform.Services` (`Services.platform().isModLoaded(...)`).
 - `Services.registry().lateBlocks(modId, callback)` and `lateItems(...)` register blocks and items once every mod has registered its own, for blocks made from other mods' blocks.
+- `BlockManager.Builder` gains `kind(...)`, `ingredient(...)`, `door(...)`, `displayName(...)`, `baseModel(...)`, `texture(slot, ...)`, `sibling(variant, ...)`, `cutout()` and `tint(...)`, the inputs of the asset engine. `BlockManager` gains `modId()`, `idPrefix()` and `assets()`.
+- `assets.AssetEngine.generateFor(owner, namespace)` turns on load-time generation of a namespace's shapes.
 
 #### Features
 - One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
+- Asset engine: the blockstates, models, item models, names, loot tables, recipes, advancements and tags of block families are made in memory at load time, from shape specs in the jar, in a pack at the bottom of the pack list (`caliberlib:generated`), so mods and resource packs can still replace any file. Textures come from the source block's own model. Tall-door textures are made from the source door's.
 
 #### Bugfixes
 - Starts on every Forge 47 and on NeoForge 1.20.1 (0.2.9 needed Forge 47.3 or newer).

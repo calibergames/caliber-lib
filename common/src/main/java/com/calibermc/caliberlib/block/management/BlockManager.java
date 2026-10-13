@@ -1,5 +1,6 @@
 package com.calibermc.caliberlib.block.management;
 
+import com.calibermc.caliberlib.assets.MaterialKind;
 import com.calibermc.caliberlib.block.custom.*;
 import com.calibermc.caliberlib.data.ModBlockFamily;
 import com.calibermc.caliberlib.data.datagen.loot.ModBlockLootTables;
@@ -10,12 +11,14 @@ import com.calibermc.caliberlib.registry.Registrar;
 import com.calibermc.caliberlib.registry.RegistryEntry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
+import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -31,32 +34,20 @@ public class BlockManager {
     public static final Map<String, List<BlockManager>> BLOCK_MANAGERS = new HashMap<>();
 
     private final String name;
+    private final String modId;
+    private final String idPrefix;
     private final BlockSetType blockSetType;
+    private final Assets assets;
     private final ImmutableMap<BlockAdditional, Pair<ResourceLocation, Supplier<Block>>> blocks;
 
-    BlockManager(String name, List<BlockAdditional> directions, BlockSetType blockSetType, String modid) {
+    BlockManager(String name, List<BlockAdditional> directions, BlockSetType blockSetType, String modid, Assets assets) {
         this.blockSetType = blockSetType;
+        this.modId = modid;
+        this.assets = assets;
+        String modifiedName = idPrefix(name);
+        this.idPrefix = modifiedName;
         ImmutableMap.Builder<BlockAdditional, Pair<ResourceLocation, Supplier<Block>>> builder = ImmutableMap.builder();
         for (BlockAdditional e : directions) {
-            String modifiedName;
-            if (name.contains("bricks")) {
-                modifiedName = name.replace("_bricks", "_brick");
-            } else if (name.contains("tiles")) {
-                modifiedName = name.replace("_tiles", "_tile");
-            } else if (name.contains("planks")) {
-                modifiedName = name.replace("_planks", "");
-            } else if (name.contains("wood")) {
-                modifiedName = name.replace("_wood", "");
-            } else if (name.contains("boards")) {
-                modifiedName = name.replace("boards", "board");
-            } else if (name.contains("bamboo_block")) {
-                modifiedName = name.replace("_block", "");
-            } else if (name.contains("shingles")) {
-                modifiedName = name.replace("_shingles", "_shingle");
-            } else {
-                modifiedName = name;
-            }
-
             if (e.registerBlockFunc == null) {
                 builder.put(e, Pair.of(new ResourceLocation("minecraft", name), e.blockSupplier));
             } else {
@@ -88,8 +79,43 @@ public class BlockManager {
         }
     }
 
+    /** The shapes' id prefix: the family name without its block word ("oak_planks" gives "oak"). */
+    static String idPrefix(String name) {
+        if (name.contains("bricks")) {
+            return name.replace("_bricks", "_brick");
+        } else if (name.contains("tiles")) {
+            return name.replace("_tiles", "_tile");
+        } else if (name.contains("planks")) {
+            return name.replace("_planks", "");
+        } else if (name.contains("wood")) {
+            return name.replace("_wood", "");
+        } else if (name.contains("boards")) {
+            return name.replace("boards", "board");
+        } else if (name.contains("bamboo_block")) {
+            return name.replace("_block", "");
+        } else if (name.contains("shingles")) {
+            return name.replace("_shingles", "_shingle");
+        }
+        return name;
+    }
+
     public String getName() {
         return name;
+    }
+
+    /** The namespace the shapes are registered in. */
+    public String modId() {
+        return modId;
+    }
+
+    /** The shapes' id prefix, e.g. "oak" for the "oak_planks" family. */
+    public String idPrefix() {
+        return idPrefix;
+    }
+
+    /** What the asset engine needs to know about this family beyond its blocks. */
+    public Assets assets() {
+        return assets;
     }
 
     // if created using a block manager
@@ -262,6 +288,7 @@ public class BlockManager {
         public BiFunction<String, Supplier<Block>, RegistryEntry<Block>> registerBlockFunc;
         public BlockSetType blockSetType = BlockSetType.STONE;
         public final List<BlockAdditional> blocks = new ArrayList<>();
+        private final Assets.Builder assets = new Assets.Builder();
 
         public Builder(String name, Registrar<Block> registry) {
             this(name, registry.modId());
@@ -275,6 +302,60 @@ public class BlockManager {
 
         public Builder type(BlockSetType type) {
             this.blockSetType = type;
+            return this;
+        }
+
+        /** Stone shapes use the stonecutter and a pickaxe; wood shapes the woodcutter and an axe, and burn. */
+        public Builder kind(MaterialKind kind) {
+            this.assets.kind = kind;
+            return this;
+        }
+
+        /** The item the shapes are cut and crafted from; default: the family's full block. */
+        public Builder ingredient(Supplier<? extends ItemLike> ingredient) {
+            this.assets.ingredient = ingredient;
+            return this;
+        }
+
+        /** The door a tall door is crafted from, and whose textures it takes. */
+        public Builder door(Supplier<? extends ItemLike> door) {
+            this.assets.door = door;
+            return this;
+        }
+
+        /** The material word of the shapes' names; default: the id prefix in title case. */
+        public Builder displayName(String displayName) {
+            this.assets.displayName = displayName;
+            return this;
+        }
+
+        /** The full-block model of whole layer stacks and double slabs; default: the full block's own model. */
+        public Builder baseModel(ResourceLocation model) {
+            this.assets.baseModel = model;
+            return this;
+        }
+
+        /** Sets one texture slot (side, top, bottom, end, particle), replacing what the full block's model gives. */
+        public Builder texture(String slot, ResourceLocation texture) {
+            this.assets.textures.put(slot, texture);
+            return this;
+        }
+
+        /** A shape of this family that another mod already registers, e.g. vanilla's oak slab. */
+        public Builder sibling(ModBlockFamily.Variant variant, Supplier<Block> block) {
+            this.assets.siblings.put(variant, block);
+            return this;
+        }
+
+        /** The shapes render with cut-out transparency. */
+        public Builder cutout() {
+            this.assets.cutout = true;
+            return this;
+        }
+
+        /** The shapes are tinted like this block (grass, leaves). */
+        public Builder tint(Supplier<Block> block) {
+            this.assets.tint = block;
             return this;
         }
 
@@ -308,7 +389,51 @@ public class BlockManager {
                 }
             }
 
-            return new BlockManager(this.name, this.blocks, this.blockSetType, this.modid);
+            return new BlockManager(this.name, this.blocks, this.blockSetType, this.modid, this.assets.build(this.blockSetType));
+        }
+    }
+
+    /** A family's asset-engine inputs, fixed when the family is built. */
+    public static final class Assets {
+        public final MaterialKind kind;
+        @Nullable public final Supplier<? extends ItemLike> ingredient;
+        @Nullable public final Supplier<? extends ItemLike> door;
+        @Nullable public final String displayName;
+        @Nullable public final ResourceLocation baseModel;
+        public final Map<String, ResourceLocation> textures;
+        public final Map<ModBlockFamily.Variant, Supplier<Block>> siblings;
+        public final boolean cutout;
+        @Nullable public final Supplier<Block> tint;
+
+        private Assets(Builder b, MaterialKind kind) {
+            this.kind = kind;
+            this.ingredient = b.ingredient;
+            this.door = b.door;
+            this.displayName = b.displayName;
+            this.baseModel = b.baseModel;
+            this.textures = Map.copyOf(b.textures);
+            this.siblings = Collections.unmodifiableMap(new EnumMap<>(b.siblings));
+            this.cutout = b.cutout;
+            this.tint = b.tint;
+        }
+
+        static final class Builder {
+            MaterialKind kind;
+            Supplier<? extends ItemLike> ingredient;
+            Supplier<? extends ItemLike> door;
+            String displayName;
+            ResourceLocation baseModel;
+            final Map<String, ResourceLocation> textures = new LinkedHashMap<>();
+            final Map<ModBlockFamily.Variant, Supplier<Block>> siblings = new EnumMap<>(ModBlockFamily.Variant.class);
+            boolean cutout;
+            Supplier<Block> tint;
+
+            Assets build(BlockSetType type) {
+                // Without an explicit kind, a family whose block set is a wood type is wood.
+                MaterialKind k = kind != null ? kind
+                        : WoodType.values().anyMatch(w -> w.name().equals(type.name())) ? MaterialKind.WOOD : MaterialKind.STONE;
+                return new Assets(this, k);
+            }
         }
     }
 

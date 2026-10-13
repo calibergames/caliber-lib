@@ -1,0 +1,92 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east,waterlogged=false": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=east,waterlogged=true": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 90
+   },
+   "facing=north,waterlogged=false": {
+    "model": "@m_1"
+   },
+   "facing=north,waterlogged=true": {
+    "model": "@m_1"
+   },
+   "facing=south,waterlogged=false": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=south,waterlogged=true": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 180
+   },
+   "facing=west,waterlogged=false": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 270
+   },
+   "facing=west,waterlogged=true": {
+    "model": "@m_1",
+    "uvlock": true,
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m_1"
+ },
+ "loot": "self",
+ "models": {
+  "_1": {
+   "parent": "caliberlib:block/templates/slab_vertical",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Vertical Slab",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  },
+  {
+   "count": 6,
+   "pattern": [
+    "#",
+    "#",
+    "#"
+   ],
+   "type": "shaped"
+  },
+  {
+   "sibling": "slab",
+   "type": "convert"
+  }
+ ],
+ "reference": "caliber:andesite_slab_vertical",
+ "tags": {
+  "block": [
+   "caliber:shapes/vertical_slabs"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/vertical_slabs"
+   ],
+   "wood": [
+    "caliber:shapes/vertical_slabs"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "slab_vertical"
+}

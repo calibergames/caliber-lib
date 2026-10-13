@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.calibermc.caliberlib.fabric.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"BuiltInPackSourceMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

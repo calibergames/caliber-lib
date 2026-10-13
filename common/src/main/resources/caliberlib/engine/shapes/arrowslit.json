@@ -1,0 +1,58 @@
+{
+ "blockstate": {
+  "variants": {
+   "facing=east": {
+    "model": "@m",
+    "y": 90
+   },
+   "facing=north": {
+    "model": "@m"
+   },
+   "facing=south": {
+    "model": "@m",
+    "y": 180
+   },
+   "facing=west": {
+    "model": "@m",
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/arrowslit",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Arrow Slit",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_arrowslit",
+ "tags": {
+  "block": [
+   "caliber:shapes/arrowslits"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/arrowslits"
+   ],
+   "wood": [
+    "caliber:shapes/arrowslits"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "arrowslit"
+}

@@ -1,0 +1,203 @@
+{
+ "blockstate": {
+  "variants": {
+   "arch=false,facing=east,type=bottom": {
+    "model": "@m_bottom",
+    "y": 90
+   },
+   "arch=false,facing=east,type=full_block": {
+    "model": "@m",
+    "y": 90
+   },
+   "arch=false,facing=east,type=middle": {
+    "model": "@m_middle",
+    "y": 90
+   },
+   "arch=false,facing=east,type=top": {
+    "model": "@m_top",
+    "y": 90
+   },
+   "arch=false,facing=north,type=bottom": {
+    "model": "@m_bottom"
+   },
+   "arch=false,facing=north,type=full_block": {
+    "model": "@m"
+   },
+   "arch=false,facing=north,type=middle": {
+    "model": "@m_middle"
+   },
+   "arch=false,facing=north,type=top": {
+    "model": "@m_top"
+   },
+   "arch=false,facing=south,type=bottom": {
+    "model": "@m_bottom",
+    "y": 180
+   },
+   "arch=false,facing=south,type=full_block": {
+    "model": "@m",
+    "y": 180
+   },
+   "arch=false,facing=south,type=middle": {
+    "model": "@m_middle",
+    "y": 180
+   },
+   "arch=false,facing=south,type=top": {
+    "model": "@m_top",
+    "y": 180
+   },
+   "arch=false,facing=west,type=bottom": {
+    "model": "@m_bottom",
+    "y": 270
+   },
+   "arch=false,facing=west,type=full_block": {
+    "model": "@m",
+    "y": 270
+   },
+   "arch=false,facing=west,type=middle": {
+    "model": "@m_middle",
+    "y": 270
+   },
+   "arch=false,facing=west,type=top": {
+    "model": "@m_top",
+    "y": 270
+   },
+   "arch=true,facing=east,type=bottom": {
+    "model": "@m_bottom",
+    "y": 90
+   },
+   "arch=true,facing=east,type=full_block": {
+    "model": "@m_arch",
+    "y": 90
+   },
+   "arch=true,facing=east,type=middle": {
+    "model": "@m_middle",
+    "y": 90
+   },
+   "arch=true,facing=east,type=top": {
+    "model": "@m_arch_top",
+    "y": 90
+   },
+   "arch=true,facing=north,type=bottom": {
+    "model": "@m_bottom"
+   },
+   "arch=true,facing=north,type=full_block": {
+    "model": "@m_arch"
+   },
+   "arch=true,facing=north,type=middle": {
+    "model": "@m_middle"
+   },
+   "arch=true,facing=north,type=top": {
+    "model": "@m_arch_top"
+   },
+   "arch=true,facing=south,type=bottom": {
+    "model": "@m_bottom",
+    "y": 180
+   },
+   "arch=true,facing=south,type=full_block": {
+    "model": "@m_arch",
+    "y": 180
+   },
+   "arch=true,facing=south,type=middle": {
+    "model": "@m_middle",
+    "y": 180
+   },
+   "arch=true,facing=south,type=top": {
+    "model": "@m_arch_top",
+    "y": 180
+   },
+   "arch=true,facing=west,type=bottom": {
+    "model": "@m_bottom",
+    "y": 270
+   },
+   "arch=true,facing=west,type=full_block": {
+    "model": "@m_arch",
+    "y": 270
+   },
+   "arch=true,facing=west,type=middle": {
+    "model": "@m_middle",
+    "y": 270
+   },
+   "arch=true,facing=west,type=top": {
+    "model": "@m_arch_top",
+    "y": 270
+   }
+  }
+ },
+ "item": {
+  "parent": "@m"
+ },
+ "loot": "self",
+ "models": {
+  "": {
+   "parent": "caliberlib:block/templates/window",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_arch": {
+   "parent": "caliberlib:block/templates/window_arch",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_arch_top": {
+   "parent": "caliberlib:block/templates/window_arch_top",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_bottom": {
+   "parent": "caliberlib:block/templates/window_bottom",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_middle": {
+   "parent": "caliberlib:block/templates/window_middle",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  },
+  "_top": {
+   "parent": "caliberlib:block/templates/window_top",
+   "textures": {
+    "bottom": "@bottom",
+    "side": "@side",
+    "top": "@top"
+   }
+  }
+ },
+ "name": "{m} Window",
+ "recipes": [
+  {
+   "count": 2,
+   "type": "cut"
+  }
+ ],
+ "reference": "caliber:andesite_window",
+ "tags": {
+  "block": [
+   "caliber:shapes/windows"
+  ],
+  "item": {
+   "stone": [
+    "caliber:shapes/windows"
+   ],
+   "wood": [
+    "caliber:shapes/windows"
+   ]
+  }
+ },
+ "uses_base": false,
+ "variant": "window"
+}
