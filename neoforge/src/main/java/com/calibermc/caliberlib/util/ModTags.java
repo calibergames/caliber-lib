@@ -53,10 +53,10 @@ public class ModTags {
         public static final TagKey<Block> MARBLE = forgeTag("marble");
 
         private static TagKey<Block> tag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("caliber", name));
+            return BlockTags.create(new ResourceLocation("caliber", name));
         }
         private static TagKey<Block> forgeTag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
+            return BlockTags.create(new ResourceLocation("forge", name));
         }
 
     }
@@ -98,11 +98,11 @@ public class ModTags {
         public static final TagKey<Item> WINDOWS = tag("shapes/windows");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("caliber", name));
+            return ItemTags.create(new ResourceLocation("caliber", name));
         }
 
         private static TagKey<Item> forgeTag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
+            return ItemTags.create(new ResourceLocation("forge", name));
         }
     }
 

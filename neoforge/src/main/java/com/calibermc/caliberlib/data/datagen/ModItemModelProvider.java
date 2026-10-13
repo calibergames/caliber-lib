@@ -83,8 +83,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                         || variant.equals(ModBlockFamily.Variant.TALL_DOOR)
                         || variant.equals(ModBlockFamily.Variant.SIGN)
                         || variant.equals(ModBlockFamily.Variant.HANGING_SIGN)) {
-                    withExistingParent(blockName, ResourceLocation.withDefaultNamespace("item/generated"))
-                            .texture("layer0", ResourceLocation.fromNamespaceAndPath(this.modid, "item/" + parentName));
+                    withExistingParent(blockName, new ResourceLocation("minecraft", "item/generated"))
+                            .texture("layer0", new ResourceLocation(this.modid, "item/" + parentName));
                 } else {
 
                     withExistingParent(blockName, modLoc("block/" + parentName));

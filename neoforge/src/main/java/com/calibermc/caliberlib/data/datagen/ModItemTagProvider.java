@@ -62,12 +62,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ItemTags.NON_FLAMMABLE_WOOD).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ItemTags.NON_FLAMMABLE_WOOD).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ItemTags.NON_FLAMMABLE_WOOD).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
                 if (blockName.contains("thatch")) {
-                    this.tag(ItemTags.DAMPENS_VIBRATIONS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                    this.tag(ItemTags.DAMPENS_VIBRATIONS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                 }
 
                 if (variant.equals(ModBlockFamily.Variant.BASE)) {
@@ -75,35 +75,35 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.STONE_CRAFTING_MATERIALS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.STONE_CRAFTING_MATERIALS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else if (blockName.contains("limestone_bricks")) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.STONE_BRICKS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.STONE_BRICKS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.STONE_BRICKS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else if (blockName.contains("log") || ((blockName.contains("wood") && !blockName.equals("woodcutter")))) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.LOGS_THAT_BURN).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.LOGS_THAT_BURN).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.LOGS_THAT_BURN).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else if (blockName.contains("planks")) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.PLANKS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.PLANKS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.PLANKS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
 
                 if (variant.equals(ModBlockFamily.Variant.ARCH)) {
-                    this.tag(ModTags.Items.ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                    this.tag(ModTags.Items.ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.ARCHES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -111,7 +111,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.HALF_ARCHES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.HALF_ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.HALF_ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -119,7 +119,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.LARGE_ARCHES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.LARGE_ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.LARGE_ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -127,7 +127,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.HALF_LARGE_ARCHES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.HALF_LARGE_ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.HALF_LARGE_ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -135,7 +135,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.ARROWSLITS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.ARROWSLITS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.ARROWSLITS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -143,7 +143,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.BALUSTRADES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.BALUSTRADES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.BALUSTRADES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -151,7 +151,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.DIAGONAL_BEAMS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.DIAGONAL_BEAMS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.DIAGONAL_BEAMS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -159,7 +159,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.HORIZONTAL_BEAMS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.HORIZONTAL_BEAMS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.HORIZONTAL_BEAMS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -167,7 +167,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.BEAM_LINTELS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.BEAM_LINTELS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.BEAM_LINTELS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -175,7 +175,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.BEAM_POSTS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.BEAM_POSTS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.BEAM_POSTS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -183,7 +183,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.VERTICAL_BEAMS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.VERTICAL_BEAMS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.VERTICAL_BEAMS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -191,7 +191,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.CAPTIALS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.CAPTIALS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.CAPTIALS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -199,7 +199,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 //                    if (namespace != null && namespace.getNamespace().equals("caliber")) {
 //                        this.tag(ModTags.Items.COLUMNS).add(e.getValue().getSecond().get().asItem());
 //                    } else {
-//                        this.tag(ModTags.Items.COLUMNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+//                        this.tag(ModTags.Items.COLUMNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
 //                    }
 //                }
 
@@ -207,7 +207,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.CORNERS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.CORNERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.CORNERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -215,7 +215,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.CORNER_SLABS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.CORNER_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.CORNER_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -223,7 +223,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.VERTICAL_CORNER_SLABS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.VERTICAL_CORNER_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.VERTICAL_CORNER_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -232,13 +232,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.DOORS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.WOODEN_DOORS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.WOODEN_DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.WOODEN_DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -247,7 +247,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.DOOR_FRAMES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.DOOR_FRAMES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.DOOR_FRAMES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -255,7 +255,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.DOOR_FRAME_LINTELS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.DOOR_FRAME_LINTELS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.DOOR_FRAME_LINTELS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -263,7 +263,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.EIGHTHS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.EIGHTHS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.EIGHTHS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -272,13 +272,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.WOODEN_FENCES).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.WOODEN_FENCES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.WOODEN_FENCES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.FENCES).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.FENCES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.FENCES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -287,7 +287,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ItemTags.FENCE_GATES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ItemTags.FENCE_GATES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ItemTags.FENCE_GATES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -295,7 +295,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ItemTags.HANGING_SIGNS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ItemTags.HANGING_SIGNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ItemTags.HANGING_SIGNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -303,7 +303,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.LAYERS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.LAYERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.LAYERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -311,7 +311,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.VERTICAL_LAYERS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.VERTICAL_LAYERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.VERTICAL_LAYERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -319,7 +319,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.PILLARS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.PILLARS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.PILLARS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -327,7 +327,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ItemTags.WOODEN_PRESSURE_PLATES).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ItemTags.WOODEN_PRESSURE_PLATES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -335,7 +335,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.QUARTERS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.QUARTERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.QUARTERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -343,7 +343,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.VERTICAL_QUARTERS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.VERTICAL_QUARTERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.VERTICAL_QUARTERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -351,7 +351,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.ROOF_22S).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.ROOF_22S).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.ROOF_22S).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -359,7 +359,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.ROOF_45S).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.ROOF_45S).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.ROOF_45S).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -367,7 +367,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.ROOF_67S).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.ROOF_67S).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.ROOF_67S).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -375,7 +375,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.ROOF_PEAKS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.ROOF_PEAKS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.ROOF_PEAKS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -383,7 +383,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ItemTags.SIGNS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ItemTags.SIGNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ItemTags.SIGNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -391,7 +391,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.VERTICAL_SLABS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.VERTICAL_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.VERTICAL_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -402,13 +402,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.WOODEN_SLABS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.WOODEN_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.WOODEN_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.SLABS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -418,13 +418,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.WOODEN_STAIRS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.WOODEN_STAIRS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.WOODEN_STAIRS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.STAIRS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.STAIRS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.STAIRS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -434,13 +434,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ModTags.Items.TALL_WOODEN_DOORS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ModTags.Items.TALL_WOODEN_DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ModTags.Items.TALL_WOODEN_DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ModTags.Items.TALL_IRON_DOORS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ModTags.Items.TALL_IRON_DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ModTags.Items.TALL_IRON_DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
 
@@ -451,13 +451,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.WOODEN_TRAPDOORS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.WOODEN_TRAPDOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.WOODEN_TRAPDOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ItemTags.TRAPDOORS).add(e.getValue().getSecond().get().asItem());
                         } else {
-                            this.tag(ItemTags.TRAPDOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ItemTags.TRAPDOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -466,7 +466,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.WINDOWS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.WINDOWS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.WINDOWS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -474,7 +474,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Items.HALF_WINDOWS).add(e.getValue().getSecond().get().asItem());
                     } else {
-                        this.tag(ModTags.Items.HALF_WINDOWS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Items.HALF_WINDOWS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
             }

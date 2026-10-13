@@ -65,7 +65,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     public ResourceLocation modLoc(String name) {
         String n = super.modLoc(name).getPath();
         if (n.startsWith("block/templates/")) {
-            return ResourceLocation.fromNamespaceAndPath("caliberlib", n);
+            return new ResourceLocation("caliberlib", n);
         }
         return super.modLoc(name);
     }
@@ -2825,7 +2825,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public void leavesBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(),
-                models().singleTexture(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), ResourceLocation.parse("minecraft:block/leaves"),
+                models().singleTexture(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), new ResourceLocation("minecraft:block/leaves"),
                         "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
 

@@ -60,16 +60,16 @@ public class BlockManager {
             }
 
             if (e.registerBlockFunc == null) {
-                builder.put(e, Pair.of(ResourceLocation.withDefaultNamespace(name), e.blockSupplier));
+                builder.put(e, Pair.of(new ResourceLocation("minecraft", name), e.blockSupplier));
             } else {
                 if (e.variant != ModBlockFamily.Variant.BASE) {
                     String name1 = "%s_%s".formatted(modifiedName, e.variant.name().toLowerCase());
-                    builder.put(e, Pair.of(ResourceLocation.fromNamespaceAndPath(modid, name1), e.registerBlockFunc.apply(name1, e.blockSupplier)));
+                    builder.put(e, Pair.of(new ResourceLocation(modid, name1), e.registerBlockFunc.apply(name1, e.blockSupplier)));
                 } else {
                     if (!e.skipRegister) {
-                        builder.put(e, Pair.of(ResourceLocation.fromNamespaceAndPath(modid, name), e.registerBlockFunc.apply(name, e.blockSupplier)));
+                        builder.put(e, Pair.of(new ResourceLocation(modid, name), e.registerBlockFunc.apply(name, e.blockSupplier)));
                     } else {
-                        builder.put(e, Pair.of(ResourceLocation.withDefaultNamespace(name), e.blockSupplier));
+                        builder.put(e, Pair.of(new ResourceLocation("minecraft", name), e.blockSupplier));
                     }
                 }
             }

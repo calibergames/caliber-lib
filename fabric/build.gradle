@@ -1,0 +1,37 @@
+// The Fabric jar (also run on Quilt): common plus the Fabric entry points.
+plugins {
+	id 'multiloader-loader'
+	id 'fabric-loom'
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${minecraft_version}"
+	mappings loom.layered {
+		officialMojangMappings()
+		parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchment_mappings}@zip")
+	}
+	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+}
+
+loom {
+	runs {
+		client {
+			client()
+			runDir 'run'
+		}
+		server {
+			server()
+			runDir 'run/server'
+		}
+	}
+}
+
+processResources {
+	def props = [version: mod_version, mod_id: mod_id, mod_name: mod_name, mod_license: mod_license,
+			loader_version: loader_version, minecraft_versions: minecraft_versions]
+	inputs.properties props
+	filesMatching('fabric.mod.json') {
+		expand props
+	}
+}

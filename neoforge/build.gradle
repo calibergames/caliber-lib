@@ -1,0 +1,56 @@
+// The NeoForge jar for 1.20.1, built against NeoForge 1.20.1 (the 47.1 fork of
+// Forge 47, same API), which also loads on Forge 1.20.1.
+plugins {
+	id 'multiloader-loader'
+	id 'net.neoforged.moddev.legacyforge'
+}
+
+legacyForge {
+	enable {
+		neoForgeVersion = neoforge_version
+	}
+	parchment {
+		minecraftVersion = minecraft_version
+		mappingsVersion = parchment_mappings
+	}
+	runs {
+		client {
+			client()
+			gameDirectory = rootProject.file('run-neoforge')
+		}
+		server {
+			server()
+			gameDirectory = rootProject.file('run-neoforge/server')
+		}
+	}
+	mods {
+		caliberlib {
+			sourceSet sourceSets.main
+		}
+	}
+}
+
+mixin {
+	add sourceSets.main, 'caliberlib.refmap.json'
+	config 'caliberlib.mixins.json'
+}
+
+dependencies {
+	annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+jar {
+	manifest.attributes([
+		'MixinConfigs': 'caliberlib.mixins.json'
+	])
+}
+
+processResources {
+	def props = [mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+			mod_authors: mod_authors, mod_description: mod_description, minecraft_version: minecraft_version,
+			loader_version_range: loader_version_range]
+	inputs.properties props
+	filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+		expand props
+	}
+}

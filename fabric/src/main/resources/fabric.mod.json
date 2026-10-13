@@ -1,0 +1,22 @@
+{
+	"schemaVersion": 1,
+	"id": "${mod_id}",
+	"version": "${version}",
+
+	"name": "${mod_name}",
+	"description": "Library that helps to develop mods with many blocks.",
+	"authors": [
+		"CaliberMC"
+	],
+	"contact": {
+		"sources": "https://github.com/calibergames/caliber-lib",
+		"issues": "https://github.com/calibergames/caliber-lib/issues"
+	},
+	"license": "${mod_license}",
+	"environment": "*",
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"fabric-api": "*",
+		"minecraft": "${minecraft_versions}"
+	}
+}

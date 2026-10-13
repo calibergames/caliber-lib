@@ -12,8 +12,10 @@ public class CaliberLib {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public CaliberLib(FMLJavaModLoadingContext context) {
-        context.getModEventBus().addListener(this::setup);
+    // No constructor arguments: Forge passes the loading context to mod
+    // constructors only from 47.3 on, and NeoForge 1.20.1 never does.
+    public CaliberLib() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
     private void setup(final FMLCommonSetupEvent event) {

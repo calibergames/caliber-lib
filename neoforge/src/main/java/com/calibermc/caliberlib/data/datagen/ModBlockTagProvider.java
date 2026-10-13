@@ -55,7 +55,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -64,7 +64,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.MINEABLE_WITH_AXE).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.MINEABLE_WITH_AXE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.MINEABLE_WITH_AXE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -74,7 +74,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.MINEABLE_WITH_SHOVEL).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.MINEABLE_WITH_SHOVEL).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -82,16 +82,16 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.MINEABLE_WITH_HOE).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.MINEABLE_WITH_HOE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.MINEABLE_WITH_HOE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
                 if (variant.equals(ModBlockFamily.Variant.ARCH)) {
-                    this.tag(ModTags.Blocks.ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                    this.tag(ModTags.Blocks.ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.ARCHES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -99,7 +99,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.HALF_ARCHES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.HALF_ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.HALF_ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -107,7 +107,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.LARGE_ARCHES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.LARGE_ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.LARGE_ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -115,7 +115,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.HALF_LARGE_ARCHES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.HALF_LARGE_ARCHES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.HALF_LARGE_ARCHES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -123,7 +123,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.ARROWSLITS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.ARROWSLITS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.ARROWSLITS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -131,7 +131,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.BALUSTRADES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.BALUSTRADES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.BALUSTRADES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -139,7 +139,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.DIAGONAL_BEAMS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.DIAGONAL_BEAMS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.DIAGONAL_BEAMS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -147,7 +147,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.HORIZONTAL_BEAMS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.HORIZONTAL_BEAMS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.HORIZONTAL_BEAMS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -155,7 +155,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.BEAM_LINTELS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.BEAM_LINTELS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.BEAM_LINTELS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -163,7 +163,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.BEAM_POSTS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.BEAM_POSTS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.BEAM_POSTS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -171,7 +171,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.VERTICAL_BEAMS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.VERTICAL_BEAMS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.VERTICAL_BEAMS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -180,13 +180,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.STONE_BUTTONS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.STONE_BUTTONS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.STONE_BUTTONS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.WOODEN_BUTTONS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.WOODEN_BUTTONS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.WOODEN_BUTTONS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -195,7 +195,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.CAPTIALS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.CAPTIALS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.CAPTIALS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -203,7 +203,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 //                    if (namespace != null && namespace.getNamespace().equals("caliber")) {
 //                        this.tag(ModTags.Blocks.COLUMNS).add(e.getValue().getSecond().get());
 //                    } else {
-//                        this.tag(ModTags.Blocks.COLUMNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+//                        this.tag(ModTags.Blocks.COLUMNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
 //                    }
 //                }
 
@@ -211,7 +211,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.CORNERS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.CORNERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.CORNERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -219,7 +219,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.CORNER_SLABS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.CORNER_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.CORNER_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -227,7 +227,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.VERTICAL_CORNER_SLABS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.VERTICAL_CORNER_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.VERTICAL_CORNER_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -236,13 +236,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.WOODEN_DOORS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.WOODEN_DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.WOODEN_DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.DOORS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
 
@@ -252,7 +252,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.DOOR_FRAMES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.DOOR_FRAMES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.DOOR_FRAMES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -260,7 +260,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.DOOR_FRAME_LINTELS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.DOOR_FRAME_LINTELS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.DOOR_FRAME_LINTELS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -268,7 +268,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.EIGHTHS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.EIGHTHS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.EIGHTHS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -277,13 +277,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.WOODEN_FENCES).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.WOODEN_FENCES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.WOODEN_FENCES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.FENCES).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.FENCES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.FENCES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -292,7 +292,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.FENCE_GATES).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.FENCE_GATES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.FENCE_GATES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -300,7 +300,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.CEILING_HANGING_SIGNS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.CEILING_HANGING_SIGNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.CEILING_HANGING_SIGNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -308,7 +308,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.LAYERS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.LAYERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.LAYERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -316,7 +316,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.VERTICAL_LAYERS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.VERTICAL_LAYERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.VERTICAL_LAYERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -324,7 +324,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.PILLARS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.PILLARS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.PILLARS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -333,13 +333,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.STONE_PRESSURE_PLATES).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.STONE_PRESSURE_PLATES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.STONE_PRESSURE_PLATES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.WOODEN_PRESSURE_PLATES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.WOODEN_PRESSURE_PLATES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -348,7 +348,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.QUARTERS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.QUARTERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.QUARTERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -356,7 +356,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.VERTICAL_QUARTERS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.VERTICAL_QUARTERS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.VERTICAL_QUARTERS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -364,7 +364,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.ROOF_22S).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.ROOF_22S).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.ROOF_22S).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -372,7 +372,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.ROOF_45S).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.ROOF_45S).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.ROOF_45S).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -380,7 +380,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.ROOF_67S).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.ROOF_67S).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.ROOF_67S).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -388,7 +388,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.ROOF_PEAKS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.ROOF_PEAKS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.ROOF_PEAKS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -396,7 +396,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.STANDING_SIGNS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.STANDING_SIGNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.STANDING_SIGNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -404,7 +404,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.VERTICAL_SLABS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.VERTICAL_SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.VERTICAL_SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -412,7 +412,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.SLABS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.SLABS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.SLABS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -420,7 +420,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.STAIRS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.STAIRS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.STAIRS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -429,13 +429,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ModTags.Blocks.TALL_WOODEN_DOORS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(ModTags.Blocks.TALL_WOODEN_DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ModTags.Blocks.TALL_WOODEN_DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(ModTags.Blocks.TALL_IRON_DOORS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(ModTags.Blocks.TALL_IRON_DOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(ModTags.Blocks.TALL_IRON_DOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
 
@@ -446,13 +446,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.WOODEN_TRAPDOORS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.WOODEN_TRAPDOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.WOODEN_TRAPDOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.TRAPDOORS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.TRAPDOORS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.TRAPDOORS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
@@ -461,7 +461,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.WALL_HANGING_SIGNS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.WALL_HANGING_SIGNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.WALL_HANGING_SIGNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -469,7 +469,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.WALL_SIGNS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.WALL_SIGNS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.WALL_SIGNS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -477,7 +477,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(BlockTags.WALLS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(BlockTags.WALLS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(BlockTags.WALLS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -485,7 +485,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.WINDOWS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.WINDOWS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.WINDOWS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -493,7 +493,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     if (namespace != null && namespace.getNamespace().equals("caliber")) {
                         this.tag(ModTags.Blocks.HALF_WINDOWS).add(e.getValue().getSecond().get());
                     } else {
-                        this.tag(ModTags.Blocks.HALF_WINDOWS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                        this.tag(ModTags.Blocks.HALF_WINDOWS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                     }
                 }
 
@@ -506,46 +506,46 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                             this.tag(BlockTags.STONE_ORE_REPLACEABLES).add(e.getValue().getSecond().get());
                             this.tag(Tags.Blocks.ORE_BEARING_GROUND_STONE).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.BASE_STONE_OVERWORLD).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
-                            this.tag(BlockTags.STONE_ORE_REPLACEABLES).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
-                            this.tag(Tags.Blocks.ORE_BEARING_GROUND_STONE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.BASE_STONE_OVERWORLD).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.STONE_ORE_REPLACEABLES).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
+                            this.tag(Tags.Blocks.ORE_BEARING_GROUND_STONE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                         if (blockName.contains("granite")) {
                             if (namespace != null && namespace.getNamespace().equals("caliber")) {
                                 this.tag(ModTags.Blocks.GRANITE).add(e.getValue().getSecond().get());
                             } else {
-                                this.tag(ModTags.Blocks.GRANITE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                                this.tag(ModTags.Blocks.GRANITE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                             }
                         } else if (blockName.contains("marble")) {
                             if (namespace != null && namespace.getNamespace().equals("caliber")) {
                                 this.tag(ModTags.Blocks.MARBLE).add(e.getValue().getSecond().get());
                             } else {
-                                this.tag(ModTags.Blocks.MARBLE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                                this.tag(ModTags.Blocks.MARBLE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                             }
                         }
                     } else if (blockName.contains("planks")) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.PLANKS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.PLANKS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.PLANKS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else if (blockName.contains("bricks")) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.STONE_BRICKS).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.STONE_BRICKS).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.STONE_BRICKS).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else if (blockName.contains("wood") && !blockName.contains("woodcutter")) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(BlockTags.LOGS_THAT_BURN).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(BlockTags.LOGS_THAT_BURN).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(BlockTags.LOGS_THAT_BURN).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     } else if (blockName.contains("sandstone")) {
                         if (namespace != null && namespace.getNamespace().equals("caliber")) {
                             this.tag(Tags.Blocks.SANDSTONE).add(e.getValue().getSecond().get());
                         } else {
-                            this.tag(Tags.Blocks.SANDSTONE).addOptional(ResourceLocation.fromNamespaceAndPath(modid, e.getValue().getFirst().getPath()));
+                            this.tag(Tags.Blocks.SANDSTONE).addOptional(new ResourceLocation(modid, e.getValue().getFirst().getPath()));
                         }
                     }
                 }
