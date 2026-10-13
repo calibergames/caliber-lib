@@ -14,6 +14,9 @@ If anyone is interested in contributing to this mod by coding or resource pack c
 ## Special Thanks
 ChappiePie - Advanced Coding Help
 
+## Development
+Parts of this mod were developed with AI-assisted tools.
+
 ## License
 Caliber Lib is licensed under MIT, see [LICENSE](./LICENSE).
 
