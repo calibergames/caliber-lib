@@ -18,6 +18,12 @@
 	"entrypoints": {
 		"main": [
 			"com.calibermc.caliberlib.fabric.CaliberLibFabric"
+		],
+		"server": [
+			"com.calibermc.caliberlib.fabric.CaliberLibFabricLate"
+		],
+		"client": [
+			"com.calibermc.caliberlib.fabric.CaliberLibFabricLate"
 		]
 	},
 	"depends": {

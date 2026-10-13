@@ -6,6 +6,8 @@ import com.calibermc.caliberlib.registry.RegistryEntry;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.javafmlmod.FMLModContainer;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -35,6 +38,16 @@ public class NeoForgeRegistryHelper implements RegistryHelper {
 		}
 		register.register(fml.getEventBus());
 		return new ForgeRegistrar<>(modId, register);
+	}
+
+	@Override
+	public void lateBlocks(String modId, Consumer<Registrar<Block>> callback) {
+		LateRegistration.addBlocks(modId, callback);
+	}
+
+	@Override
+	public void lateItems(String modId, Consumer<Registrar<Item>> callback) {
+		LateRegistration.addItems(modId, callback);
 	}
 
 	private static final class ForgeRegistrar<T> implements Registrar<T> {

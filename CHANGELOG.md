@@ -7,6 +7,7 @@
 - `BlockAdditional.stateGenerator`, `stateGen(...)` and `stateGenBase(...)` are replaced by `textureFrom(...)`; the model generators moved from `ModBlockHelper` to `data.datagen.ModBlockModels` in the NeoForge module.
 - `ModBlockFamily.Variant.getRegistryName(ModBlockStateProvider)` is removed.
 - Loader checks go through `platform.Services` (`Services.platform().isModLoaded(...)`).
+- `Services.registry().lateBlocks(modId, callback)` and `lateItems(...)` register blocks and items once every mod has registered its own, for blocks made from other mods' blocks.
 
 #### Features
 - One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
