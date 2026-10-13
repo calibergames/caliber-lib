@@ -47,12 +47,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         for (BlockManager blockManager : BlockManager.BLOCK_MANAGERS.get(this.modid)) {
             BlockManager.BlockAdditional base = blockManager.getByVariant(ModBlockFamily.Variant.BASE);
             if (base != null && !base.skipRegister) {
-                base.stateGenerator.accept(blockManager::baseBlock, Pair.of(blockManager, this));
+                ModBlockModels.generate(base, blockManager::baseBlock, blockManager, this);
             }
             for (Map.Entry<BlockManager.BlockAdditional, Pair<ResourceLocation, Supplier<Block>>> e : blockManager.getBlocks().entrySet()) {
                 if (e.getKey().variant != ModBlockFamily.Variant.BASE) {
                     try {
-                        e.getKey().stateGenerator.accept(e.getValue().getSecond(), Pair.of(blockManager, this));
+                        ModBlockModels.generate(e.getKey(), e.getValue().getSecond(), blockManager, this);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }

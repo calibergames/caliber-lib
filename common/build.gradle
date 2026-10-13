@@ -8,6 +8,7 @@ plugins {
 
 legacyForge {
 	mcpVersion = minecraft_version
+	accessTransformers = files('accesstransformer.cfg')
 	parchment {
 		minecraftVersion = minecraft_version
 		mappingsVersion = parchment_mappings
@@ -17,6 +18,8 @@ legacyForge {
 dependencies {
 	compileOnly 'org.spongepowered:mixin:0.8.5'
 	compileOnly 'org.jetbrains:annotations:24.0.1'
+	// javax.annotation.Nullable; Forge's classpath has it, vanilla's does not.
+	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
 configurations {
@@ -33,4 +36,12 @@ configurations {
 artifacts {
 	commonJava sourceSets.main.java.sourceDirectories.singleFile
 	commonResources sourceSets.main.resources.sourceDirectories.singleFile
+}
+
+// Unit tests see the same vanilla classes as the library.
+sourceSets {
+	test {
+		compileClasspath += sourceSets.main.compileClasspath
+		runtimeClasspath += sourceSets.main.compileClasspath
+	}
 }

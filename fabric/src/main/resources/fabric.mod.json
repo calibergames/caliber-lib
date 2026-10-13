@@ -14,8 +14,14 @@
 	},
 	"license": "${mod_license}",
 	"environment": "*",
+	"accessWidener": "caliberlib.accesswidener",
+	"entrypoints": {
+		"main": [
+			"com.calibermc.caliberlib.fabric.CaliberLibFabric"
+		]
+	},
 	"depends": {
-		"fabricloader": ">=${loader_version}",
+		"fabricloader": ">=0.16.10",
 		"fabric-api": "*",
 		"minecraft": "${minecraft_versions}"
 	}

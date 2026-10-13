@@ -1,5 +1,19 @@
 # Change Log
 
+### 1.20.1 branch (unreleased)
+#### API changes
+- `BlockManager.register(...)` and `BlockManager.Builder` take a `Registrar<Block>` instead of a Forge `DeferredRegister<Block>`. Create one with `Registrar.create(Registries.BLOCK, MOD_ID)` and call `finish()` once its entries are added.
+- `registerBlockFunc` returns a `RegistryEntry<Block>` instead of a `RegistryObject<Block>`. `RegistryEntry` keeps `getId()`, and `Registrar` keeps `getEntries()`.
+- `BlockAdditional.stateGenerator`, `stateGen(...)` and `stateGenBase(...)` are replaced by `textureFrom(...)`; the model generators moved from `ModBlockHelper` to `data.datagen.ModBlockModels` in the NeoForge module.
+- `ModBlockFamily.Variant.getRegistryName(ModBlockStateProvider)` is removed.
+- Loader checks go through `platform.Services` (`Services.platform().isModLoaded(...)`).
+
+#### Features
+- One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
+
+#### Bugfixes
+- Starts on every Forge 47 and on NeoForge 1.20.1 (0.2.9 needed Forge 47.3 or newer).
+
 ### 0.2.0 (in progress)
 #### Features
 - Added support for Fabric Mod Loader
