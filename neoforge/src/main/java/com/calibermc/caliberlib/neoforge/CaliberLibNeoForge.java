@@ -7,7 +7,9 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
@@ -19,9 +21,16 @@ public class CaliberLibNeoForge {
 	// constructors only from 47.3 on, and NeoForge 1.20.1 never does.
 	public CaliberLibNeoForge() {
 		CaliberLib.init();
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(CaliberLibNeoForge::addPacks);
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		bus.addListener(CaliberLibNeoForge::addPacks);
+		// After every mod's setup, so source blocks have their own fire values.
+		bus.addListener((FMLLoadCompleteEvent event) -> event.enqueueWork(() -> {
+			AssetEngine.copyFlammability();
+			AssetEngine.ferriteCoreHint();
+		}));
 		if (FMLEnvironment.dist == Dist.CLIENT) {
 			ClientAssets.install();
+			NeoForgeClientHooks.init(bus);
 		}
 	}
 

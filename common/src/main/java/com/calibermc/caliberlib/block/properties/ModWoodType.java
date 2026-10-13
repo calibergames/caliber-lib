@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ModWoodType {
@@ -41,6 +42,8 @@ public class ModWoodType {
     public static final WoodType WILLOW = WoodType.register(new WoodType(CaliberLib.MOD_ID + ":willow", ModBlockSetType.WILLOW));
     public static final WoodType YELLOW_BIOSHROOM = WoodType.register(new WoodType(CaliberLib.MOD_ID + ":yellow_bioshroom", ModBlockSetType.YELLOW_BIOSHROOM));
 
+    /** The wood types whose sign and hanging-sign materials the client sets up. */
+    public static final List<WoodType> SIGN_TYPES = List.of(CEDAR, FIR, PINE, MAPLE);
 
     public static Set<WoodType> getWoodTypes() {
         Set<WoodType> woodTypes = new HashSet<>();

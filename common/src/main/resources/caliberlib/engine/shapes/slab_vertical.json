@@ -53,7 +53,9 @@
    }
   }
  },
- "name": "{m} Vertical Slab",
+ "name": {
+  "en_us": "{m} Vertical Slab"
+ },
  "recipes": [
   {
    "count": 2,

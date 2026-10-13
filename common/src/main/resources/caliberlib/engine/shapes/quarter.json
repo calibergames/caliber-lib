@@ -223,7 +223,9 @@
    }
   }
  },
- "name": "{m} Quarter",
+ "name": {
+  "en_us": "{m} Quarter"
+ },
  "recipes": [
   {
    "count": 5,

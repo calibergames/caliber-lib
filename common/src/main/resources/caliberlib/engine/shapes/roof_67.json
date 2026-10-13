@@ -215,7 +215,9 @@
    }
   }
  },
- "name": "{m} Roof 67",
+ "name": {
+  "en_us": "{m} Roof 67"
+ },
  "recipes": [
   {
    "count": 2,

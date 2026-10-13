@@ -108,7 +108,9 @@
    }
   }
  },
- "name": "{m} Roof 45",
+ "name": {
+  "en_us": "{m} Roof 45"
+ },
  "recipes": [
   {
    "count": 2,

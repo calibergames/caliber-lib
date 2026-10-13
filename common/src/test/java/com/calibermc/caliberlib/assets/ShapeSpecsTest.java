@@ -88,4 +88,22 @@ class ShapeSpecsTest {
 	private static String render(Template t) {
 		return new String(t.render(k -> k.equals("base") ? "ns:block/base" : "ns:block/x" + k.substring(1)), StandardCharsets.UTF_8);
 	}
+
+	@Test
+	void namesAreKeyedByLanguageWithEnglishRequired() throws java.io.IOException {
+		JsonObject slab;
+		try (var in = ShapeSpecsTest.class.getClassLoader().getResourceAsStream("caliberlib/engine/shapes/slab.json")) {
+			slab = JsonParser.parseString(new String(in.readAllBytes(), StandardCharsets.UTF_8)).getAsJsonObject();
+		}
+		JsonObject names = new JsonObject();
+		names.addProperty("en_us", "{m} Slab");
+		names.addProperty("de_de", "{m}stufe");
+		slab.add("name", names);
+		ShapeSpec spec = ShapeSpec.parse(slab);
+		assertEquals("{m} Slab", spec.name());
+		assertEquals("{m}stufe", spec.name("de_de"));
+		assertEquals("{m} Slab", spec.name("fr_fr"));
+		names.remove("en_us");
+		assertThrows(IllegalArgumentException.class, () -> ShapeSpec.parse(slab));
+	}
 }

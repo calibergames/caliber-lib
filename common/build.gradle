@@ -38,10 +38,31 @@ artifacts {
 	commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }
 
-// Unit tests see the same vanilla classes as the library.
+// Unit tests see the same vanilla classes as the library, and vanilla's
+// client resources (its models, textures and language file).
 sourceSets {
 	test {
 		compileClasspath += sourceSets.main.compileClasspath
 		runtimeClasspath += sourceSets.main.compileClasspath
+	}
+}
+
+dependencies {
+	// ModDevGradle's name for vanilla's client resources jar; if a plugin update renames it, the
+	// engine tests fail on the first missing vanilla model or texture.
+	testRuntimeOnly files(layout.buildDirectory.file("moddev/artifacts/vanilla-${minecraft_version}-client-extra-aka-minecraft-resources.jar")) {
+		builtBy 'createMinecraftArtifacts'
+	}
+	// The texture tests read and write images through LWJGL (Minecraft 1.20.1 ships 3.3.1).
+	['natives-linux', 'natives-windows', 'natives-macos', 'natives-macos-arm64'].each { natives ->
+		testRuntimeOnly "org.lwjgl:lwjgl:3.3.1:${natives}"
+		testRuntimeOnly "org.lwjgl:lwjgl-stb:3.3.1:${natives}"
+	}
+}
+
+// -PwriteGoldens rewrites the asset engine's goldens from the current output.
+tasks.named('test', Test) {
+	if (project.hasProperty('writeGoldens')) {
+		systemProperty 'caliberlib.goldens.write', file('src/test/resources/goldens').absolutePath
 	}
 }

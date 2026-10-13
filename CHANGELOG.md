@@ -10,13 +10,23 @@
 - `Services.registry().lateBlocks(modId, callback)` and `lateItems(...)` register blocks and items once every mod has registered its own, for blocks made from other mods' blocks.
 - `BlockManager.Builder` gains `kind(...)`, `ingredient(...)`, `door(...)`, `displayName(...)`, `baseModel(...)`, `texture(slot, ...)`, `sibling(variant, ...)`, `cutout()` and `tint(...)`, the inputs of the asset engine. `BlockManager` gains `modId()`, `idPrefix()` and `assets()`.
 - `assets.AssetEngine.generateFor(owner, namespace)` turns on load-time generation of a namespace's shapes.
+- `AssetEngine` gains `dataIndex(...)`, `copyFlammability()`, `cutoutBlocks()`, `tintedBlocks()` and `ferriteCoreHint()`, which the loader modules call; `PlatformHooks` gains `copyFlammability(source, targets)`.
+- `RoofPeakBlock` has a `pitch` property (`22`, `45`, `67`) again; worlds saved without it load as `45`, the only caps there were.
+- `RoofPeakBlock.isHip(state)` counts outer corners of all three roof pitches.
+- `ModWoodType.SIGN_TYPES` lists the wood types whose sign materials the client sets up.
+- Shape specs name a shape per language (`"name": {"en_us": ...}`); other languages fall back to `en_us`.
 
 #### Features
 - One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
 - Asset engine: the blockstates, models, item models, names, loot tables, recipes, advancements and tags of block families are made in memory at load time, from shape specs in the jar, in a pack at the bottom of the pack list (`caliberlib:generated`), so mods and resource packs can still replace any file. Textures come from the source block's own model. Tall-door textures are made from the source door's.
 
+- Ridge caps for 22 and 67 roofs: a cap takes the pitch of the roof below it, continues that roof's shingles to the ridge, and carries the hips at the ends of a ridge as on 45 roofs.
+- Generated shapes copy their source block's flammability, on every loader; tall doors and cut-out families get the cut-out render layer, tinted families their colours; roof_67 models render on Fabric and Quilt.
+
 #### Bugfixes
 - Starts on every Forge 47 and on NeoForge 1.20.1 (0.2.9 needed Forge 47.3 or newer).
+- 22 and 67 roofs and roof caps block sky light, as stairs do; the space under a closed roof is dark.
+- Signs of the library's wood types get their textures on Fabric and Quilt, as on Forge.
 
 ### 0.2.0 (in progress)
 #### Features

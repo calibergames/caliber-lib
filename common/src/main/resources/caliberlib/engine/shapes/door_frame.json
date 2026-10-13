@@ -78,7 +78,9 @@
    }
   }
  },
- "name": "{m} Door Frame",
+ "name": {
+  "en_us": "{m} Door Frame"
+ },
  "recipes": [
   {
    "count": 16,

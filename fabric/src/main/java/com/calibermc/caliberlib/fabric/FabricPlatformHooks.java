@@ -1,6 +1,7 @@
 package com.calibermc.caliberlib.fabric;
 
 import com.calibermc.caliberlib.platform.PlatformHooks;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
@@ -10,7 +11,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.Collection;
 
 /** {@link PlatformHooks} on Fabric and Quilt: vanilla's farmland rules. */
 public class FabricPlatformHooks implements PlatformHooks {
@@ -32,5 +36,18 @@ public class FabricPlatformHooks implements PlatformHooks {
 	@Override
 	public boolean hasWaterTicket(LevelReader level, BlockPos pos) {
 		return false;
+	}
+
+	@Override
+	public void copyFlammability(Block source, Collection<Block> targets) {
+		// The registry's entries include vanilla's own values.
+		FlammableBlockRegistry registry = FlammableBlockRegistry.getDefaultInstance();
+		FlammableBlockRegistry.Entry entry = registry.get(source);
+		if (entry == null || entry.getBurnChance() == 0 && entry.getSpreadChance() == 0) {
+			return;
+		}
+		for (Block target : targets) {
+			registry.add(target, entry.getBurnChance(), entry.getSpreadChance());
+		}
 	}
 }

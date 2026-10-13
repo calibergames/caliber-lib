@@ -513,7 +513,9 @@
    }
   }
  },
- "name": "{m} Capital",
+ "name": {
+  "en_us": "{m} Capital"
+ },
  "recipes": [
   {
    "count": 2,

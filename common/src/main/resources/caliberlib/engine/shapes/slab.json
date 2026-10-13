@@ -34,7 +34,9 @@
    }
   }
  },
- "name": "{m} Slab",
+ "name": {
+  "en_us": "{m} Slab"
+ },
  "recipes": [
   {
    "count": 6,

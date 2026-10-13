@@ -78,7 +78,9 @@
    }
   }
  },
- "name": "{m} Beam Posts",
+ "name": {
+  "en_us": "{m} Beam Posts"
+ },
  "recipes": [
   {
    "count": 16,

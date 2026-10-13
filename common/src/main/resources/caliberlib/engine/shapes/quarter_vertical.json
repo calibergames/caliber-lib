@@ -187,7 +187,9 @@
    }
   }
  },
- "name": "{m} Vertical Quarter",
+ "name": {
+  "en_us": "{m} Vertical Quarter"
+ },
  "recipes": [
   {
    "count": 5,

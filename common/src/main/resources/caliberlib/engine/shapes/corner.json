@@ -221,7 +221,9 @@
    }
   }
  },
- "name": "{m} Corner",
+ "name": {
+  "en_us": "{m} Corner"
+ },
  "recipes": [
   {
    "count": 5,

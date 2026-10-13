@@ -207,7 +207,9 @@
    }
   }
  },
- "name": "{m} Vertical Layer",
+ "name": {
+  "en_us": "{m} Vertical Layer"
+ },
  "recipes": [
   {
    "count": 8,

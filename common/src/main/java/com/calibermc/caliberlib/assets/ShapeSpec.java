@@ -24,11 +24,25 @@ import java.util.Set;
  * @param models   model suffix to template, e.g. {@code "_top"}
  * @param usesBase whether the blockstate shows the family's full-block model
  * @param loot     {@code self}, {@code slab}, {@code layers} or {@code tall_door}
- * @param name     the English name, with {@code {m}} for the material
+ * @param names    language code to name, with {@code {m}} for the material;
+ *                 always has {@code en_us}, which other languages fall back to
  */
 public record ShapeSpec(String variant, Template blockstate, Map<String, Template> models, Template item,
 		boolean usesBase, String loot, List<Recipe> recipes, List<String> blockTags,
-		Map<MaterialKind, List<String>> itemTags, String name) {
+		Map<MaterialKind, List<String>> itemTags, Map<String, String> names) {
+
+	/** The language every shape has a name in. */
+	public static final String DEFAULT_LANGUAGE = "en_us";
+
+	/** The English name, with {@code {m}} for the material. */
+	public String name() {
+		return names.get(DEFAULT_LANGUAGE);
+	}
+
+	/** The name in a language, or the English one when the spec has none for it. */
+	public String name(String language) {
+		return names.getOrDefault(language, name());
+	}
 
 	/**
 	 * One recipe form.
@@ -89,7 +103,16 @@ public record ShapeSpec(String variant, Template blockstate, Map<String, Templat
 		}
 		return new ShapeSpec(variant, Template.compile(json.get("blockstate")), Map.copyOf(models),
 				Template.compile(json.get("item")), json.get("uses_base").getAsBoolean(), loot, List.copyOf(recipes),
-				strings(tags.getAsJsonArray("block")), Map.copyOf(itemTags), json.get("name").getAsString());
+				strings(tags.getAsJsonArray("block")), Map.copyOf(itemTags), names(variant, json.getAsJsonObject("name")));
+	}
+
+	private static Map<String, String> names(String variant, JsonObject json) {
+		Map<String, String> names = new LinkedHashMap<>();
+		json.entrySet().forEach(e -> names.put(e.getKey(), e.getValue().getAsString()));
+		if (!names.containsKey(DEFAULT_LANGUAGE)) {
+			throw new IllegalArgumentException(variant + ": no " + DEFAULT_LANGUAGE + " name");
+		}
+		return Map.copyOf(names);
 	}
 
 	private static MaterialKind kind(String key) {

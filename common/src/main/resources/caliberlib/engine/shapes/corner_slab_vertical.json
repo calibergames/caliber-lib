@@ -425,7 +425,9 @@
    }
   }
  },
- "name": "{m} Vertical Corner Slab",
+ "name": {
+  "en_us": "{m} Vertical Corner Slab"
+ },
  "recipes": [
   {
    "count": 5,

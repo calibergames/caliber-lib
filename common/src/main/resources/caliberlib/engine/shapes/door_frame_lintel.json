@@ -177,7 +177,9 @@
    }
   }
  },
- "name": "{m} Door Frame Lintel",
+ "name": {
+  "en_us": "{m} Door Frame Lintel"
+ },
  "recipes": [
   {
    "count": 16,

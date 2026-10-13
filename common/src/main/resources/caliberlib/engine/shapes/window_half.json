@@ -177,7 +177,9 @@
    }
   }
  },
- "name": "{m} Half Window",
+ "name": {
+  "en_us": "{m} Half Window"
+ },
  "recipes": [
   {
    "count": 2,

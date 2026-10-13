@@ -56,7 +56,9 @@
    }
   }
  },
- "name": "{m} Pillar",
+ "name": {
+  "en_us": "{m} Pillar"
+ },
  "recipes": [
   {
    "count": 5,

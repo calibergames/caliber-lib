@@ -177,7 +177,9 @@
    }
   }
  },
- "name": "{m} Beam Lintel",
+ "name": {
+  "en_us": "{m} Beam Lintel"
+ },
  "recipes": [
   {
    "count": 16,

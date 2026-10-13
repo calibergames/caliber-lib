@@ -119,7 +119,9 @@
    }
   }
  },
- "name": "{m} Wall",
+ "name": {
+  "en_us": "{m} Wall"
+ },
  "recipes": [
   {
    "count": 6,

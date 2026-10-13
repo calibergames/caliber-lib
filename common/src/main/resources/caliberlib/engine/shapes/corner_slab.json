@@ -409,7 +409,9 @@
    }
   }
  },
- "name": "{m} Corner Slab",
+ "name": {
+  "en_us": "{m} Corner Slab"
+ },
  "recipes": [
   {
    "count": 5,

@@ -177,7 +177,9 @@
    }
   }
  },
- "name": "{m} Window",
+ "name": {
+  "en_us": "{m} Window"
+ },
  "recipes": [
   {
    "count": 2,

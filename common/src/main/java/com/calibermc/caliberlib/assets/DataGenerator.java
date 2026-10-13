@@ -2,12 +2,7 @@ package com.calibermc.caliberlib.assets;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 
 import javax.annotation.Nullable;
 import java.nio.charset.StandardCharsets;
@@ -29,9 +24,9 @@ final class DataGenerator {
 	private DataGenerator() {
 	}
 
-	static PackIndex index(List<Material> materials, Map<String, ShapeSpec> specs) {
+	static PackIndex index(List<Material> materials, Map<String, ShapeSpec> specs, GameView game) {
 		PackIndex index = new PackIndex();
-		boolean woodcutter = BuiltInRegistries.RECIPE_SERIALIZER.containsKey(WOODCUTTING);
+		boolean woodcutter = game.hasRecipeSerializer(WOODCUTTING);
 		Map<ResourceLocation, Set<String>> blockTags = new TreeMap<>();
 		Map<ResourceLocation, Set<String>> itemTags = new TreeMap<>();
 		for (Material m : materials) {
@@ -48,16 +43,16 @@ final class DataGenerator {
 				}
 				blockTags.computeIfAbsent(new ResourceLocation(m.kind() == MaterialKind.WOOD ? AXE : PICKAXE),
 						t -> new LinkedHashSet<>()).add(id);
-				if (!hasItem(block)) {
+				if (!game.hasItem(block)) {
 					continue;
 				}
 				for (String tag : spec.itemTags().get(m.kind())) {
 					itemTags.computeIfAbsent(new ResourceLocation(tag), t -> new LinkedHashSet<>()).add(id);
 				}
 				index.add(block.getNamespace(), "loot_tables/blocks/" + block.getPath() + ".json",
-						() -> bytes(loot(spec.loot(), block)));
+						() -> bytes(loot(spec.loot(), block, game)));
 				for (ShapeSpec.Recipe recipe : spec.recipes()) {
-					recipes(m, block, recipe, woodcutter, (rid, json) -> {
+					recipes(m, block, recipe, woodcutter, game, (rid, json) -> {
 						index.add(rid.getNamespace(), "recipes/" + rid.getPath() + ".json", () -> bytes(json.get()));
 						rewards.add(rid);
 					});
@@ -80,7 +75,8 @@ final class DataGenerator {
 		void accept(ResourceLocation id, Supplier<JsonObject> json);
 	}
 
-	static void recipes(Material m, ResourceLocation result, ShapeSpec.Recipe r, boolean woodcutter, RecipeSink sink) {
+	static void recipes(Material m, ResourceLocation result, ShapeSpec.Recipe r, boolean woodcutter, GameView game,
+			RecipeSink sink) {
 		if (r.kind() != null && r.kind() != m.kind()) {
 			return;
 		}
@@ -93,34 +89,34 @@ final class DataGenerator {
 		String path = result.getPath();
 		switch (r.type()) {
 			case "cut" -> {
-				if (hasItem(m.ingredient())) {
+				if (game.hasItem(m.ingredient())) {
 					sink.accept(recipeId(m, path + "_from_" + m.manager() + "_" + cut),
 							() -> cutting(cutType, m.ingredient(), result, r.count()));
 				}
 			}
 			case "cut_sibling" -> {
 				ResourceLocation sibling = m.siblings().get(r.sibling());
-				if (sibling != null && hasItem(sibling)) {
+				if (sibling != null && game.hasItem(sibling)) {
 					sink.accept(recipeId(m, path + "_from_" + m.manager() + "_" + r.sibling() + "_" + cut),
 							() -> cutting(cutType, sibling, result, r.count()));
 				}
 			}
 			case "shaped" -> {
-				if (hasItem(m.ingredient())) {
+				if (game.hasItem(m.ingredient())) {
 					sink.accept(recipeId(m, path + "_from_" + m.manager() + "_shaped"),
 							() -> shaped("building", r.pattern(), Map.of('#', m.ingredient()), result, r.count()));
 				}
 			}
 			case "tall_door" -> {
 				String prefix = m.id().getPath();
-				if (m.door() != null && hasItem(m.door()) && hasItem(m.ingredient())) {
+				if (m.door() != null && game.hasItem(m.door()) && game.hasItem(m.ingredient())) {
 					sink.accept(recipeId(m, path + "_from_" + prefix + "_door_and_" + prefix + "_shaped"),
 							() -> shaped("redstone", List.of("X", "#"), Map.of('X', m.door(), '#', m.ingredient()), result, 1));
 				}
 			}
 			case "convert" -> {
 				ResourceLocation sibling = m.siblings().get(r.sibling());
-				if (sibling != null && hasItem(sibling)) {
+				if (sibling != null && game.hasItem(sibling)) {
 					sink.accept(recipeId(m, path + "_from_" + sibling.getPath() + "_" + cut),
 							() -> cutting(cutType, sibling, result, 1));
 					sink.accept(recipeId(m, sibling.getPath() + "_from_" + path + "_" + cut),
@@ -134,10 +130,6 @@ final class DataGenerator {
 	/** {@code owner:name} for the owner's own namespace, {@code owner:namespace/name} for another mod's. */
 	static ResourceLocation recipeId(Material m, String name) {
 		return new ResourceLocation(m.owner(), m.owner().equals(m.namespace()) ? name : m.namespace() + "/" + name);
-	}
-
-	static boolean hasItem(ResourceLocation id) {
-		return BuiltInRegistries.ITEM.getOptional(id).filter(item -> item != Items.AIR).isPresent();
 	}
 
 	static JsonObject cutting(String type, ResourceLocation ingredient, ResourceLocation result, int count) {
@@ -176,8 +168,7 @@ final class DataGenerator {
 		return json;
 	}
 
-	static JsonObject loot(String form, ResourceLocation id) {
-		Block block = BuiltInRegistries.BLOCK.get(id);
+	static JsonObject loot(String form, ResourceLocation id, GameView game) {
 		JsonObject entry = new JsonObject();
 		entry.addProperty("type", "minecraft:item");
 		entry.addProperty("name", id.toString());
@@ -185,14 +176,13 @@ final class DataGenerator {
 			case "tall_door" -> entry.add("conditions", array(stateCondition(id, "part", "bottom")));
 			case "slab" -> entry.add("functions", array(setCount(id, "type", "double", 2)));
 			case "layers" -> {
-				Property<?> layers = block.getStateDefinition().getProperty("layers");
-				if (layers instanceof IntegerProperty counts) {
-					JsonArray functions = new JsonArray();
-					for (int n : counts.getPossibleValues()) {
-						if (n > 1) {
-							functions.add(setCount(id, "layers", String.valueOf(n), n));
-						}
+				JsonArray functions = new JsonArray();
+				for (int n : game.layers(id)) {
+					if (n > 1) {
+						functions.add(setCount(id, "layers", String.valueOf(n), n));
 					}
+				}
+				if (!functions.isEmpty()) {
 					entry.add("functions", functions);
 				}
 			}

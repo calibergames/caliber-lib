@@ -238,7 +238,9 @@
    }
   }
  },
- "name": "{m} Stairs",
+ "name": {
+  "en_us": "{m} Stairs"
+ },
  "recipes": [
   {
    "count": 4,

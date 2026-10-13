@@ -201,7 +201,9 @@
    }
   }
  },
- "name": "{m} Large Arch",
+ "name": {
+  "en_us": "{m} Large Arch"
+ },
  "recipes": [
   {
    "count": 2,

@@ -46,7 +46,9 @@
    }
   }
  },
- "name": "{m} Balustrade",
+ "name": {
+  "en_us": "{m} Balustrade"
+ },
  "recipes": [
   {
    "count": 2,

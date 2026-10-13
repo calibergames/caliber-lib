@@ -127,7 +127,9 @@
    }
   }
  },
- "name": "{m} Layer",
+ "name": {
+  "en_us": "{m} Layer"
+ },
  "recipes": [
   {
    "count": 8,

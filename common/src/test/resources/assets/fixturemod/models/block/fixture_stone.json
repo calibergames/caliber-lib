@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "end": "fixturemod:block/fixture_stone_top",
+  "side": "fixturemod:block/fixture_stone"
+ }
+}

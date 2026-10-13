@@ -228,7 +228,9 @@
    }
   }
  },
- "name": "Tall {m} Door",
+ "name": {
+  "en_us": "Tall {m} Door"
+ },
  "recipes": [
   {
    "type": "tall_door"

@@ -35,7 +35,9 @@
    }
   }
  },
- "name": "{m} Half Arch",
+ "name": {
+  "en_us": "{m} Half Arch"
+ },
  "recipes": [
   {
    "count": 2,

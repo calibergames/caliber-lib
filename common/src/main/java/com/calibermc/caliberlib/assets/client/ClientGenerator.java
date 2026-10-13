@@ -1,5 +1,6 @@
 package com.calibermc.caliberlib.assets.client;
 
+import com.calibermc.caliberlib.assets.GameView;
 import com.calibermc.caliberlib.assets.GeneratedPack;
 import com.calibermc.caliberlib.assets.Material;
 import com.calibermc.caliberlib.assets.PackIndex;
@@ -27,6 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -47,21 +49,48 @@ final class ClientGenerator {
 
 	private final Map<ResourceLocation, FutureTask<Optional<TextureResolver.Resolved>>> resolved = new ConcurrentHashMap<>();
 	private final Set<ResourceLocation> warnedDoors = ConcurrentHashMap.newKeySet();
+	private final PackIndex.Timer time = new PackIndex.Timer();
+	private final Supplier<ResourceManager> others;
+	private final GameView game;
 	private volatile TextureResolver resolver;
 
-	private ClientGenerator() {
+	/**
+	 * @param others the other packs of the reload, asked for on first use
+	 */
+	ClientGenerator(Supplier<ResourceManager> others, GameView game) {
+		this.others = others;
+		this.game = game;
 	}
 
 	/** Opens the client pack for these families. */
 	static GeneratedPack open(List<Material> materials) {
-		ClientGenerator generator = new ClientGenerator();
+		ClientGenerator generator = new ClientGenerator(ClientGenerator::reloadPacks, GameView.LIVE);
 		PackIndex index = generator.index(materials, ShapeSpecs.get());
-		return new GeneratedPack(PackType.CLIENT_RESOURCES, index, generator.resolved::clear);
+		index.timed(generator.time);
+		return new GeneratedPack(PackType.CLIENT_RESOURCES, index, () -> {
+			LOGGER.info("Generated {} client files for {} families in {} ms of thread time", generator.time.count(),
+					materials.size(), generator.time.millis());
+			generator.resolved.clear();
+		});
 	}
 
-	private PackIndex index(List<Material> materials, Map<String, ShapeSpec> specs) {
+	/**
+	 * The other packs of this reload. Vanilla swaps in the new resource
+	 * manager before any reload listener runs, so it already lists them.
+	 */
+	private static ResourceManager reloadPacks() {
+		List<PackResources> packs = Minecraft.getInstance().getResourceManager().listPacks()
+				.filter(p -> !(p instanceof GeneratedPack)).toList();
+		// Never closed: closing it would close the packs it shares with the game.
+		return new MultiPackResourceManager(PackType.CLIENT_RESOURCES, packs);
+	}
+
+	PackIndex index(List<Material> materials, Map<String, ShapeSpec> specs) {
 		PackIndex index = new PackIndex();
-		Map<String, Map<String, String>> lang = new TreeMap<>();
+		// Language, then namespace, then key to name.
+		Set<String> languages = new TreeSet<>();
+		specs.values().forEach(spec -> languages.addAll(spec.names().keySet()));
+		Map<String, Map<String, Map<String, String>>> lang = new TreeMap<>();
 		Map<ResourceLocation, Supplier<Optional<byte[]>>> metadata = new ConcurrentHashMap<>();
 		for (Material m : materials) {
 			Supplier<Optional<TextureResolver.Resolved>> textures = () -> resolve(m);
@@ -75,14 +104,20 @@ final class ClientGenerator {
 					index.add(ns, "models/item/" + path + ".json", () -> FALLBACK_MODEL_JSON);
 					continue;
 				}
-				lang.computeIfAbsent(ns, n -> new TreeMap<>())
-						.put("block." + ns + "." + path, spec.name().replace("{m}", m.displayName()));
+				for (String language : languages) {
+					// Other languages name only what they translate; the game falls back to en_us for the rest,
+					// so a higher pack's en_us name is never hidden behind a copy of ours.
+					if (language.equals(ShapeSpec.DEFAULT_LANGUAGE) || spec.names().containsKey(language)) {
+						lang.computeIfAbsent(language, l -> new TreeMap<>()).computeIfAbsent(ns, n -> new TreeMap<>())
+								.put("block." + ns + "." + path, spec.name(language).replace("{m}", m.displayName()));
+					}
+				}
 				index.add(ns, "blockstates/" + path + ".json", () -> textures.get()
 						.map(r -> spec.blockstate().render(key -> value(key, block, r)))
 						.orElse(FALLBACK_BLOCKSTATE));
 				for (Map.Entry<String, Template> model : spec.models().entrySet()) {
 					index.add(ns, "models/block/" + path + model.getKey() + ".json", () -> textures.get()
-							.map(r -> model.getValue().render(key -> value(key, block, r)))
+							.map(r -> cutout(m, model.getValue().render(key -> value(key, block, r))))
 							.orElse(FALLBACK_MODEL_JSON));
 				}
 				index.add(ns, "models/item/" + path + ".json", () -> textures.get()
@@ -99,11 +134,11 @@ final class ClientGenerator {
 				}
 			}
 		}
-		lang.forEach((ns, entries) -> index.add(ns, "lang/en_us.json", () -> {
+		lang.forEach((language, byNamespace) -> byNamespace.forEach((ns, entries) -> index.add(ns, "lang/" + language + ".json", () -> {
 			JsonObject json = new JsonObject();
 			entries.forEach(json::addProperty);
 			return json.toString().getBytes(StandardCharsets.UTF_8);
-		}));
+		})));
 		index.unlisted(location -> {
 			Supplier<Optional<byte[]>> meta = metadata.get(location);
 			if (meta == null) {
@@ -113,6 +148,23 @@ final class ClientGenerator {
 			return bytes.isPresent() ? bytes::get : null;
 		});
 		return index;
+	}
+
+	private static final byte[] CUTOUT = "{\"render_type\":\"minecraft:cutout\",".getBytes(StandardCharsets.UTF_8);
+
+	/**
+	 * A cut-out family's block models name their render type, which Forge
+	 * and NeoForge read from the model (Fabric sets it in code, and vanilla
+	 * ignores the key).
+	 */
+	private static byte[] cutout(Material m, byte[] model) {
+		if (!m.cutout() || model.length < 2 || model[0] != '{' || model[1] == '}') {
+			return model;
+		}
+		byte[] out = new byte[model.length + CUTOUT.length - 1];
+		System.arraycopy(CUTOUT, 0, out, 0, CUTOUT.length);
+		System.arraycopy(model, 1, out, CUTOUT.length, model.length - 1);
+		return out;
 	}
 
 	private static String value(String key, ResourceLocation block, TextureResolver.Resolved r) {
@@ -158,21 +210,13 @@ final class ClientGenerator {
 		}
 	}
 
-	/**
-	 * The other packs of this reload. Vanilla swaps in the new resource
-	 * manager before any reload listener runs, so it already lists them.
-	 */
 	private TextureResolver resolver() {
 		TextureResolver r = resolver;
 		if (r == null) {
 			synchronized (this) {
 				r = resolver;
 				if (r == null) {
-					List<PackResources> others = Minecraft.getInstance().getResourceManager().listPacks()
-							.filter(p -> !(p instanceof GeneratedPack)).toList();
-					// Never closed: closing it would close the packs it shares with the game.
-					ResourceManager manager = new MultiPackResourceManager(PackType.CLIENT_RESOURCES, others);
-					r = resolver = new TextureResolver(manager);
+					r = resolver = new TextureResolver(others.get(), game);
 				}
 			}
 		}

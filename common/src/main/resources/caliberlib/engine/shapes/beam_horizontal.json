@@ -261,7 +261,9 @@
    }
   }
  },
- "name": "{m} Horizontal Beam",
+ "name": {
+  "en_us": "{m} Horizontal Beam"
+ },
  "recipes": [
   {
    "count": 9,

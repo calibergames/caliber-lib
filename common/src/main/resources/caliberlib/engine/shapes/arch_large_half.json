@@ -61,7 +61,9 @@
    }
   }
  },
- "name": "{m} Large Arch Half",
+ "name": {
+  "en_us": "{m} Large Arch Half"
+ },
  "recipes": [
   {
    "count": 2,

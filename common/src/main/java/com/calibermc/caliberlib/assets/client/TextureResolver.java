@@ -1,19 +1,14 @@
 package com.calibermc.caliberlib.assets.client;
 
+import com.calibermc.caliberlib.assets.GameView;
 import com.calibermc.caliberlib.assets.Material;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
@@ -48,15 +43,16 @@ final class TextureResolver {
 	}
 
 	private final ResourceManager resources;
+	private final GameView game;
 
-	TextureResolver(ResourceManager resources) {
+	TextureResolver(ResourceManager resources, GameView game) {
 		this.resources = resources;
+		this.game = game;
 	}
 
 	/** Resolves a family; throws when its side texture cannot be found. */
 	Resolved resolve(Material m) {
-		Block source = BuiltInRegistries.BLOCK.get(m.source());
-		String defaultModel = defaultModel(m.source(), source.defaultBlockState());
+		String defaultModel = defaultModel(m.source());
 		Map<String, String> textures = defaultModel != null ? textures(defaultModel) : Map.of();
 		Map<String, String> slots = new HashMap<>();
 		pick(slots, "side", textures, SIDE, null);
@@ -92,12 +88,11 @@ final class TextureResolver {
 
 	@Nullable
 	private DoorTextures door(ResourceLocation doorItem) {
-		Item item = BuiltInRegistries.ITEM.get(doorItem);
-		if (!(item instanceof BlockItem blockItem)) {
+		ResourceLocation block = game.blockOf(doorItem);
+		if (block == null) {
 			return null;
 		}
-		Block block = blockItem.getBlock();
-		String model = defaultModel(BuiltInRegistries.BLOCK.getKey(block), block.defaultBlockState());
+		String model = defaultModel(block);
 		if (model == null) {
 			return null;
 		}
@@ -115,7 +110,8 @@ final class TextureResolver {
 
 	/** The model a block's default state shows, from its blockstate file. */
 	@Nullable
-	String defaultModel(ResourceLocation block, BlockState state) {
+	String defaultModel(ResourceLocation block) {
+		Map<String, String> state = game.defaultState(block);
 		JsonObject json = read(new ResourceLocation(block.getNamespace(), "blockstates/" + block.getPath() + ".json"));
 		if (json == null) {
 			return null;
@@ -141,25 +137,17 @@ final class TextureResolver {
 	}
 
 	/** Whether a variant key such as {@code axis=y} matches the state; the empty key matches all. */
-	static boolean matches(String key, BlockState state) {
+	static boolean matches(String key, Map<String, String> state) {
 		if (key.isEmpty()) {
 			return true;
 		}
 		for (String pair : key.split(",")) {
 			int eq = pair.indexOf('=');
-			if (eq < 0) {
-				return false;
-			}
-			Property<?> property = state.getBlock().getStateDefinition().getProperty(pair.substring(0, eq));
-			if (property == null || !pair.substring(eq + 1).equals(valueName(state, property))) {
+			if (eq < 0 || !pair.substring(eq + 1).equals(state.get(pair.substring(0, eq)))) {
 				return false;
 			}
 		}
 		return true;
-	}
-
-	private static <T extends Comparable<T>> String valueName(BlockState state, Property<T> property) {
-		return property.getName(state.getValue(property));
 	}
 
 	/** A variant entry's model: the first of a weighted list. */

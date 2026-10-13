@@ -1183,7 +1183,9 @@
    }
   }
  },
- "name": "{m} Diagonal Beam",
+ "name": {
+  "en_us": "{m} Diagonal Beam"
+ },
  "recipes": [
   {
    "count": 9,

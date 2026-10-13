@@ -1,6 +1,8 @@
 package com.calibermc.caliberlib.block.custom;
 
+import com.calibermc.caliberlib.block.shapes.ModelOcclusion;
 import com.calibermc.caliberlib.block.shapes.RoofPeakShape;
+import com.calibermc.caliberlib.block.shapes.RoofPitch;
 import com.calibermc.caliberlib.block.shapes.RoofShape;
 import com.calibermc.caliberlib.util.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
@@ -31,7 +33,8 @@ import javax.annotation.Nullable;
 
 public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
-    //    public static final EnumProperty<RoofPitch> PITCH = ModBlockStateProperties.ROOF_PITCH;
+    /** The pitch of the roof the cap sits on, read from the roof pieces beside it. */
+    public static final EnumProperty<RoofPitch> PITCH = ModBlockStateProperties.ROOF_PITCH;
     public static final EnumProperty<Half> HALF = BlockStateProperties.HALF;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<RoofPeakShape> TYPE = ModBlockStateProperties.ROOF_PEAK_SHAPE;
@@ -42,7 +45,7 @@ public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleW
     public RoofPeakBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
-//                .setValue(PITCH, RoofPitch.PITCH_45)
+                .setValue(PITCH, RoofPitch.PITCH_45)
                 .setValue(FACING, Direction.NORTH)
                 .setValue(TYPE, RoofPeakShape.STRAIGHT)
                 .setValue(HALF, Half.BOTTOM)
@@ -54,9 +57,15 @@ public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleW
         return true;
     }
 
+    /** What blocks light and hides neighbouring faces: the solid parts of the model this state shows. */
+    @Override
+    public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return ModelOcclusion.of("roof_peak", pState, () -> super.getOcclusionShape(pState, pLevel, pPos));
+    }
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, TYPE, HALF, WATERLOGGED);
+        pBuilder.add(FACING, TYPE, HALF, PITCH, WATERLOGGED);
     }
 
     @Override
@@ -104,6 +113,7 @@ public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleW
                     .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
 
             // Determine RoofShape based on surrounding blocks
+            blockstate1 = blockstate1.setValue(PITCH, getRoofPitch(blockstate1, level, blockpos));
             RoofPeakShape roofShape = getRoofShape(blockstate1, level, blockpos);
             blockstate1 = blockstate1.setValue(TYPE, roofShape);
 
@@ -144,12 +154,10 @@ public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleW
             pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
         }
 
+        pState = pState.setValue(PITCH, getRoofPitch(pState, pLevel, pCurrentPos));
         if (pFacing.getAxis().isHorizontal()) {
             // Set the TYPE value based on the BlockShape
             pState = pState.setValue(TYPE, getRoofShape(pState, pLevel, pCurrentPos));
-            // Set the PITCH value based on the BlockShape
-//            pState = pState.setValue(PITCH, getRoofPitch(pState, pLevel, pCurrentPos));
-
         } else {
             pState = super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
         }
@@ -158,18 +166,25 @@ public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleW
     }
 
 
-    private static RoofPeakShape getRoofShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+    /**
+     * The cap's shape from the caps beside it and the hips (outer roof
+     * corners) at its diagonals. Only the six direct neighbours update a
+     * block, so a hip changed at a diagonal shows once a neighbour of the cap
+     * changes.
+     */
+    static RoofPeakShape getRoofShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         Direction facing = pState.getValue(FACING);
+        RoofPitch pitch = pState.getValue(PITCH);
         Direction opposite = facing.getOpposite();
         boolean front = isRoof(pLevel.getBlockState(pPos.relative(facing)));
         boolean back = isRoof(pLevel.getBlockState(pPos.relative(opposite)));
         boolean left = isRoof(pLevel.getBlockState(pPos.relative(facing.getCounterClockWise())));
         boolean right = isRoof(pLevel.getBlockState(pPos.relative(facing.getClockWise())));
 
-        boolean downFrontLeft = isHip(pLevel.getBlockState(pPos.below().relative(facing).relative(facing.getCounterClockWise())));
-        boolean downFrontRight = isHip(pLevel.getBlockState(pPos.below().relative(facing).relative(facing.getClockWise())));
-        boolean downBackLeft = isHip(pLevel.getBlockState(pPos.below().relative(opposite).relative(opposite.getCounterClockWise())));
-        boolean downBackRight = isHip(pLevel.getBlockState(pPos.below().relative(opposite).relative(opposite.getClockWise())));
+        boolean downFrontLeft = isHipAt(pLevel, pPos, facing, facing.getCounterClockWise(), pitch);
+        boolean downFrontRight = isHipAt(pLevel, pPos, facing, facing.getClockWise(), pitch);
+        boolean downBackLeft = isHipAt(pLevel, pPos, opposite, opposite.getCounterClockWise(), pitch);
+        boolean downBackRight = isHipAt(pLevel, pPos, opposite, opposite.getClockWise(), pitch);
 
         // Check for peak cap
         if (!front && !back && !left && !right) {
@@ -215,41 +230,79 @@ public class RoofPeakBlock extends HorizontalDirectionalBlock implements SimpleW
         return RoofPeakShape.STRAIGHT;
     }
 
-//    private static RoofPitch getRoofPitch(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-//        Direction facing = pState.getValue(FACING);
-//        Direction opposite = facing.getOpposite();
-//        pPos = pPos.below();
-//        BlockState frontBlock = pLevel.getBlockState(pPos.relative(facing));
-//
-//        if(isRoof(frontBlock)) {
-//            return frontBlock.getValue(PITCH);
-//        }
-//
-//        BlockState backBlock = pLevel.getBlockState(pPos.relative(opposite));
-//        if(isRoof(backBlock)) {
-//            return backBlock.getValue(PITCH);
-//        }
-//
-//        BlockState leftBlock = pLevel.getBlockState(pPos.relative(facing.getCounterClockWise()));
-//        if(isRoof(leftBlock)) {
-//            return leftBlock.getValue(PITCH);
-//        }
-//
-//        BlockState rightBlock = pLevel.getBlockState(pPos.relative(facing.getClockWise()));
-//        if(isRoof(rightBlock)) {
-//            return rightBlock.getValue(PITCH);
-//        }
-//
-//        return RoofPitch.PITCH_45;
-//
-//    }
+    /**
+     * The pitch of the roof below the cap: from a roof piece beside it, at its
+     * own level or one below (a 22 roof's bottom half sits level with a
+     * raised cap), or else from a neighbouring cap; the state's own pitch
+     * when there is neither. Pieces are read north, east, south, west, and
+     * the first one found decides where pitches are mixed. Roof pieces one
+     * level down are not neighbours, so changing one updates the pitch only
+     * once a neighbour of the cap changes.
+     */
+    static RoofPitch getRoofPitch(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        for (BlockPos level : new BlockPos[] {pPos.below(), pPos}) {
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                RoofPitch pitch = pitchOf(pLevel.getBlockState(level.relative(direction)));
+                if (pitch != null) {
+                    return pitch;
+                }
+            }
+        }
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockState neighbour = pLevel.getBlockState(pPos.relative(direction));
+            if (isRoof(neighbour)) {
+                return neighbour.getValue(PITCH);
+            }
+        }
+        return pState.getValue(PITCH);
+    }
+
+    @Nullable
+    static RoofPitch pitchOf(BlockState pState) {
+        if (pState.getBlock() instanceof Roof22Block) {
+            return RoofPitch.PITCH_22;
+        }
+        if (pState.getBlock() instanceof Roof45Block) {
+            return RoofPitch.PITCH_45;
+        }
+        if (pState.getBlock() instanceof Roof67Block) {
+            return RoofPitch.PITCH_67;
+        }
+        return null;
+    }
+
+    /**
+     * Whether a hip (an outer roof corner of the cap's pitch) meets the cap at
+     * this diagonal: one level down, or, on a 22 roof, level with it (its
+     * bottom halves sit level with a raised cap).
+     */
+    static boolean isHipAt(BlockGetter pLevel, BlockPos pPos, Direction first, Direction second, RoofPitch pitch) {
+        BlockPos diagonal = pPos.relative(first).relative(second);
+        if (isHip(pLevel.getBlockState(diagonal.below()), pitch)) {
+            return true;
+        }
+        return pitch == RoofPitch.PITCH_22 && isHip(pLevel.getBlockState(diagonal), pitch);
+    }
+
+    private static boolean isHip(BlockState pState, RoofPitch pitch) {
+        return isHip(pState) && pitchOf(pState) == pitch;
+    }
 
     public static boolean isRoof(BlockState pState) {
         return pState.getBlock() instanceof RoofPeakBlock;
     }
 
+    /** An outer roof corner of any pitch. */
     public static boolean isHip(BlockState pState) {
-        return pState.getBlock() instanceof com.calibermc.caliberlib.block.custom.Roof45Block && (pState.getValue(com.calibermc.caliberlib.block.custom.Roof45Block.TYPE) == RoofShape.OUTER_LEFT || pState.getValue(Roof45Block.TYPE) == RoofShape.OUTER_RIGHT);
+        RoofShape shape = null;
+        if (pState.getBlock() instanceof Roof22Block) {
+            shape = pState.getValue(Roof22Block.TYPE);
+        } else if (pState.getBlock() instanceof Roof45Block) {
+            shape = pState.getValue(Roof45Block.TYPE);
+        } else if (pState.getBlock() instanceof Roof67Block) {
+            shape = pState.getValue(Roof67Block.TYPE);
+        }
+        return shape == RoofShape.OUTER_LEFT || shape == RoofShape.OUTER_RIGHT;
     }
 
     @Override

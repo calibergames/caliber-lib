@@ -1,5 +1,6 @@
 package com.calibermc.caliberlib.block.custom;
 
+import com.calibermc.caliberlib.block.shapes.ModelOcclusion;
 import com.calibermc.caliberlib.block.shapes.RoofShape;
 import com.calibermc.caliberlib.util.ModBlockStateProperties;
 import com.google.common.collect.ImmutableMap;
@@ -52,6 +53,12 @@ public class Roof67Block extends Block implements SimpleWaterloggedBlock {
     @Override
     public boolean useShapeForLightOcclusion(BlockState pState) {
         return true;
+    }
+
+    /** What blocks light and hides neighbouring faces: the solid parts of the model this state shows. */
+    @Override
+    public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return ModelOcclusion.of("roof_67", pState, () -> super.getOcclusionShape(pState, pLevel, pPos));
     }
 
     @Override

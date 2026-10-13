@@ -2,6 +2,7 @@ package com.calibermc.caliberlib.event;
 
 import com.calibermc.caliberlib.CaliberLib;
 import com.calibermc.caliberlib.block.properties.ModWoodType;
+import com.calibermc.caliberlib.client.SignMaterials;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,10 +17,8 @@ public class ModClientEventBus {
     public static void clientSetup(final FMLClientSetupEvent event) {
 
         // Set Wood Types
-        Sheets.addWoodType(ModWoodType.CEDAR);
-        Sheets.addWoodType(ModWoodType.FIR);
-        Sheets.addWoodType(ModWoodType.PINE);
-        Sheets.addWoodType(ModWoodType.MAPLE);
+        ModWoodType.SIGN_TYPES.forEach(Sheets::addWoodType);
+        SignMaterials.check(ModWoodType.SIGN_TYPES);
 
     }
 

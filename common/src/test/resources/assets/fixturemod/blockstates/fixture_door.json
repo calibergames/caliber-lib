@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "facing=north,half=lower,hinge=left,open=false,powered=false": {
+   "model": "fixturemod:block/fixture_door_bottom_left"
+  },
+  "facing=north,half=upper,hinge=left,open=false,powered=false": {
+   "model": "fixturemod:block/fixture_door_top_left"
+  }
+ }
+}
