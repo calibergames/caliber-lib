@@ -106,6 +106,22 @@ class CompatTest {
 	}
 
 	@Test
+	void anEntryWithoutVariantsGetsTheDefaultSetAndAHint() {
+		CompatLog log = new CompatLog(false);
+		List<CompatEntry> e = parse("{\"block\": \"a:b\", \"type\": \"shingle\"}", CONFIG, log);
+		assertNull(e.get(0).variants());
+		assertEquals(4, CompatMerge.variants(e.get(0)).size());
+		assertTrue(logged(log, "entry 0: no \"variants\"; the type's default set applies, untrimmed"));
+	}
+
+	@Test
+	void aRemoveThatIsNotABooleanIsReported() {
+		CompatLog log = new CompatLog(false);
+		parse("{\"block\": \"a:b\", \"type\": \"stone\", \"remove\": \"true\"}", CONFIG, log);
+		assertTrue(logged(log, "entry 0: \"remove\" should be true or false; ignored"));
+	}
+
+	@Test
 	void aModsFileListsOnlyItsOwnBlocksAndNames() {
 		CompatLog log = new CompatLog(false);
 		List<CompatEntry> e = parse("""
@@ -243,10 +259,24 @@ class CompatTest {
 		List<CompatEntry> entries = CompatMerge.merge(parse("""
 				{"block": "a:fir_planks", "type": "planks", "variants": ["arch"]},
 				{"block": "a:fir_planks", "type": "shingle"},
-				{"block": "a:fir_planks", "type": "stone", "name": "a:fir_stone", "variants": ["arch"]}""", BUNDLED, log), log);
+				{"block": "a:fir_planks", "type": "stone", "name": "a:fir_stone", "variants": ["arch"]},
+				{"block": "a:fir_planks", "type": "stripped_wood", "name": "a:fir_x", "variants": ["arch"]},
+				{"block": "a:fir_planks", "type": "planks", "name": "a:fir_y", "variants": ["corner"]}""", BUNDLED, log), log);
 		CompatPlan.Result r = CompatPlan.plan(entries, CompatPlan.Settings.defaults(), game("a:fir_planks"), log);
-		assertEquals(List.of("fir_planks", "fir_shingle", "fir_planks_stone"), r.planned().stream().map(CompatPlan.Planned::family).toList());
+		// The fifth entry has the same key as the first, so it replaces it; four families remain, all names distinct.
+		List<String> names = r.planned().stream().map(CompatPlan.Planned::family).toList();
+		assertEquals(List.of("fir_planks", "fir_shingle", "fir_planks_stone", "fir_planks_stripped_wood"), names);
+		assertEquals(names.size(), Set.copyOf(names).size());
 		assertEquals(Set.of(Variant.ROOF_22, Variant.ROOF_45, Variant.ROOF_67, Variant.ROOF_PEAK), Set.copyOf(r.planned().get(1).variants()));
+
+		// A third clash: "fir_planks" and "fir_planks_stone" are both taken before the stone entry of a:fir_planks.
+		log = new CompatLog(false);
+		entries = CompatMerge.merge(parse("""
+				{"block": "a:fir_planks", "type": "planks", "variants": ["arch"]},
+				{"block": "a:fir_planks_stone", "type": "planks", "name": "a:fps", "variants": ["arch"]},
+				{"block": "a:fir_planks", "type": "stone", "name": "a:fs", "variants": ["arch"]}""", BUNDLED, log), log);
+		r = CompatPlan.plan(entries, CompatPlan.Settings.defaults(), game("a:fir_planks", "a:fir_planks_stone"), log);
+		assertEquals(List.of("fir_planks", "fir_planks_stone", "fir_planks_stone_2"), r.planned().stream().map(CompatPlan.Planned::family).toList());
 	}
 
 	// The hash

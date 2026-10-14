@@ -7,8 +7,10 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -94,8 +96,15 @@ public final class CompatWorldCheck {
 			return;
 		}
 		try {
-			Files.writeString(record, "# The Caliber compat entries this world's last session registered.\n"
+			// Beside the record, then moved into place, so a crash mid-write never leaves half a record.
+			Path temp = record.resolveSibling(RECORD + ".tmp");
+			Files.writeString(temp, "# The Caliber compat entries this world's last session registered.\n"
 					+ String.join("\n", current) + (current.isEmpty() ? "" : "\n"), StandardCharsets.UTF_8);
+			try {
+				Files.move(temp, record, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+			} catch (AtomicMoveNotSupportedException e) {
+				Files.move(temp, record, StandardCopyOption.REPLACE_EXISTING);
+			}
 		} catch (IOException e) {
 			CompatLog.LOGGER.warn("Cannot write {}: {}", record, e.getMessage());
 		}

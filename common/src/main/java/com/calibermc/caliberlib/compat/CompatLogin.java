@@ -92,6 +92,6 @@ public final class CompatLogin {
 
 	/** The reason the server gives a client that does not check compat lists at all. */
 	public static Component missing() {
-		return Component.literal("This server adds Caliber shapes for other mods' blocks. Join with the same mods, CaliberLib and Caliber Mod.");
+		return Component.literal("This server adds Caliber shapes for other mods' blocks (calibermod-compat). Join with the same mods as the server.");
 	}
 }

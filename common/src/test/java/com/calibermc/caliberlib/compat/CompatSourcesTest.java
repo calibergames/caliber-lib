@@ -71,7 +71,7 @@ class CompatSourcesTest {
 				"config/calibermod-compat/mine.json"), entries.stream().map(e -> e.source().label()).toList());
 		assertTrue(entries.get(0).source().released());
 		assertFalse(entries.get(1).source().released());
-		assertEquals(List.of(), log.lines());
+		assertEquals(List.of(), log.lines().stream().filter(l -> !l.startsWith("INFO ")).toList(), "no warnings or errors");
 	}
 
 	@Test

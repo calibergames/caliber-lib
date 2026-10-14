@@ -119,6 +119,7 @@ public class CompatGameTests {
 		check(material("caliberlib_gametest:gt_src_fir_shingle").manager().equals("gt_src_fir_shingle"), "shingle family name");
 		Material stripped = material("caliberlib_gametest:gt_src_stripped_fir");
 		check(new ResourceLocation("caliberlib_gametest:block/gt_src_stripped_fir_log").equals(stripped.baseModel()), "stripped wood base model: " + stripped.baseModel());
+		check(new ResourceLocation("caliberlib_gametest:block/gt_src_stripped_fir_log").equals(stripped.textures().get("side")), "the entry's texture: " + stripped.textures());
 		Material calcite = material("caliberlib_gametest_compat:calcite");
 		check(calcite.owner().equals(TestFamilies.MOD_ID), "a family in a namespace no mod owns keeps its owner");
 		check(calcite.shapes().size() == 2, "calcite shapes: " + calcite.shapes());

@@ -44,7 +44,7 @@ public final class ConfigFile {
 	/** Defines a key in {@code table} ("" for the top level; dotted for nested tables). */
 	public ConfigFile define(String table, String key, Object value, String comment) {
 		if (!(value instanceof String || value instanceof Boolean || value instanceof Long || value instanceof Double
-				|| value instanceof List)) {
+				|| value instanceof List<?> list && list.stream().allMatch(String.class::isInstance))) {
 			throw new IllegalArgumentException("Unsupported default for " + key + ": " + value);
 		}
 		Entry e = new Entry(table, key, value, comment);

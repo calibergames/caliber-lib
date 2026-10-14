@@ -1,5 +1,6 @@
 package com.calibermc.caliberlib.compat;
 
+import com.calibermc.caliberlib.assets.MaterialKind;
 import com.calibermc.caliberlib.block.management.BlockManager;
 import com.calibermc.caliberlib.data.ModBlockFamily.Variant;
 import com.calibermc.caliberlib.registry.Registrar;
@@ -71,7 +72,7 @@ final class CompatRegistration {
 		// Vanilla's types have bare names ("crimson").
 		String bare = name.startsWith("minecraft:") ? name.substring("minecraft:".length()) : name;
 		return BlockSetType.values().filter(t -> t.name().equals(name) || t.name().equals(bare)).findFirst()
-				.orElse(p.type().kind() == com.calibermc.caliberlib.assets.MaterialKind.WOOD ? BlockSetType.OAK : BlockSetType.STONE);
+				.orElse(p.type().kind() == MaterialKind.WOOD ? BlockSetType.OAK : BlockSetType.STONE);
 	}
 
 	/**

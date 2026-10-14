@@ -94,6 +94,9 @@ public final class CompatParser {
 			}
 			return null;
 		}
+		if (o.has("remove") && !(o.get("remove").isJsonPrimitive() && o.get("remove").getAsJsonPrimitive().isBoolean())) {
+			log.warn(where + ": \"remove\" should be true or false; ignored");
+		}
 		boolean remove = o.has("remove") && bool(o.get("remove"));
 		String type = string(o, "type");
 		if (remove) {
@@ -150,6 +153,9 @@ public final class CompatParser {
 					variants.add(variant);
 				}
 			}
+		}
+		if (variants == null) {
+			log.info(where + ": no \"variants\"; the type's default set applies, untrimmed. Write the entry with the writer tool to pin its shapes.");
 		}
 		Map<String, ResourceLocation> textures = new LinkedHashMap<>();
 		if (o.has("textures")) {

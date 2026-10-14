@@ -73,10 +73,6 @@ public final class CompatPlan {
 		public boolean released() {
 			return entry.source().released();
 		}
-
-		public ResourceLocation id(Variant v) {
-			return new ResourceLocation(name.getNamespace(), name.getPath() + "_" + v.getName());
-		}
 	}
 
 	/** The outcome: what registers, and the counts for the summary line. */
@@ -168,10 +164,10 @@ public final class CompatPlan {
 					siblings.put(v, sibling);
 				}
 			}
-			String family = e.type().equals("shingle") ? name.getPath() : e.block().getPath();
-			if (!families.add(name.getNamespace() + ":" + family)) {
-				family = family + "_" + e.type();
-				families.add(name.getNamespace() + ":" + family);
+			String base = e.type().equals("shingle") ? name.getPath() : e.block().getPath();
+			String family = base;
+			for (int n = 2; !families.add(name.getNamespace() + ":" + family); n++) {
+				family = base + "_" + e.type() + (n > 2 ? "_" + (n - 1) : "");
 			}
 			planned.add(new Planned(e, type, name, family, List.copyOf(variants), door, siblings,
 					CompatTypes.baseModel(e.block(), e.type())));
