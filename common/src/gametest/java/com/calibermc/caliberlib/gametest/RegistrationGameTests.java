@@ -2,9 +2,11 @@ package com.calibermc.caliberlib.gametest;
 
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.BlockItem;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import static com.calibermc.caliberlib.gametest.TestSupport.EMPTY_STRUCTURE;
 import static com.calibermc.caliberlib.gametest.TestSupport.block;
@@ -12,6 +14,8 @@ import static com.calibermc.caliberlib.gametest.TestSupport.check;
 import static com.calibermc.caliberlib.gametest.TestSupport.item;
 
 public class RegistrationGameTests {
+
+	private static final String GENERATED = "caliberlib:generated";
 
 	static final List<String> SHAPES = List.of("gt_stone_slab", "gt_stone_slab_vertical", "gt_stone_layer", "gt_stone_corner",
 			"gt_stone_arch", "gt_stone_pillar", "gt_oak_tall_door", "gt_oak_beam_vertical", "gt_oak_slab_vertical",
@@ -35,8 +39,22 @@ public class RegistrationGameTests {
 
 	@GameTest(template = EMPTY_STRUCTURE)
 	public void theGeneratedPackIsOn(GameTestHelper helper) {
-		check(helper.getLevel().getServer().getPackRepository().getSelectedIds().contains("caliberlib:generated"),
-				"caliberlib:generated is not selected");
+		check(helper.getLevel().getServer().getPackRepository().getSelectedIds().contains(GENERATED), GENERATED + " is not selected");
 		helper.succeed();
+	}
+
+	/** A data reload without the generated pack, as {@code /datapack disable "caliberlib:generated"} starts one, keeps it. */
+	@GameTest(template = EMPTY_STRUCTURE, batch = "reload", timeoutTicks = 400)
+	public void aReloadWithoutTheGeneratedPackKeepsIt(GameTestHelper helper) {
+		MinecraftServer server = helper.getLevel().getServer();
+		List<String> without = server.getPackRepository().getSelectedIds().stream().filter(id -> !id.equals(GENERATED)).toList();
+		CompletableFuture<Void> reload = server.reloadResources(without);
+		helper.succeedWhen(() -> {
+			check(reload.isDone(), "the reload has not finished");
+			check(!reload.isCompletedExceptionally(), "the reload failed");
+			check(server.getPackRepository().getSelectedIds().contains(GENERATED), GENERATED + " was dropped by the reload");
+			check(server.getRecipeManager().getRecipes().stream().anyMatch(r -> r.getId().getNamespace().equals(TestFamilies.MOD_ID)),
+					"the test families have no recipes after the reload");
+		});
 	}
 }

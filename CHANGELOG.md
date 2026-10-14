@@ -20,10 +20,10 @@
 
 #### Features
 - One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
-- Asset engine: the blockstates, models, item models, names, loot tables, recipes, advancements and tags of block families are made in memory at load time, from shape specs in the jar, in a pack at the bottom of the pack list (`caliberlib:generated`), so mods and resource packs can still replace any file. Textures come from the source block's own model. Tall-door textures are made from the source door's.
+- Asset engine: the blockstates, models, item models, names, loot tables, recipes, advancements and tags of block families are made in memory at load time, from shape specs in the jar, in a pack at the bottom of the pack list (`caliberlib:generated`), so mods and resource packs can still replace any file. Textures come from the source block's own model. Tall-door textures are made from the source door's. The pack stays on through every data reload: `/datapack disable "caliberlib:generated"` reloads the data with the pack still on, so the shapes keep their loot tables, recipes and tags.
 
 - Ridge caps for 22 and 67 roofs: a cap takes the pitch of the roof below it, continues that roof's shingles to the ridge, and carries the hips at the ends of a ridge as on 45 roofs.
-- Generated shapes copy their source block's flammability, on every loader; tall doors and cut-out families get the cut-out render layer, tinted families their colours; roof_67 models render on Fabric and Quilt.
+- Generated shapes copy their source block's flammability, on every loader; tall doors and cut-out families get the cut-out render layer; families built with `tint(...)` register block and item colour handlers; roof_67 models render on Fabric and Quilt.
 
 - Game tests on Fabric and NeoForge (`runGametest`, `runGameTestServer`, part of `check`) and test jars for production servers (`gametestJar`).
 - Needs Fabric API 0.83.0 or newer on Fabric and Quilt (the oldest tested).
