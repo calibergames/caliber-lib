@@ -1,5 +1,6 @@
 package com.calibermc.caliberlib.assets;
 
+import com.calibermc.caliberlib.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -28,6 +29,9 @@ public interface GameView {
 
 	/** The block's default state as property name to value name. */
 	Map<String, String> defaultState(ResourceLocation block);
+
+	/** Whether fire burns or spreads to the block. */
+	boolean burns(ResourceLocation block);
 
 	/** The block an item places, or null. */
 	@Nullable
@@ -64,6 +68,12 @@ public interface GameView {
 
 		private <T extends Comparable<T>> String valueName(BlockState state, Property<T> property) {
 			return property.getName(state.getValue(property));
+		}
+
+		@Override
+		public boolean burns(ResourceLocation block) {
+			// A block that is not there counts as burning: only a known non-burning source changes anything.
+			return BuiltInRegistries.BLOCK.getOptional(block).map(b -> Services.hooks().burns(b)).orElse(true);
 		}
 
 		@Nullable

@@ -50,6 +50,14 @@ public class NeoForgePlatformHooks implements PlatformHooks {
 	}
 
 	@Override
+	public boolean burns(Block block) {
+		// Forge blocks may answer for themselves, so ask the block state, not vanilla's table.
+		BlockState state = block.defaultBlockState();
+		return state.getFlammability(EmptyBlockGetter.INSTANCE, BlockPos.ZERO, Direction.UP) > 0
+				|| state.getFireSpreadSpeed(EmptyBlockGetter.INSTANCE, BlockPos.ZERO, Direction.UP) > 0;
+	}
+
+	@Override
 	public void copyFlammability(Block source, Collection<Block> targets) {
 		// Forge blocks may answer for themselves, so ask the block state, not vanilla's table.
 		BlockState state = source.defaultBlockState();

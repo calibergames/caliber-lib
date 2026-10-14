@@ -39,6 +39,12 @@ public class FabricPlatformHooks implements PlatformHooks {
 	}
 
 	@Override
+	public boolean burns(Block block) {
+		FlammableBlockRegistry.Entry entry = FlammableBlockRegistry.getDefaultInstance().get(block);
+		return entry != null && (entry.getBurnChance() > 0 || entry.getSpreadChance() > 0);
+	}
+
+	@Override
 	public void copyFlammability(Block source, Collection<Block> targets) {
 		// The registry's entries include vanilla's own values.
 		FlammableBlockRegistry registry = FlammableBlockRegistry.getDefaultInstance();

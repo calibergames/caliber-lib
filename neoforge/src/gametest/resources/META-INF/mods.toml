@@ -1,0 +1,16 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "caliberlib_gametest"
+version = "1.0.0"
+displayName = "CaliberLib Game Tests"
+description = '''Game tests for CaliberLib. Development only; never shipped.'''
+
+[[dependencies.caliberlib_gametest]]
+modId = "caliberlib"
+mandatory = true
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"

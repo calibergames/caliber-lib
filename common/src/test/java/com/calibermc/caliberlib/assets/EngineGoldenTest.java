@@ -192,7 +192,7 @@ class EngineGoldenTest {
 	}
 
 	/** Path to normalised content: JSON with sorted keys and tag values as sorted sets; PNGs as a SHA-256. */
-	private static Map<String, String> read(PackIndex index) {
+	static Map<String, String> read(PackIndex index) {
 		Map<String, String> out = new TreeMap<>();
 		index.forEach((location, content) -> {
 			byte[] bytes = content.get();

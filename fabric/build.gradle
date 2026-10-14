@@ -15,9 +15,66 @@ dependencies {
 	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
+// Game tests live in their own source set and mod (caliberlib_gametest), so
+// nothing test-only ships in the release jar. `gradlew runGametest` starts a
+// headless server, runs every test and writes build/gametest/junit.xml at the
+// root; `check` (and so `build`) depends on it.
+sourceSets {
+	gametest {
+		compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output
+		runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.main.output
+	}
+}
+// The shared tests (common/src/gametest) are compiled into this test mod.
+configurations {
+	commonGametestJava {
+		canBeResolved = true
+	}
+	commonGametestResources {
+		canBeResolved = true
+	}
+}
+dependencies {
+	commonGametestJava project(path: ':common', configuration: 'commonGametestJava')
+	commonGametestResources project(path: ':common', configuration: 'commonGametestResources')
+}
+tasks.named('compileGametestJava', JavaCompile) {
+	dependsOn(configurations.commonGametestJava)
+	source(configurations.commonGametestJava)
+}
+tasks.named('processGametestResources', ProcessResources) {
+	dependsOn(configurations.commonGametestResources)
+	from(configurations.commonGametestResources)
+}
+// The game tests as a jar for production servers (remapped to intermediary), to
+// run them against released Minecraft and loader versions with
+// -Dfabric-api.gametest. Never published; it is built outside build/libs.
+def gametestDevJar = tasks.register('gametestDevJar', Jar) {
+	from sourceSets.gametest.output
+	archiveClassifier = 'gametest-dev'
+	destinationDirectory = layout.buildDirectory.dir('devlibs')
+}
+tasks.register('gametestJar', net.fabricmc.loom.task.RemapJarTask) {
+	inputFile = gametestDevJar.flatMap { it.archiveFile }
+	classpath.from(sourceSets.gametest.compileClasspath)
+	archiveClassifier = 'gametest'
+	destinationDirectory = layout.buildDirectory.dir('gametestlibs')
+}
+def rootBuild = rootProject.layout.buildDirectory.get().asFile.path
 loom {
 	accessWidenerPath = file('src/main/resources/caliberlib.accesswidener')
 	runs {
+		// Shapes beyond vanilla's register only with Caliber Mod or under
+		// mod.dataGen; the tests set the flag.
+		gametest {
+			server()
+			name "Game Test"
+			vmArg "-Dfabric-api.gametest"
+			vmArg "-Dfabric-api.gametest.report-file=${rootBuild}/gametest/junit.xml"
+			vmArg "-Dmod.dataGen=true"
+			runDir "../build/gametest"
+			source sourceSets.gametest
+		}
 		client {
 			client()
 			runDir 'run'
@@ -35,5 +92,29 @@ processResources {
 	inputs.properties props
 	filesMatching('fabric.mod.json') {
 		expand props
+	}
+}
+
+// Each run starts from a fresh world, so nothing a failed test left reaches the next.
+tasks.matching { it.name == "runGametest" }.configureEach {
+	doFirst {
+		delete "${rootBuild}/gametest/world"
+		// The test-count check below reads this run's report, never an old one.
+		delete "${rootBuild}/gametest/junit.xml"
+	}
+}
+tasks.named("check") {
+	dependsOn "runGametest"
+}
+
+// A run that registered fewer tests than there are fails: a broken test scan
+// would otherwise succeed with nothing run.
+tasks.matching { it.name == "runGametest" }.configureEach {
+	doLast {
+		def report = file("${rootBuild}/gametest/junit.xml")
+		def ran = report.exists() ? (report.text =~ /<testcase /).size() : 0
+		if (ran < (gametest_count as int)) {
+			throw new GradleException("Game tests: ${ran} ran, expected ${gametest_count} (${report})")
+		}
 	}
 }

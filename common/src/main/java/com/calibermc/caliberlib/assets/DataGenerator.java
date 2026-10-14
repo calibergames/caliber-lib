@@ -18,8 +18,7 @@ import java.util.function.Supplier;
 final class DataGenerator {
 
 	static final ResourceLocation WOODCUTTING = new ResourceLocation("caliber", "woodcutting");
-	private static final String PICKAXE = "minecraft:mineable/pickaxe";
-	private static final String AXE = "minecraft:mineable/axe";
+	private static final String NON_FLAMMABLE_WOOD = "minecraft:non_flammable_wood";
 
 	private DataGenerator() {
 	}
@@ -31,6 +30,8 @@ final class DataGenerator {
 		Map<ResourceLocation, Set<String>> itemTags = new TreeMap<>();
 		for (Material m : materials) {
 			List<ResourceLocation> rewards = new ArrayList<>();
+			// Wood that fire does not take (crimson, warped) is never furnace fuel, as vanilla's tag says.
+			boolean nonFlammable = m.kind() == MaterialKind.WOOD && !game.burns(m.source());
 			for (Material.Shape shape : m.shapes()) {
 				ShapeSpec spec = specs.get(shape.variant());
 				if (spec == null) {
@@ -41,13 +42,18 @@ final class DataGenerator {
 				for (String tag : spec.blockTags()) {
 					blockTags.computeIfAbsent(new ResourceLocation(tag), t -> new LinkedHashSet<>()).add(id);
 				}
-				blockTags.computeIfAbsent(new ResourceLocation(m.kind() == MaterialKind.WOOD ? AXE : PICKAXE),
-						t -> new LinkedHashSet<>()).add(id);
+				String mineable = m.miningTool().tag();
+				if (mineable != null) {
+					blockTags.computeIfAbsent(new ResourceLocation(mineable), t -> new LinkedHashSet<>()).add(id);
+				}
 				if (!game.hasItem(block)) {
 					continue;
 				}
 				for (String tag : spec.itemTags().get(m.kind())) {
 					itemTags.computeIfAbsent(new ResourceLocation(tag), t -> new LinkedHashSet<>()).add(id);
+				}
+				if (nonFlammable) {
+					itemTags.computeIfAbsent(new ResourceLocation(NON_FLAMMABLE_WOOD), t -> new LinkedHashSet<>()).add(id);
 				}
 				index.add(block.getNamespace(), "loot_tables/blocks/" + block.getPath() + ".json",
 						() -> bytes(loot(spec.loot(), block, game)));

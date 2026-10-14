@@ -5,9 +5,52 @@ plugins {
 	id 'net.neoforged.moddev.legacyforge'
 }
 
+// Game tests: the shared tests (common/src/gametest) and this loader's test
+// mod (caliberlib_gametest) in their own source set, never in the release jar.
+sourceSets {
+	gametest {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+configurations {
+	commonGametestJava {
+		canBeResolved = true
+	}
+	commonGametestResources {
+		canBeResolved = true
+	}
+	// Where reobfuscating the test jar publishes it (nothing consumes them).
+	gametestApiElements {
+		canBeConsumed = true
+		canBeResolved = false
+	}
+	gametestRuntimeElements {
+		canBeConsumed = true
+		canBeResolved = false
+	}
+	gametestImplementation.extendsFrom implementation
+	gametestCompileOnly.extendsFrom compileOnly
+	gametestRuntimeOnly.extendsFrom runtimeOnly
+}
+dependencies {
+	commonGametestJava project(path: ':common', configuration: 'commonGametestJava')
+	commonGametestResources project(path: ':common', configuration: 'commonGametestResources')
+	gametestCompileOnly project(':common')
+}
+tasks.named('compileGametestJava', JavaCompile) {
+	dependsOn(configurations.commonGametestJava)
+	source(configurations.commonGametestJava)
+}
+tasks.named('processGametestResources', ProcessResources) {
+	dependsOn(configurations.commonGametestResources)
+	from(configurations.commonGametestResources)
+}
+def rootBuild = rootProject.layout.buildDirectory.get().asFile.path
 legacyForge {
 	enable {
 		neoForgeVersion = neoforge_version
+		enabledSourceSets = [sourceSets.main, sourceSets.gametest]
 	}
 	parchment {
 		minecraftVersion = minecraft_version
@@ -22,10 +65,25 @@ legacyForge {
 			server()
 			gameDirectory = rootProject.file('run-neoforge/server')
 		}
+		// A headless server that runs every shared game test and exits with the
+		// number of failures; `check` (and so `build`) depends on it. Shapes
+		// beyond vanilla's register only with Caliber Mod or under mod.dataGen.
+		gameTestServer {
+			type = 'gameTestServer'
+			gameDirectory = file("${rootBuild}/gametest-neoforge")
+			sourceSet = sourceSets.gametest
+			// The tests sit on the flat world's ground, as on Fabric (Forge's default is y 60).
+			programArguments.addAll '--spawnPos', '0,0,0'
+			systemProperty 'caliberlib.gametest.report', "${rootBuild}/gametest-neoforge/junit.xml"
+			systemProperty 'mod.dataGen', 'true'
+		}
 	}
 	mods {
 		caliberlib {
 			sourceSet sourceSets.main
+		}
+		caliberlib_gametest {
+			sourceSet sourceSets.gametest
 		}
 	}
 }
@@ -58,5 +116,52 @@ processResources {
 	// built here (the Fabric jar needs none, so common's own copy names none).
 	filesMatching('caliberlib.engine.mixins.json') {
 		filter { line -> line.contains('"package"') ? line + '\n\t"refmap": "caliberlib.refmap.json",' : line }
+	}
+}
+
+// Each run starts from a fresh test world, a flat one as Fabric's (and vanilla's)
+// test server makes: Forge's makes its world from server.properties, which
+// would otherwise give normal terrain over the tests.
+tasks.matching { it.name == 'runGameTestServer' }.configureEach {
+	doFirst {
+		delete "${rootBuild}/gametest-neoforge/world"
+		// The test-count check below reads this run's report, never an old one.
+		delete "${rootBuild}/gametest-neoforge/junit.xml"
+		def properties = file("${rootBuild}/gametest-neoforge/server.properties")
+		properties.parentFile.mkdirs()
+		// Vanilla's default flat world: bedrock, two dirt, grass, plains.
+		properties.text = 'level-type=minecraft\\:flat\n' +
+				'generator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}\n'
+	}
+}
+tasks.named('check') {
+	dependsOn 'runGameTestServer'
+}
+// The game tests as a jar for production Forge and NeoForge servers (SRG
+// names), to run them against released loader versions: start the server with
+// -Dforge.enableGameTest=true -Dforge.gameTestServer=true. Never published;
+// it is built outside build/libs.
+def gametestDevJar = tasks.register('gametestDevJar', Jar) {
+	from sourceSets.gametest.output
+	archiveClassifier = 'gametest-dev'
+	destinationDirectory = layout.buildDirectory.dir('devlibs')
+}
+def reobfGametest = obfuscation.reobfuscate(gametestDevJar, sourceSets.gametest) {
+	archiveClassifier = 'gametest'
+	destinationDirectory = layout.buildDirectory.dir('gametestlibs')
+}
+tasks.register('gametestJar') {
+	dependsOn reobfGametest
+}
+
+// A run that registered fewer tests than there are fails: a broken test scan
+// would otherwise succeed with nothing run.
+tasks.matching { it.name == "runGameTestServer" }.configureEach {
+	doLast {
+		def report = file("${rootBuild}/gametest-neoforge/junit.xml")
+		def ran = report.exists() ? (report.text =~ /<testcase /).size() : 0
+		if (ran < (gametest_count as int)) {
+			throw new GradleException("Game tests: ${ran} ran, expected ${gametest_count} (${report})")
+		}
 	}
 }

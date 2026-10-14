@@ -31,11 +31,18 @@ import java.util.function.Supplier;
  * @param siblings    variant name to block id, for every shape of the family, its own and other mods'
  * @param shapes      the shapes the family registers
  * @param tint        the block whose colour the shapes take
+ * @param tool        the tool that mines the shapes fastest; null means the kind's default
  */
 public record Material(ResourceLocation id, String owner, String manager, MaterialKind kind, String displayName,
 		ResourceLocation source, ResourceLocation ingredient, @Nullable ResourceLocation door,
 		@Nullable ResourceLocation baseModel, Map<String, ResourceLocation> textures,
-		Map<String, ResourceLocation> siblings, List<Shape> shapes, boolean cutout, @Nullable ResourceLocation tint) {
+		Map<String, ResourceLocation> siblings, List<Shape> shapes, boolean cutout, @Nullable ResourceLocation tint,
+		@Nullable MiningTool tool) {
+
+	/** The tool that mines the shapes fastest: the family's own, or its kind's default. */
+	public MiningTool miningTool() {
+		return tool != null ? tool : MiningTool.of(kind);
+	}
 
 	/** A registered shape: its variant name (as the specs name it) and block id. */
 	public record Shape(String variant, ResourceLocation block) {
@@ -72,7 +79,7 @@ public record Material(ResourceLocation id, String owner, String manager, Materi
 		ResourceLocation tint = assets.tint != null ? key(assets.tint.get()) : null;
 		return new Material(new ResourceLocation(manager.modId(), manager.idPrefix()), owner, manager.getName(), assets.kind,
 				display, source, ingredient, door, assets.baseModel, assets.textures, Map.copyOf(siblings),
-				List.copyOf(shapes), assets.cutout, tint);
+				List.copyOf(shapes), assets.cutout, tint, assets.tool);
 	}
 
 	private static ResourceLocation key(Block block) {

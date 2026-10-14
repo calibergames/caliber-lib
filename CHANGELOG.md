@@ -15,6 +15,8 @@
 - `RoofPeakBlock.isHip(state)` counts outer corners of all three roof pitches.
 - `ModWoodType.SIGN_TYPES` lists the wood types whose sign materials the client sets up.
 - Shape specs name a shape per language (`"name": {"en_us": ...}`); other languages fall back to `en_us`.
+- `BlockManager.Builder.tool(MiningTool)` sets the tool that mines a family's shapes (`PICKAXE`, `AXE`, `SHOVEL`, `HOE` or `NONE`); by default pickaxe for stone and axe for wood. `Material` gains `tool` and `miningTool()`.
+- `GameView` and `PlatformHooks` gain `burns(...)`: whether fire takes a block.
 
 #### Features
 - One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
@@ -23,10 +25,14 @@
 - Ridge caps for 22 and 67 roofs: a cap takes the pitch of the roof below it, continues that roof's shingles to the ridge, and carries the hips at the ends of a ridge as on 45 roofs.
 - Generated shapes copy their source block's flammability, on every loader; tall doors and cut-out families get the cut-out render layer, tinted families their colours; roof_67 models render on Fabric and Quilt.
 
+- Game tests on Fabric and NeoForge (`runGametest`, `runGameTestServer`, part of `check`) and test jars for production servers (`gametestJar`).
+- Needs Fabric API 0.83.0 or newer on Fabric and Quilt (the oldest tested).
+
 #### Bugfixes
 - Starts on every Forge 47 and on NeoForge 1.20.1 (0.2.9 needed Forge 47.3 or newer).
 - 22 and 67 roofs and roof caps block sky light, as stairs do; the space under a closed roof is dark.
 - Signs of the library's wood types get their textures on Fabric and Quilt, as on Forge.
+- Shapes of wood that fire does not take (crimson, warped, and other mods' woods like them) are never furnace fuel (`minecraft:non_flammable_wood`).
 
 ### 0.2.0 (in progress)
 #### Features

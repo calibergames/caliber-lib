@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "caliberlib_gametest",
+  "version": "1.0.0",
+  "name": "CaliberLib Game Tests",
+  "description": "Game tests for CaliberLib. Development only; never shipped.",
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.calibermc.caliberlib.gametest.fabric.FabricTestMod"
+    ],
+    "fabric-gametest": [
+      "com.calibermc.caliberlib.gametest.RegistrationGameTests",
+      "com.calibermc.caliberlib.gametest.LootGameTests",
+      "com.calibermc.caliberlib.gametest.RecipeGameTests",
+      "com.calibermc.caliberlib.gametest.TagGameTests",
+      "com.calibermc.caliberlib.gametest.FireGameTests"
+    ]
+  },
+  "depends": {
+    "caliberlib": "*",
+    "fabric-gametest-api-v1": "*"
+  }
+}

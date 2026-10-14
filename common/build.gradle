@@ -22,7 +22,23 @@ dependencies {
 	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
+// The game tests, shared by every loader: compiled here against vanilla to
+// check them, and built into each loader's test mod (caliberlib_gametest).
+sourceSets {
+	gametest {
+		compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+	}
+}
+
 configurations {
+	commonGametestJava {
+		canBeResolved = false
+		canBeConsumed = true
+	}
+	commonGametestResources {
+		canBeResolved = false
+		canBeConsumed = true
+	}
 	commonJava {
 		canBeResolved = false
 		canBeConsumed = true
@@ -34,6 +50,8 @@ configurations {
 }
 
 artifacts {
+	commonGametestJava sourceSets.gametest.java.sourceDirectories.singleFile
+	commonGametestResources sourceSets.gametest.resources.sourceDirectories.singleFile
 	commonJava sourceSets.main.java.sourceDirectories.singleFile
 	commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }
@@ -65,4 +83,19 @@ tasks.named('test', Test) {
 	if (project.hasProperty('writeGoldens')) {
 		systemProperty 'caliberlib.goldens.write', file('src/test/resources/goldens').absolutePath
 	}
+	// -Pfamilies, -PresourceJars and -PfamiliesOut run AllFamiliesTest on a family table.
+	['families', 'resourceJars', 'familiesOut'].each { name ->
+		if (project.hasProperty(name)) {
+			systemProperty "caliberlib.${name}", project.property(name)
+		}
+	}
+	if (project.hasProperty('families')) {
+		// The table and jars are read at run time, so the task never counts as up to date.
+		outputs.upToDateWhen { false }
+	}
+}
+
+// The shared tests run in each loader's build; here they are compiled against vanilla.
+tasks.named('check') {
+	dependsOn 'gametestClasses'
 }

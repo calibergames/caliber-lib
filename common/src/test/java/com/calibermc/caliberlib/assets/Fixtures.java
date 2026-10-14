@@ -76,7 +76,26 @@ public final class Fixtures {
 		extraSiblings.forEach((variant, id) -> siblings.putIfAbsent(variant, new ResourceLocation(id)));
 		ResourceLocation src = new ResourceLocation(source);
 		return new Material(new ResourceLocation(ns, prefix), "caliber", manager, kind, display, src, src,
-				door == null ? null : new ResourceLocation(door), baseModel, textures, siblings, shapes, false, null);
+				door == null ? null : new ResourceLocation(door), baseModel, textures, siblings, shapes, false, null, null);
+	}
+
+	/**
+	 * Whether fire takes the block: vanilla's fire table for vanilla blocks
+	 * (read from the fire block, which has no public getter), and yes for
+	 * blocks of mods not loaded in the tests.
+	 */
+	static boolean burns(ResourceLocation block) {
+		if (!block.getNamespace().equals("minecraft")) {
+			return true;
+		}
+		try {
+			java.lang.reflect.Field field = net.minecraft.world.level.block.FireBlock.class.getDeclaredField("burnOdds");
+			field.setAccessible(true);
+			var odds = (it.unimi.dsi.fastutil.objects.Object2IntMap<?>) field.get(net.minecraft.world.level.block.Blocks.FIRE);
+			return odds.getInt(net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(block)) > 0;
+		} catch (ReflectiveOperationException e) {
+			throw new IllegalStateException(e);
+		}
 	}
 
 	/** The registries of a game with Caliber's families and the fixture mod loaded. */
@@ -119,6 +138,11 @@ public final class Fixtures {
 					return Map.of("facing", "north", "half", "lower", "hinge", "left", "open", "false", "powered", "false");
 				}
 				return block.getNamespace().equals(FIXTURE) ? Map.of() : GameView.LIVE.defaultState(block);
+			}
+
+			@Override
+			public boolean burns(ResourceLocation block) {
+				return Fixtures.burns(block);
 			}
 
 			@Nullable

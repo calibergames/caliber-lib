@@ -1,6 +1,7 @@
 package com.calibermc.caliberlib.block.management;
 
 import com.calibermc.caliberlib.assets.MaterialKind;
+import com.calibermc.caliberlib.assets.MiningTool;
 import com.calibermc.caliberlib.block.custom.*;
 import com.calibermc.caliberlib.data.ModBlockFamily;
 import com.calibermc.caliberlib.data.datagen.loot.ModBlockLootTables;
@@ -353,6 +354,12 @@ public class BlockManager {
             return this;
         }
 
+        /** The tool that mines the shapes fastest; by default pickaxe for stone and axe for wood. */
+        public Builder tool(MiningTool tool) {
+            this.assets.tool = tool;
+            return this;
+        }
+
         /** The shapes are tinted like this block (grass, leaves). */
         public Builder tint(Supplier<Block> block) {
             this.assets.tint = block;
@@ -404,6 +411,7 @@ public class BlockManager {
         public final Map<ModBlockFamily.Variant, Supplier<Block>> siblings;
         public final boolean cutout;
         @Nullable public final Supplier<Block> tint;
+        @Nullable public final MiningTool tool;
 
         private Assets(Builder b, MaterialKind kind) {
             this.kind = kind;
@@ -415,6 +423,7 @@ public class BlockManager {
             this.siblings = Collections.unmodifiableMap(new EnumMap<>(b.siblings));
             this.cutout = b.cutout;
             this.tint = b.tint;
+            this.tool = b.tool;
         }
 
         static final class Builder {
@@ -423,6 +432,7 @@ public class BlockManager {
             Supplier<? extends ItemLike> door;
             String displayName;
             ResourceLocation baseModel;
+            MiningTool tool;
             final Map<String, ResourceLocation> textures = new LinkedHashMap<>();
             final Map<ModBlockFamily.Variant, Supplier<Block>> siblings = new EnumMap<>(ModBlockFamily.Variant.class);
             boolean cutout;

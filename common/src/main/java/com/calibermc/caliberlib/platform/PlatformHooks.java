@@ -27,4 +27,7 @@ public interface PlatformHooks {
 	 * catches and spreads fire. Nothing changes when the source does not burn.
 	 */
 	void copyFlammability(Block source, Collection<Block> targets);
+
+	/** Whether fire burns or spreads to the block. */
+	boolean burns(Block block);
 }
