@@ -9,5 +9,6 @@ public class CaliberLibFabric implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		CaliberLib.init();
+		FabricCompatLogin.server();
 	}
 }

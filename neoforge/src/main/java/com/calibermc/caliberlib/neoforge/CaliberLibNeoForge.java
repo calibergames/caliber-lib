@@ -9,6 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -23,6 +24,8 @@ public class CaliberLibNeoForge {
 		CaliberLib.init();
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		bus.addListener(CaliberLibNeoForge::addPacks);
+		// Every block is registered by setup, so the compat list's hash is final.
+		bus.addListener((FMLCommonSetupEvent event) -> event.enqueueWork(NeoForgeCompatLogin::register));
 		// After every mod's setup, so source blocks have their own fire values.
 		bus.addListener((FMLLoadCompleteEvent event) -> event.enqueueWork(() -> {
 			AssetEngine.copyFlammability();

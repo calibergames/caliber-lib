@@ -7,3 +7,7 @@ accessible method net/minecraft/world/level/block/PressurePlateBlock <init> (Lne
 accessible method net/minecraft/world/level/block/TrapDoorBlock <init> (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;Lnet/minecraft/world/level/block/state/properties/BlockSetType;)V
 accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;
 accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;
+# The compat login check skips the integrated server's own client.
+accessible field net/minecraft/server/network/ServerLoginPacketListenerImpl connection Lnet/minecraft/network/Connection;
+# The compat login check names the player in its log.
+accessible field net/minecraft/server/network/ServerLoginPacketListenerImpl gameProfile Lcom/mojang/authlib/GameProfile;

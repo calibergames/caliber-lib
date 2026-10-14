@@ -15,7 +15,8 @@
       "com.calibermc.caliberlib.gametest.LootGameTests",
       "com.calibermc.caliberlib.gametest.RecipeGameTests",
       "com.calibermc.caliberlib.gametest.TagGameTests",
-      "com.calibermc.caliberlib.gametest.FireGameTests"
+      "com.calibermc.caliberlib.gametest.FireGameTests",
+      "com.calibermc.caliberlib.gametest.CompatGameTests"
     ]
   },
   "depends": {

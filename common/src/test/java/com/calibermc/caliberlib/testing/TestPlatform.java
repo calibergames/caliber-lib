@@ -1,10 +1,13 @@
 package com.calibermc.caliberlib.testing;
 
+import com.calibermc.caliberlib.platform.ModFiles;
 import com.calibermc.caliberlib.platform.PlatformHelper;
 import net.minecraft.world.item.CreativeModeTab;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /** The platform in unit tests: no loader, and the mods a test says are installed. */
@@ -12,6 +15,8 @@ public final class TestPlatform implements PlatformHelper {
 
 	/** The mods tests treat as installed. */
 	public static final Set<String> MODS = new HashSet<>();
+	/** The mods' files tests give. */
+	public static final List<ModFiles> FILES = new ArrayList<>();
 
 	@Override
 	public String loaderName() {
@@ -41,6 +46,11 @@ public final class TestPlatform implements PlatformHelper {
 	@Override
 	public String commonTagNamespace() {
 		return "c";
+	}
+
+	@Override
+	public List<ModFiles> modFiles() {
+		return List.copyOf(FILES);
 	}
 
 	@Override

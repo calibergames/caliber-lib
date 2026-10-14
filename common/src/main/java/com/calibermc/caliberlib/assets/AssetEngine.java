@@ -66,6 +66,18 @@ public final class AssetEngine {
 		return OWNERS.get(namespace);
 	}
 
+	/** Whether any family names its own owner (compat families do), so there is something to generate. */
+	private static boolean ownedFamilies() {
+		for (List<BlockManager> managers : BlockManager.BLOCK_MANAGERS.values()) {
+			for (BlockManager manager : managers) {
+				if (manager.assets().owner != null) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	/** Set on the client only: makes the client pack, which reads textures from the other packs. */
 	public static void setClientPacks(Function<List<Material>, GeneratedPack> factory) {
 		clientPacks = factory;
@@ -74,7 +86,7 @@ public final class AssetEngine {
 	/** The generated pack of this type, or null when nothing is generated. */
 	@Nullable
 	public static Pack pack(PackType type) {
-		if (OWNERS.isEmpty() || type == PackType.CLIENT_RESOURCES && clientPacks == null) {
+		if (OWNERS.isEmpty() && !ownedFamilies() || type == PackType.CLIENT_RESOURCES && clientPacks == null) {
 			return null;
 		}
 		Pack.Info info = new Pack.Info(DESCRIPTION, PACK_FORMAT, FeatureFlagSet.of());
@@ -108,7 +120,7 @@ public final class AssetEngine {
 		List<Material> out = new ArrayList<>();
 		for (List<BlockManager> managers : BlockManager.BLOCK_MANAGERS.values()) {
 			for (BlockManager manager : managers) {
-				String owner = owner(manager.modId());
+				String owner = manager.assets().owner != null ? manager.assets().owner : owner(manager.modId());
 				if (owner == null) {
 					continue;
 				}

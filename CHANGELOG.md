@@ -17,6 +17,10 @@
 - Shape specs name a shape per language (`"name": {"en_us": ...}`); other languages fall back to `en_us`.
 - `BlockManager.Builder.tool(MiningTool)` sets the tool that mines a family's shapes (`PICKAXE`, `AXE`, `SHOVEL`, `HOE` or `NONE`); by default pickaxe for stone and axe for wood. `Material` gains `tool` and `miningTool()`.
 - `GameView` and `PlatformHooks` gain `burns(...)`: whether fire takes a block.
+- `compat.CompatLists.enable(owner, bundledFolder, configFile)` registers shapes for other mods' blocks from `calibermod-compat.json` files. Only the mod that calls it gets compat shapes; CaliberLib alone registers none.
+- `config.ConfigFile`: TOML config files on every loader. Defaults are written with their comments, and keys a file lacks are added to it; everything else in the file is left as it is.
+- `PlatformHelper.modFiles()` lists each loaded mod's own files, for reading data before data packs load.
+- `BlockManager.Builder` gains `idPrefix(...)` (the shapes' id prefix, instead of the one taken from the family name) and `owner(...)` (the mod whose recipes and advancements a family's generated data use).
 
 #### Features
 - One build for NeoForge, Forge, Fabric and Quilt: loader-neutral code in `common`, loader code behind `platform.Services`.
@@ -24,7 +28,9 @@
 
 - Ridge caps for 22 and 67 roofs: a cap takes the pitch of the roof below it, continues that roof's shingles to the ridge, and carries the hips at the ends of a ridge as on 45 roofs.
 - Generated shapes copy their source block's flammability, on every loader; tall doors and cut-out families get the cut-out render layer; families built with `tint(...)` register block and item colour handlers; roof_67 models render on Fabric and Quilt.
-
+- Compat lists (`calibermod-compat.json`, format 1): read from the owner's bundled folder, from `data/<modid>/calibermod-compat.json` in other mods' jars (each lists only its own blocks), and from `config/calibermod-compat/`. Entries whose block is missing are skipped. A source mod's own shape wins over a listed one with the same id. Per-mod and per-type switches and a ceiling on the number of shapes (20,000 by default) live in the owner's config file, in a `[compat]` table; Chipped is off unless turned on. Entries from bundled `released-*.json` files are read first, keep their shapes and names whatever later files say, and are never refused by the ceiling. Shapes copy their source block's behaviour as plain values (hardness, sound, light, map colour and the like), so a source whose light depends on its own state cannot break them. Wood shapes use the source mod's own block set type when it has one.
+- A server and a client with different compat lists refuse the login with a readable reason, before the registries are compared: a login query on Fabric and Quilt, the `caliberlib:compat` channel version on NeoForge and Forge. Both sides log which entries differ.
+- A world that holds compat shapes no longer registered (switched off, past the ceiling, or no longer listed) logs a warning naming each entry and its setting before its chunks load; the game would otherwise turn those blocks into air without a word. A small record in the world folder (`caliberlib-compat.txt`) holds what the world's last session registered.
 - Game tests on Fabric and NeoForge (`runGametest`, `runGameTestServer`, part of `check`) and test jars for production servers (`gametestJar`).
 - Needs Fabric API 0.83.0 or newer on Fabric and Quilt (the oldest tested).
 

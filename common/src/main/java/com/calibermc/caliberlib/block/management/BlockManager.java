@@ -41,11 +41,12 @@ public class BlockManager {
     private final Assets assets;
     private final ImmutableMap<BlockAdditional, Pair<ResourceLocation, Supplier<Block>>> blocks;
 
-    BlockManager(String name, List<BlockAdditional> directions, BlockSetType blockSetType, String modid, Assets assets) {
+    BlockManager(String name, List<BlockAdditional> directions, BlockSetType blockSetType, String modid, Assets assets,
+                 @Nullable String prefix) {
         this.blockSetType = blockSetType;
         this.modId = modid;
         this.assets = assets;
-        String modifiedName = idPrefix(name);
+        String modifiedName = prefix != null ? prefix : idPrefix(name);
         this.idPrefix = modifiedName;
         ImmutableMap.Builder<BlockAdditional, Pair<ResourceLocation, Supplier<Block>>> builder = ImmutableMap.builder();
         for (BlockAdditional e : directions) {
@@ -290,6 +291,8 @@ public class BlockManager {
         public BlockSetType blockSetType = BlockSetType.STONE;
         public final List<BlockAdditional> blocks = new ArrayList<>();
         private final Assets.Builder assets = new Assets.Builder();
+        @Nullable
+        private String idPrefix;
 
         public Builder(String name, Registrar<Block> registry) {
             this(name, registry.modId());
@@ -303,6 +306,23 @@ public class BlockManager {
 
         public Builder type(BlockSetType type) {
             this.blockSetType = type;
+            return this;
+        }
+
+        /** The shapes' id prefix; by default it comes from the family name ("oak_planks" gives "oak"). */
+        public Builder idPrefix(String idPrefix) {
+            this.idPrefix = idPrefix;
+            return this;
+        }
+
+        /**
+         * The mod whose recipes and advancements the shapes' generated data
+         * are; by default the owner of the namespace (see
+         * {@code AssetEngine.generateFor}). Setting it also turns on
+         * generation for this family.
+         */
+        public Builder owner(String owner) {
+            this.assets.owner = owner;
             return this;
         }
 
@@ -396,7 +416,7 @@ public class BlockManager {
                 }
             }
 
-            return new BlockManager(this.name, this.blocks, this.blockSetType, this.modid, this.assets.build(this.blockSetType));
+            return new BlockManager(this.name, this.blocks, this.blockSetType, this.modid, this.assets.build(this.blockSetType), this.idPrefix);
         }
     }
 
@@ -412,6 +432,7 @@ public class BlockManager {
         public final boolean cutout;
         @Nullable public final Supplier<Block> tint;
         @Nullable public final MiningTool tool;
+        @Nullable public final String owner;
 
         private Assets(Builder b, MaterialKind kind) {
             this.kind = kind;
@@ -424,6 +445,7 @@ public class BlockManager {
             this.cutout = b.cutout;
             this.tint = b.tint;
             this.tool = b.tool;
+            this.owner = b.owner;
         }
 
         static final class Builder {
@@ -437,6 +459,7 @@ public class BlockManager {
             final Map<ModBlockFamily.Variant, Supplier<Block>> siblings = new EnumMap<>(ModBlockFamily.Variant.class);
             boolean cutout;
             Supplier<Block> tint;
+            String owner;
 
             Assets build(BlockSetType type) {
                 // Without an explicit kind, a family whose block set is a wood type is wood.

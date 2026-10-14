@@ -1,0 +1,7 @@
+{
+  "format": 1,
+  "entries": [
+    {"block": "caliberlib_gametest:gt_src_marble", "type": "stone", "variants": ["arch", "pillar"]},
+    {"block": "minecraft:stone", "type": "stone", "variants": ["arch"]}
+  ]
+}

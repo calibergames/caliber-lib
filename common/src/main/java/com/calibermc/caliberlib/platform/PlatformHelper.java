@@ -3,6 +3,7 @@ package com.calibermc.caliberlib.platform;
 import net.minecraft.world.item.CreativeModeTab;
 
 import java.nio.file.Path;
+import java.util.List;
 
 /** What the library needs from the loader it runs on. */
 public interface PlatformHelper {
@@ -24,6 +25,9 @@ public interface PlatformHelper {
 
 	/** The namespace of the tags loaders share between mods: "forge" or "c". */
 	String commonTagNamespace();
+
+	/** Every loaded mod's files, sorted by mod id; the loader's and the game's own entries left out. */
+	List<ModFiles> modFiles();
 
 	/** A creative tab builder placed by the loader after vanilla's tabs. */
 	CreativeModeTab.Builder creativeTab();

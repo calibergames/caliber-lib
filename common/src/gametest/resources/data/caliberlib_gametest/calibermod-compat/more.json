@@ -1,0 +1,10 @@
+{
+  "format": 1,
+  "entries": [
+    {"block": "caliberlib_gametest:gt_src_fir_planks", "type": "planks", "variants": ["arch", "slab_vertical", "tall_door"]},
+    {"block": "caliberlib_gametest:gt_src_fir_planks", "type": "shingle", "variants": ["roof_45"]},
+    {"block": "caliberlib_gametest:gt_src_stripped_fir_wood", "type": "stripped_wood", "variants": ["beam_vertical"]},
+    {"block": "caliberlib_gametest:gt_src_lamp", "type": "stone", "variants": ["arch"]},
+    {"block": "caliberlib_gametest:gt_src_missing", "type": "stone", "variants": ["arch"]}
+  ]
+}

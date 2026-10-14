@@ -1,0 +1,7 @@
+{
+  "format": 1,
+  "entries": [
+    {"block": "caliberlib_gametest:gt_src_marble", "type": "stone", "variants": ["arch", "slab", "corner", "slab_vertical", "wall"]},
+    {"block": "minecraft:calcite", "type": "stone", "name": "caliberlib_gametest_compat:calcite", "variants": ["arch", "pillar"]}
+  ]
+}
